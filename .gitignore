@@ -1,0 +1,12 @@
+# secrets
+.env
+*.key
+# python
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+*.pyc
+# per-run spend logs
+spend*.json
+.DS_Store

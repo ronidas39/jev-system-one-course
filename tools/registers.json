@@ -1,0 +1,96 @@
+{
+  "_about": "The diagram styles (registers) our slide kit can draw, written as Choice options for Jev. 'what' is the look, 'use_for' and 'not_for' come from the content-shape rules in the course's diagram guide. Read 4 October 2026.",
+  "registers": {
+    "block_diagram": {
+      "what": "Boxes for systems and services with real product logos, connected by arrows, grouped in zones",
+      "use_for": "how parts of a software system connect; where a component sits in an architecture; named products",
+      "not_for": "numbers, measurements, order of steps over time, a single idea or a list"
+    },
+    "sequence_diagram": {
+      "what": "Vertical lifelines for each party with numbered arrows between them, top to bottom",
+      "use_for": "who sends what to whom, in what order; request and response; a test procedure in steps",
+      "not_for": "measured numbers, structure without order, comparisons"
+    },
+    "isometric_3d": {
+      "what": "3D blocks, layers, funnels and cylinders drawn at an angle, with visible volume",
+      "use_for": "layers stacked on each other, a funnel that narrows, mass, pressure, how much of something there is",
+      "not_for": "exact measured values, step-by-step reasoning, text-heavy lists"
+    },
+    "hand_drawn_sketch": {
+      "what": "Whiteboard sketch with rough strokes, simple pastel shapes and red marker notes",
+      "use_for": "an everyday analogy, arithmetic worked step by step, a wrong idea crossed out and corrected, a simple concept sketch",
+      "not_for": "measured data, precise architecture, real screenshots"
+    },
+    "theme_cards": {
+      "what": "A row of coloured cards with an icon, a heading and one sentence each",
+      "use_for": "three to five parallel themes or categories with nothing flowing between them",
+      "not_for": "anything with steps, flow, order or numbers"
+    },
+    "lookup_map": {
+      "what": "Two spaces side by side, an ordered list on one side, scattered slots on the other, joined through a lookup table",
+      "use_for": "a name or id that is translated to a place through a table",
+      "not_for": "anything that is not a translation through a table"
+    },
+    "chart": {
+      "what": "A plotted chart with real axes and units: bars, lines or points",
+      "use_for": "measured numbers, latency, cost, accuracy, a distribution, a curve, a threshold on a scale",
+      "not_for": "ideas with no numbers, architecture, analogies"
+    },
+    "typographic_list": {
+      "what": "Large clean type on paper: a title card, a numbered list, a checklist, a quote",
+      "use_for": "an agenda, a checklist, takeaways, a short quote, a title",
+      "not_for": "mechanisms, flows, measured numbers that need a scale"
+    },
+    "side_by_side_panels": {
+      "what": "Two or three panels next to each other with the same rows, so the eye compares across",
+      "use_for": "comparing two or three things on the same points; before and after; a trade-off",
+      "not_for": "a single thing, a flow over time, many measured values"
+    },
+    "flowchart": {
+      "what": "A flowchart with boxes, decision diamonds and arrows",
+      "use_for": "a pipeline of steps, a decision tree, branches that depend on an answer",
+      "not_for": "measured numbers, side-by-side comparisons"
+    },
+    "real_screenshot": {
+      "what": "A real screen capture of a web page, a console or a document",
+      "use_for": "showing a real page: a product console, a launch post, a book page, a source the viewer can visit",
+      "not_for": "explaining a mechanism, anything that is not a real page"
+    },
+    "real_terminal_capture": {
+      "what": "A real capture of a terminal or code editor on this computer",
+      "use_for": "a command and its real output; a real file of code",
+      "not_for": "concepts, anything that was not really run"
+    },
+    "illustrated_scene": {
+      "what": "A flat illustration of a person in a situation",
+      "use_for": "a human moment: a person at work, a clerk, a customer",
+      "not_for": "technical structure, numbers"
+    },
+    "interactive_step_diagram": {
+      "what": "An in-app React Flow diagram that reveals nodes step by step when the viewer clicks",
+      "use_for": "a lesson page on the website where the reader clicks through steps",
+      "not_for": "a video slide rendered as a still 1920x1080 image (it cannot click)"
+    }
+  },
+  "available_in_this_deck": ["block_diagram", "sequence_diagram", "isometric_3d", "hand_drawn_sketch",
+    "theme_cards", "lookup_map", "chart", "typographic_list", "side_by_side_panels", "flowchart",
+    "real_screenshot", "real_terminal_capture", "illustrated_scene"],
+  "shape_rules": {
+    "_about": "Content shapes from the av-audit-gate content-shapes reference. A slide's shapes decide which registers are allowed. Jev never sees these codes.",
+    "S1 derivation": ["hand_drawn_sketch"],
+    "S2 mechanism": ["block_diagram", "flowchart", "isometric_3d", "hand_drawn_sketch", "sequence_diagram"],
+    "S4 distribution": ["chart"],
+    "S5 topology": ["block_diagram", "isometric_3d", "flowchart"],
+    "S6 sequence": ["sequence_diagram", "flowchart"],
+    "S9 threshold": ["chart", "isometric_3d"],
+    "S10 comparison": ["side_by_side_panels", "chart", "hand_drawn_sketch"],
+    "S11 scale": ["chart", "isometric_3d"],
+    "S12 curve": ["chart"],
+    "S13 before_after": ["side_by_side_panels", "real_screenshot", "hand_drawn_sketch"],
+    "S14 code": ["real_terminal_capture", "typographic_list"],
+    "S19 human": ["illustrated_scene", "hand_drawn_sketch"],
+    "S22 myth": ["hand_drawn_sketch", "side_by_side_panels"],
+    "S23 checklist": ["typographic_list", "theme_cards"],
+    "R real_page": ["real_screenshot", "real_terminal_capture"]
+  }
+}
