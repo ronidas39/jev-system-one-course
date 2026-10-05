@@ -2,7 +2,8 @@
 
 The code for the freeCodeCamp course by Roni Das (systemdesign.academy, YouTube: Total Technology
 Zonne). Everything shown in the course is here: the hands-on exercises, four small projects, one
-big project, the fair comparison with OpenAI models, the synthetic data, and every raw result.
+big project that turns messy company records into a knowledge graph, the speed and cost test on
+support tickets, the synthetic data, and every raw result.
 
 **Jev** is a model from TypeSafe AI. It does not write text. You send it some material (the
 *state*) and some typed questions, and it sends back typed answers with probabilities:
@@ -74,10 +75,10 @@ cd ..
 
 | Folder | What it is | Course part |
 |---|---|---|
-| `handson/` | 13 short exercises, one idea each: first call, Noul, Choice, Score, many questions in one call, confidence, thresholds, pinned versions, errors, weak spots, a small inbox, a first comparison, a cheat sheet | 8, 9 |
+| `handson/` | 14 short scripts (00 to 13), one idea each: setup check, first call, Noul, Choice, Score, many questions in one call, confidence, thresholds, pinned versions, errors, weak spots, a small inbox, a first comparison, a cheat sheet | 8, 9 |
 | `usecases/` | four small projects: ticket triage, a guardrail on an LLM's draft reply, tool routing for an agent, a duplicate check on two records | 10 |
 | `capstone/` | the big project: messy company records from three systems, cheap blocking, Jev decides each pair, a merge policy, a knowledge graph, and measurement against the truth | 10 |
-| `compare/` | the fair comparison of Jev with gpt-6-luna and gpt-6.1-sol: accuracy, latency, cost, parallel and sequential timing, many questions in one call | 7 |
+| `compare/` | the speed and cost test of Jev with gpt-6-luna and gpt-6.1-sol on the same inputs: time per call, a whole batch, cost, many questions in one call (and every other run, with accuracy) | 7 |
 | `data/` | the seeded generators, the data they made, and `DATA-CARD.md` | 7, 10 |
 | `tools/` | `choose_register.py`: Jev picks the diagram style for every slide in the course | 11 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
@@ -182,8 +183,9 @@ Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.js
 | gpt-6-luna | 363 | 531 | 1.357 | 3.459 |
 | gpt-6.1-sol | 363 | 531 | 2.985 | 6.431 |
 
-A large chat model was a little more accurate on this job, so test on your own data before you
-switch. That is why Jev returns a confidence number with every answer.
+On this job the chat models were more accurate: a little on the team question, and more on
+urgency and frustration. So test on your own data before you switch. That is why Jev returns a
+confidence number with every answer.
 
 Every other run (the record pairs, both question wordings, the fresh test set) is in
 `compare/results/summary.md`, with every raw call next to it.
