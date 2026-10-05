@@ -1,0 +1,2304 @@
+[
+ {
+  "id": "p01-title",
+  "part": 1,
+  "title": "Jev, the AI model that answers with numbers",
+  "jev_pick": "typographic_list",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "typographic_list",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.479,
+  "usd": 6.1362e-05
+ },
+ {
+  "id": "p01-what-you-will-build",
+  "part": 1,
+  "title": "What you will be able to do by the end",
+  "jev_pick": "typographic_list",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "typographic_list",
+    1.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": true,
+  "reasons": [
+   "'typographic_list' was used on the slide before, so 'theme_cards' instead"
+  ],
+  "seconds": 0.416,
+  "usd": 6.161400000000001e-05
+ },
+ {
+  "id": "p01-next-word-game",
+  "part": 1,
+  "title": "The finish-the-sentence game",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 0.53,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    0.5700000000000001
+   ],
+   [
+    "side_by_side_panels",
+    0.3
+   ],
+   [
+    "illustrated_scene",
+    0.12
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.365,
+  "usd": 6.1782e-05
+ },
+ {
+  "id": "p01-tokens",
+  "part": 1,
+  "title": "Text is cut into tokens, and you pay per token",
+  "jev_pick": "flowchart",
+  "confidence": 0.4,
+  "top3": [
+   [
+    "flowchart",
+    0.45
+   ],
+   [
+    "hand_drawn_sketch",
+    0.31
+   ],
+   [
+    "block_diagram",
+    0.18
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.365,
+  "usd": 6.174e-05
+ },
+ {
+  "id": "p01-one-token-at-a-time",
+  "part": 1,
+  "title": "A chat model writes one token, then the next",
+  "jev_pick": "flowchart",
+  "confidence": 0.53,
+  "top3": [
+   [
+    "flowchart",
+    0.57
+   ],
+   [
+    "sequence_diagram",
+    0.35
+   ],
+   [
+    "hand_drawn_sketch",
+    0.08
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' was used on the slide before, so 'sequence_diagram' instead"
+  ],
+  "seconds": 0.367,
+  "usd": 6.195e-05
+ },
+ {
+  "id": "p01-chat-vs-reasoning",
+  "part": 1,
+  "title": "Chat models and reasoning models",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.384,
+  "usd": 6.165600000000001e-05
+ },
+ {
+  "id": "p02-chatty-clerk",
+  "part": 2,
+  "title": "A clever clerk, and a cash register that only takes yes or no",
+  "jev_pick": "illustrated_scene",
+  "confidence": 0.98,
+  "top3": [
+   [
+    "illustrated_scene",
+    0.99
+   ],
+   [
+    "sequence_diagram",
+    0.01
+   ],
+   [
+    "lookup_map",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "illustrated_scene"
+  ],
+  "final": "illustrated_scene",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.329,
+  "usd": 6.2286e-05
+ },
+ {
+  "id": "p02-four-problems",
+  "part": 2,
+  "title": "Four problems when software asks a chat model small questions",
+  "jev_pick": "theme_cards",
+  "confidence": 0.96,
+  "top3": [
+   [
+    "theme_cards",
+    0.96
+   ],
+   [
+    "side_by_side_panels",
+    0.04
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.642,
+  "usd": 6.182400000000001e-05
+ },
+ {
+  "id": "p02-parsing-breaks",
+  "part": 2,
+  "title": "Just ask for JSON? It still has to be parsed",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 0.55,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    0.59
+   ],
+   [
+    "sequence_diagram",
+    0.18000000000000002
+   ],
+   [
+    "side_by_side_panels",
+    0.14
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.373,
+  "usd": 6.2328e-05
+ },
+ {
+  "id": "p02-95-percent",
+  "part": 2,
+  "title": "Right 95 times in 100, but which 5?",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "real_screenshot",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.376,
+  "usd": 6.258e-05
+ },
+ {
+  "id": "p02-smart-if",
+  "part": 2,
+  "title": "The smart if-statement",
+  "jev_pick": "flowchart",
+  "confidence": 0.5,
+  "top3": [
+   [
+    "flowchart",
+    0.54
+   ],
+   [
+    "side_by_side_panels",
+    0.46
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "real_terminal_capture",
+   "sequence_diagram",
+   "typographic_list"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.396,
+  "usd": 6.2286e-05
+ },
+ {
+  "id": "p03-typesafe-page",
+  "part": 3,
+  "title": "TypeSafe AI, the company behind Jev",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.369,
+  "usd": 6.1362e-05
+ },
+ {
+  "id": "p03-founder-question",
+  "part": 3,
+  "title": "Where is all the automation?",
+  "jev_pick": "typographic_list",
+  "confidence": 0.92,
+  "top3": [
+   [
+    "typographic_list",
+    0.93
+   ],
+   [
+    "real_screenshot",
+    0.07
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.358,
+  "usd": 6.1698e-05
+ },
+ {
+  "id": "p03-timeline",
+  "part": 3,
+  "title": "From first blog post to open access in seventeen days",
+  "jev_pick": "flowchart",
+  "confidence": 0.25,
+  "top3": [
+   [
+    "flowchart",
+    0.32
+   ],
+   [
+    "chart",
+    0.25
+   ],
+   [
+    "typographic_list",
+    0.25
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [
+   "confidence 0.25 is low; the rules allow 'flowchart', so it stays"
+  ],
+  "seconds": 0.345,
+  "usd": 6.2454e-05
+ },
+ {
+  "id": "p03-jevons-source",
+  "part": 3,
+  "title": "The Coal Question, 1865",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.369,
+  "usd": 6.182400000000001e-05
+ },
+ {
+  "id": "p03-jevons-paradox",
+  "part": 3,
+  "title": "Cheaper to use, so used more",
+  "jev_pick": "flowchart",
+  "confidence": 0.81,
+  "top3": [
+   [
+    "flowchart",
+    0.83
+   ],
+   [
+    "hand_drawn_sketch",
+    0.17
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.359,
+  "usd": 6.2328e-05
+ },
+ {
+  "id": "p04-headline-claims",
+  "part": 4,
+  "title": "The two big numbers on the home page",
+  "jev_pick": "real_screenshot",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.387,
+  "usd": 6.161400000000001e-05
+ },
+ {
+  "id": "p04-arithmetic",
+  "part": 4,
+  "title": "Do the division yourself",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    1.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ],
+   [
+    "flowchart",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.35,
+  "usd": 6.3252e-05
+ },
+ {
+  "id": "p04-answer-key",
+  "part": 4,
+  "title": "Who wrote the answer key?",
+  "jev_pick": "flowchart",
+  "confidence": 0.44,
+  "top3": [
+   [
+    "flowchart",
+    0.49
+   ],
+   [
+    "sequence_diagram",
+    0.26
+   ],
+   [
+    "block_diagram",
+    0.25
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.397,
+  "usd": 6.2328e-05
+ },
+ {
+  "id": "p04-evals-table",
+  "part": 4,
+  "title": "TypeSafe's own test: agreement, cost and time",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.331,
+  "usd": 6.3168e-05
+ },
+ {
+  "id": "p04-cant-hallucinate",
+  "part": 4,
+  "title": "'Can't hallucinate' means the shape, not the truth",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 0.65,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    0.6900000000000001
+   ],
+   [
+    "real_screenshot",
+    0.15
+   ],
+   [
+    "side_by_side_panels",
+    0.12
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.367,
+  "usd": 6.2328e-05
+ },
+ {
+  "id": "p05-the-book",
+  "part": 5,
+  "title": "Here is the book the name comes from",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.343,
+  "usd": 6.153e-05
+ },
+ {
+  "id": "p05-launch-faq",
+  "part": 5,
+  "title": "TypeSafe says where the names come from",
+  "jev_pick": "real_screenshot",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "real_screenshot",
+    0.98
+   ],
+   [
+    "typographic_list",
+    0.02
+   ],
+   [
+    "lookup_map",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.36,
+  "usd": 6.1488e-05
+ },
+ {
+  "id": "p05-system1-system2",
+  "part": 5,
+  "title": "Fast thinking and slow thinking",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.395,
+  "usd": 6.329400000000001e-05
+ },
+ {
+  "id": "p05-bat-and-ball",
+  "part": 5,
+  "title": "The bat and the ball",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    1.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ],
+   [
+    "flowchart",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.456,
+  "usd": 6.258e-05
+ },
+ {
+  "id": "p05-form-with-boxes",
+  "part": 5,
+  "title": "A blank page or a form with tick boxes",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 0.45,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.5
+   ],
+   [
+    "hand_drawn_sketch",
+    0.49
+   ],
+   [
+    "typographic_list",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": true,
+  "reasons": [
+   "'hand_drawn_sketch' was used on the slide before, so 'side_by_side_panels' instead"
+  ],
+  "seconds": 0.366,
+  "usd": 6.195e-05
+ },
+ {
+  "id": "p05-one-request",
+  "part": 5,
+  "title": "One request: state and questions in, typed answers out",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "sequence_diagram",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.332,
+  "usd": 6.224400000000001e-05
+ },
+ {
+  "id": "p05-one-pass",
+  "part": 5,
+  "title": "All questions at once, not word by word",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.61,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.64
+   ],
+   [
+    "sequence_diagram",
+    0.33
+   ],
+   [
+    "chart",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "flowchart",
+   "hand_drawn_sketch",
+   "sequence_diagram",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.361,
+  "usd": 6.220200000000001e-05
+ },
+ {
+  "id": "p05-three-types",
+  "part": 5,
+  "title": "Three question types, three answer shapes",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.85,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.86
+   ],
+   [
+    "theme_cards",
+    0.14
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S23 checklist"
+  ],
+  "seconds": 0.388,
+  "usd": 6.1908e-05
+ },
+ {
+  "id": "p05-confidence-shape",
+  "part": 5,
+  "title": "Confidence is the shape of the probabilities",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "flowchart",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.356,
+  "usd": 6.203400000000001e-05
+ },
+ {
+  "id": "p05-calibration",
+  "part": 5,
+  "title": "Does a confident answer mean a right answer?",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "flowchart",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.384,
+  "usd": 6.2286e-05
+ },
+ {
+  "id": "p05-three-paths",
+  "part": 5,
+  "title": "Act, check, or hand to a person",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    0.99
+   ],
+   [
+    "flowchart",
+    0.01
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'chart' was used on the slide before, so 'isometric_3d' instead"
+  ],
+  "seconds": 0.374,
+  "usd": 6.241200000000001e-05
+ },
+ {
+  "id": "p06-use-case-map",
+  "part": 6,
+  "title": "Where TypeSafe says Jev fits",
+  "jev_pick": "theme_cards",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "theme_cards",
+    1.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.387,
+  "usd": 6.1908e-05
+ },
+ {
+  "id": "p06-in-front-of-llm",
+  "part": 6,
+  "title": "Jev in front of the expensive model",
+  "jev_pick": "block_diagram",
+  "confidence": 0.84,
+  "top3": [
+   [
+    "block_diagram",
+    0.86
+   ],
+   [
+    "flowchart",
+    0.13
+   ],
+   [
+    "sequence_diagram",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "isometric_3d"
+  ],
+  "final": "block_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.345,
+  "usd": 6.2286e-05
+ },
+ {
+  "id": "p06-million-tickets",
+  "part": 6,
+  "title": "What a million tickets cost",
+  "jev_pick": "chart",
+  "confidence": 0.94,
+  "top3": [
+   [
+    "chart",
+    0.95
+   ],
+   [
+    "isometric_3d",
+    0.03
+   ],
+   [
+    "side_by_side_panels",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.337,
+  "usd": 6.1362e-05
+ },
+ {
+  "id": "p06-weak-spots",
+  "part": 6,
+  "title": "Nine weak spots, in TypeSafe's own words",
+  "jev_pick": "typographic_list",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "typographic_list",
+    1.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.396,
+  "usd": 6.2496e-05
+ },
+ {
+  "id": "p07-fair-test",
+  "part": 7,
+  "title": "How I made the race fair",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.56,
+  "top3": [
+   [
+    "sequence_diagram",
+    0.6
+   ],
+   [
+    "flowchart",
+    0.38
+   ],
+   [
+    "side_by_side_panels",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.34,
+  "usd": 6.216e-05
+ },
+ {
+  "id": "p07-the-runners",
+  "part": 7,
+  "title": "The three models in the race, and their prices",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.95,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.95
+   ],
+   [
+    "chart",
+    0.04
+   ],
+   [
+    "theme_cards",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.37,
+  "usd": 6.2076e-05
+ },
+ {
+  "id": "p07-tickets-speed",
+  "part": 7,
+  "title": "Ticket triage: time per call",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    0.99
+   ],
+   [
+    "side_by_side_panels",
+    0.01
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.421,
+  "usd": 6.1572e-05
+ },
+ {
+  "id": "p07-tickets-quality-cost",
+  "part": 7,
+  "title": "Ticket triage: right answers and cost",
+  "jev_pick": "chart",
+  "confidence": 0.61,
+  "top3": [
+   [
+    "chart",
+    0.64
+   ],
+   [
+    "side_by_side_panels",
+    0.36
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.372,
+  "usd": 6.1782e-05
+ },
+ {
+  "id": "p07-pairs-speed",
+  "part": 7,
+  "title": "Duplicate check: time per call",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    0.99
+   ],
+   [
+    "side_by_side_panels",
+    0.01
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.37,
+  "usd": 6.1572e-05
+ },
+ {
+  "id": "p07-pairs-quality",
+  "part": 7,
+  "title": "Duplicate check: merged, sent to a person, missed",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.74,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.77
+   ],
+   [
+    "chart",
+    0.22
+   ],
+   [
+    "flowchart",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S10 comparison, S11 scale"
+  ],
+  "seconds": 0.612,
+  "usd": 6.241200000000001e-05
+ },
+ {
+  "id": "p07-parallel",
+  "part": 7,
+  "title": "Eight calls at once: how long the whole batch takes",
+  "jev_pick": "chart",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "chart",
+    0.98
+   ],
+   [
+    "side_by_side_panels",
+    0.02
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'chart' was used on the slide before, so 'isometric_3d' instead"
+  ],
+  "seconds": 0.334,
+  "usd": 6.165600000000001e-05
+ },
+ {
+  "id": "p07-many-questions",
+  "part": 7,
+  "title": "Many questions in one call, or one call each",
+  "jev_pick": "chart",
+  "confidence": 0.9,
+  "top3": [
+   [
+    "chart",
+    0.91
+   ],
+   [
+    "side_by_side_panels",
+    0.09
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.371,
+  "usd": 6.153e-05
+ },
+ {
+  "id": "p07-verdict",
+  "part": 7,
+  "title": "The honest trade-off",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "chart",
+    0.0
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.344,
+  "usd": 6.1782e-05
+ },
+ {
+  "id": "p08-checklist",
+  "part": 8,
+  "title": "What you need before you start",
+  "jev_pick": "typographic_list",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "typographic_list",
+    1.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.36,
+  "usd": 6.2664e-05
+ },
+ {
+  "id": "p08-python-version",
+  "part": 8,
+  "title": "Check your Python version",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.337,
+  "usd": 6.1026e-05
+ },
+ {
+  "id": "p08-clone-and-venv",
+  "part": 8,
+  "title": "Clone the repository and make a virtual environment",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "lookup_map",
+    0.0
+   ],
+   [
+    "flowchart",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.399,
+  "usd": 6.153e-05
+ },
+ {
+  "id": "p08-vscode",
+  "part": 8,
+  "title": "The repository open in VS Code",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 0.94,
+  "top3": [
+   [
+    "real_terminal_capture",
+    0.94
+   ],
+   [
+    "real_screenshot",
+    0.06
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.369,
+  "usd": 6.1068e-05
+ },
+ {
+  "id": "p08-console-home",
+  "part": 8,
+  "title": "The TypeSafe console",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.337,
+  "usd": 6.1026e-05
+ },
+ {
+  "id": "p08-playground",
+  "part": 8,
+  "title": "Try a question in the Playground first",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.365,
+  "usd": 6.1152e-05
+ },
+ {
+  "id": "p08-api-keys",
+  "part": 8,
+  "title": "Create an API key",
+  "jev_pick": "real_screenshot",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_screenshot",
+    1.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ],
+   [
+    "chart",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.373,
+  "usd": 6.1152e-05
+ },
+ {
+  "id": "p08-where-the-key-lives",
+  "part": 8,
+  "title": "Where the key lives, and where it must never go",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.84,
+  "top3": [
+   [
+    "sequence_diagram",
+    0.85
+   ],
+   [
+    "flowchart",
+    0.1
+   ],
+   [
+    "block_diagram",
+    0.05
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.392,
+  "usd": 6.258e-05
+ },
+ {
+  "id": "p08-first-curl",
+  "part": 8,
+  "title": "Your first call, with curl",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ],
+   [
+    "lookup_map",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.384,
+  "usd": 6.123600000000001e-05
+ },
+ {
+  "id": "p08-first-python",
+  "part": 8,
+  "title": "Your first call, with Python",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.392,
+  "usd": 6.1026e-05
+ },
+ {
+  "id": "p09-claims-board",
+  "part": 9,
+  "title": "Every claim, and the script that tests it",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.58,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.62
+   ],
+   [
+    "typographic_list",
+    0.37
+   ],
+   [
+    "lookup_map",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S23 checklist"
+  ],
+  "seconds": 0.371,
+  "usd": 6.165600000000001e-05
+ },
+ {
+  "id": "p09-fixed-overhead",
+  "part": 9,
+  "title": "A tiny question still costs about 300 tokens",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "illustrated_scene",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.367,
+  "usd": 6.174e-05
+ },
+ {
+  "id": "p09-answers-move",
+  "part": 9,
+  "title": "The same request, five times",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.471,
+  "usd": 6.216e-05
+ },
+ {
+  "id": "p09-weak-spot-test",
+  "part": 9,
+  "title": "Testing a weak spot: a trick hidden in the input",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "isometric_3d",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.357,
+  "usd": 6.174e-05
+ },
+ {
+  "id": "p10-building-blocks",
+  "part": 10,
+  "title": "Four small projects, then one big one",
+  "jev_pick": "flowchart",
+  "confidence": 0.85,
+  "top3": [
+   [
+    "flowchart",
+    0.87
+   ],
+   [
+    "block_diagram",
+    0.11
+   ],
+   [
+    "theme_cards",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.415,
+  "usd": 6.237e-05
+ },
+ {
+  "id": "p10-triage-flow",
+  "part": 10,
+  "title": "Project 1: one ticket, four questions, one call",
+  "jev_pick": "flowchart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "flowchart",
+    1.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' was used on the slide before, so 'isometric_3d' instead"
+  ],
+  "seconds": 0.341,
+  "usd": 6.216e-05
+ },
+ {
+  "id": "p10-guardrail-flow",
+  "part": 10,
+  "title": "Project 2: check the draft before the customer sees it",
+  "jev_pick": "flowchart",
+  "confidence": 0.56,
+  "top3": [
+   [
+    "flowchart",
+    0.59
+   ],
+   [
+    "sequence_diagram",
+    0.41
+   ],
+   [
+    "isometric_3d",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.368,
+  "usd": 6.220200000000001e-05
+ },
+ {
+  "id": "p10-tool-gates",
+  "part": 10,
+  "title": "Project 3: a stricter line for tools that move money",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    0.99
+   ],
+   [
+    "flowchart",
+    0.01
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.426,
+  "usd": 6.262200000000001e-05
+ },
+ {
+  "id": "p10-two-records",
+  "part": 10,
+  "title": "Project 4: are these two records the same company?",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ],
+   [
+    "theme_cards",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.338,
+  "usd": 6.203400000000001e-05
+ },
+ {
+  "id": "p10-pipeline",
+  "part": 10,
+  "title": "The big project: from messy records to a knowledge graph",
+  "jev_pick": "flowchart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "flowchart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.377,
+  "usd": 6.241200000000001e-05
+ },
+ {
+  "id": "p10-messy-data",
+  "part": 10,
+  "title": "How one company looks in three systems",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "isometric_3d",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.362,
+  "usd": 6.1908e-05
+ },
+ {
+  "id": "p10-blocking-funnel",
+  "part": 10,
+  "title": "266,085 possible pairs down to 1,010",
+  "jev_pick": "isometric_3d",
+  "confidence": 0.93,
+  "top3": [
+   [
+    "isometric_3d",
+    0.94
+   ],
+   [
+    "flowchart",
+    0.05
+   ],
+   [
+    "chart",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.372,
+  "usd": 6.241200000000001e-05
+ },
+ {
+  "id": "p10-policy-line",
+  "part": 10,
+  "title": "One score, two cut points, three actions",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ],
+   [
+    "side_by_side_panels",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.346,
+  "usd": 6.258e-05
+ },
+ {
+  "id": "p10-graph-before-after",
+  "part": 10,
+  "title": "The graph before and after",
+  "jev_pick": "real_screenshot",
+  "confidence": 0.5,
+  "top3": [
+   [
+    "real_screenshot",
+    0.54
+   ],
+   [
+    "side_by_side_panels",
+    0.46
+   ],
+   [
+    "hand_drawn_sketch",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.345,
+  "usd": 6.174e-05
+ },
+ {
+  "id": "p10-wording-fix",
+  "part": 10,
+  "title": "Jev reads the words you wrote",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.98
+   ],
+   [
+    "chart",
+    0.02
+   ],
+   [
+    "interactive_step_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "real_screenshot",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.356,
+  "usd": 6.1992e-05
+ },
+ {
+  "id": "p10-results",
+  "part": 10,
+  "title": "The big project: Jev and OpenAI on the same pairs",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.56,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.59
+   ],
+   [
+    "chart",
+    0.41
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S10 comparison, S11 scale"
+  ],
+  "seconds": 0.339,
+  "usd": 6.186600000000001e-05
+ },
+ {
+  "id": "p11-which-tool",
+  "part": 11,
+  "title": "Jev, a chat model, or both?",
+  "jev_pick": "flowchart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "flowchart",
+    1.0
+   ],
+   [
+    "real_terminal_capture",
+    0.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.325,
+  "usd": 6.2538e-05
+ },
+ {
+  "id": "p11-both-together",
+  "part": 11,
+  "title": "Using both: the cheap check first",
+  "jev_pick": "flowchart",
+  "confidence": 0.7,
+  "top3": [
+   [
+    "flowchart",
+    0.73
+   ],
+   [
+    "block_diagram",
+    0.25
+   ],
+   [
+    "sequence_diagram",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "isometric_3d"
+  ],
+  "final": "block_diagram",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' was used on the slide before, so 'block_diagram' instead"
+  ],
+  "seconds": 0.323,
+  "usd": 6.1908e-05
+ },
+ {
+  "id": "p11-takeaways",
+  "part": 11,
+  "title": "Five things to remember",
+  "jev_pick": "typographic_list",
+  "confidence": 0.9,
+  "top3": [
+   [
+    "typographic_list",
+    0.91
+   ],
+   [
+    "theme_cards",
+    0.09
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.337,
+  "usd": 6.0984000000000004e-05
+ },
+ {
+  "id": "p11-repo-and-thanks",
+  "part": 11,
+  "title": "Everything is in the repository",
+  "jev_pick": "typographic_list",
+  "confidence": 0.85,
+  "top3": [
+   [
+    "typographic_list",
+    0.87
+   ],
+   [
+    "real_screenshot",
+    0.07
+   ],
+   [
+    "theme_cards",
+    0.06
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": true,
+  "reasons": [
+   "'typographic_list' was used on the slide before, so 'theme_cards' instead"
+  ],
+  "seconds": 0.408,
+  "usd": 6.111e-05
+ }
+]

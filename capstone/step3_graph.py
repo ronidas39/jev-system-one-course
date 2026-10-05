@@ -15,6 +15,7 @@ close the merged graph is to the truth.
 
     python capstone/step3_graph.py
     python capstone/step3_graph.py --model gpt-6-luna
+    python capstone/step3_graph.py --focus orchid   # also a small, readable view of one name
 
 Author: Roni Das
 Created: 2026-10-04
@@ -105,6 +106,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--model", default=JEV_MODEL)
     parser.add_argument("--wording", choices=["v1", "v2"], default="v2")
+    parser.add_argument("--focus", default="",
+                        help="also write a small before/after view of the records whose name "
+                             "contains this text, for example 'orchid'")
     args = parser.parse_args()
     records = [json.loads(x) for x in RECORDS.read_text().splitlines()]
     truth = json.loads(TRUTH.read_text())["record_to_entity"]
@@ -126,6 +130,20 @@ def main() -> None:
     to_html(after, f"After: merged by {args.model} (dashed = a person should check)", checks,
             OUT / "graph_after.html")
     nx.write_graphml(after, OUT / "graph_after.graphml")
+    if args.focus:
+        keep = {r["record_id"] for r in records if args.focus.lower() in r["name"].lower()}
+        groups = {after_group[i] for i in keep}
+        nb = [n for n in before if n in keep or before.nodes[n]["kind"] == "person"
+              and any(m in keep for m in before[n])]
+        na = [n for n in after if n in groups or after.nodes[n]["kind"] == "person"
+              and any(m in groups for m in after[n])]
+        focus_checks = [(a, b) for a, b in checks if a in groups and b in groups]
+        to_html(before.subgraph(nb), f"Before: '{args.focus}' records, one node per record",
+                [], OUT / f"graph_before_{args.focus}.html")
+        to_html(after.subgraph(na), f"After: '{args.focus}' records merged by {args.model}",
+                focus_checks, OUT / f"graph_after_{args.focus}.html")
+        print(f"focus '{args.focus}': {len(keep)} records -> {len(groups)} company nodes; "
+              f"wrote graph_before_{args.focus}.html and graph_after_{args.focus}.html")
 
     members: dict[str, set[str]] = defaultdict(set)
     for rid, gid in after_group.items():
