@@ -55,8 +55,8 @@ def main() -> None:
     review = sorted((d for d in decisions if d["action"] == "person_checks"),
                     key=lambda d: d["link_score"], reverse=True)
     joined = sum(find(d["a"]) == find(d["b"]) for d in review)
-    print(f"{len(review)} pairs wait for a person "
-          f"({joined} of them already joined through other merges)")
+    print(f"{len(review)} pairs were sent to a person; {joined} of them were already joined "
+          f"through other merges, so {len(review) - joined} still wait")
     same = sum(truth[d["a"]] == truth[d["b"]] for d in review)
     print(f"answer key: {same} of the {len(review)} are really the same company\n")
     n = args.limit
