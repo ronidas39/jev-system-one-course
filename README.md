@@ -1,15 +1,29 @@
 # Jev, the AI model that answers with numbers
 
-The code for the freeCodeCamp course by Roni Das (systemdesign.academy, YouTube: Total Technology
-Zonne). Everything shown in the course is here: the hands-on exercises, four small projects, one
-big project that turns messy company records into a knowledge graph, the speed and cost test on
-support tickets, the synthetic data, and every raw result.
+This is the code for a freeCodeCamp course by Roni Das. I teach at systemdesign.academy. My
+YouTube channel is Total Technology Zonne.
 
-**Jev** is a model from TypeSafe AI. It does not write text. You send it some material (the
-*state*) and some typed questions, and it sends back typed answers with probabilities:
-yes or no (**Noul**), one option from a list (**Choice**), or a level on a scale (**Score**).
+Everything in the course is here:
 
-Only TypeSafe's own platform is used: https://console.typesafe.ai and https://docs.typesafe.ai.
+- the hands-on scripts.
+- four small projects.
+- one big project: messy company records become a knowledge graph.
+- a speed and cost test on support tickets.
+- the made-up (synthetic) data.
+- every raw result.
+
+**Jev** is an AI model from TypeSafe AI. It does not write text. You send it some material. That
+material is called the *state*. You also send typed questions. Jev sends back typed answers with
+probabilities. A probability is a number from 0 to 1. It says how likely something is.
+
+There are three kinds of question:
+
+- **Noul**: yes or no.
+- **Choice**: one option from a list.
+- **Score**: a level on a scale.
+
+This course uses only TypeSafe's own platform: https://console.typesafe.ai and
+https://docs.typesafe.ai.
 
 ---
 
@@ -18,23 +32,28 @@ Only TypeSafe's own platform is used: https://console.typesafe.ai and https://do
 | | |
 |---|---|
 | Python | 3.10 or newer. Check with `python3 --version` (Windows: `py --version`) |
-| git | to clone this repository. Check with `git --version` |
+| git | to copy (clone) this repository. Check with `git --version` |
 | An editor | the course uses VS Code |
 | A TypeSafe API key | from https://console.typesafe.ai/keys |
-| An OpenAI API key | only for the comparisons (`compare/`, use case 2, hands-on 12) |
+| An OpenAI API key | optional. Only for `compare/`, use case 2 and hands-on script 12 |
 
-Money: every run in the course cost me under one US dollar on Jev in total. The full comparison
-(`compare/run_all.sh`) cost about 6 US dollars on OpenAI, almost all of it on the larger model.
+An API key is a secret password for a program. It lets your code use the service.
+
+Money: everything I ran on Jev cost me less than one US dollar in total. The full comparison
+(`compare/run_all.sh`) cost about 6 US dollars on OpenAI. Almost all of it was the larger model.
 
 ---
 
 ## Set up, step by step
 
-These are the exact commands, in order. Every one was run on a fresh clone before it was put
-here on a Mac. On Windows, the lines marked differ. The Windows forms were not run by me, so if
-one fails, the easiest path on Windows is **Git Bash** (it comes with Git for Windows): there, the
-Mac commands below work, with two changes: type `py` where they say `python3`, and activate with
-`source .venv/Scripts/activate`.
+These are the exact commands, in order. I ran every one on a fresh copy, on a Mac.
+
+On Windows, some lines differ. The comments show the Windows form. I did not run the Windows
+forms myself. If one fails, use **Git Bash**. Git Bash comes with Git for Windows. In Git Bash the
+Mac commands work, with two changes:
+
+- type `py` where a command says `python3`.
+- turn the environment on with `source .venv/Scripts/activate`.
 
 ```bash
 git clone https://github.com/ronidas39/jev-system-one-course.git
@@ -46,8 +65,8 @@ pip install -e .
 cp .env.example .env               # Windows: copy .env.example .env
 ```
 
-Now open `.env` in your editor and paste your keys after the `=` signs. `.env` is in
-`.gitignore`, so git never commits it. Never paste a key into a `.py` file.
+Now open `.env` in your editor. Paste your keys after the `=` signs. `.env` is listed in
+`.gitignore`. So git never saves it. Never paste a key into a `.py` file.
 
 Check that it works:
 
@@ -58,9 +77,9 @@ python 01_first_call.py
 cd ..
 ```
 
-The first call with curl reads the key from your shell, so load `.env` into the shell first.
-This step needs bash (Mac, Linux, or Git Bash on Windows). You can skip it: `01_first_call.py`
-above makes the same call from Python.
+The next step makes the same first call with curl. It needs bash: Mac, Linux, or Git Bash on
+Windows. You can skip it. `01_first_call.py` above already made the same call from Python. The
+curl call reads the key from your terminal. So load `.env` into the terminal first:
 
 ```bash
 cd handson
@@ -75,12 +94,12 @@ cd ..
 
 | Folder | What it is | Course part |
 |---|---|---|
-| `handson/` | 14 short scripts (00 to 13), one idea each: setup check, first call, Noul, Choice, Score, many questions in one call, confidence, thresholds, pinned versions, errors, weak spots, a small inbox, a first comparison, a cheat sheet | 8, 9 |
-| `usecases/` | four small projects: ticket triage, a guardrail on an LLM's draft reply, tool routing for an agent, a duplicate check on two records | 10 |
-| `capstone/` | the big project: messy company records from three systems, cheap blocking, Jev decides each pair, a merge policy, a knowledge graph, and measurement against the truth | 10 |
-| `compare/` | the speed and cost test of Jev with gpt-6-luna and gpt-6.1-sol on the same inputs: time per call, a whole batch, cost, many questions in one call (and every other run, with accuracy) | 7 |
-| `data/` | the seeded generators, the data they made, and `DATA-CARD.md` | 7, 10 |
-| `tools/` | `choose_register.py`: Jev picks the diagram style for every slide in the course | 11 |
+| `handson/` | 14 short scripts, 00 to 13. One idea each: setup check, first call, Noul, Choice, Score, many questions in one call, confidence, thresholds, pinned versions, errors, asking well, a small inbox, a speed test, a short example file | 8, 9 |
+| `usecases/` | four small projects: ticket triage, a check on a chat model's draft reply, tool choice for an AI agent, a duplicate check on two records | 10 |
+| `capstone/` | the big project: messy company records, cheap blocking, Jev decides each pair, a merge rule, a knowledge graph, and a check against the truth | 10 |
+| `compare/` | the speed and cost test of Jev, gpt-6-luna and gpt-6.1-sol on the same tickets. Every other run is here too, with accuracy | 7 |
+| `data/` | the data makers, the data they made, and `DATA-CARD.md` | 7, 10 |
+| `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 11 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
 
 ---
@@ -104,8 +123,8 @@ python capstone/step3_graph.py
 open capstone/out/graph_after.html        # Windows: start capstone\out\graph_after.html
 ```
 
-The default data is the **training set**, where the question wording was tuned. To see how the
-tuned wording does on records it never saw, run the **test set**:
+This first data is the **training set**. I tuned the wording of the question on it. The **test
+set** is new data that the wording never saw. Run the test set like this:
 
 ```bash
 python data/make_companies.py --seed 20261007 --out companies-fresh
@@ -114,9 +133,9 @@ python capstone/step2_decide.py --data companies-fresh
 python capstone/step3_graph.py --data companies-fresh --focus orchid
 ```
 
-`step2_decide.py --model gpt-6-luna` runs the same decisions on an OpenAI model.
-`step2_decide.py --wording v1` uses the first wording of the question, the one that sent too many
-pairs to a person. Part 10 explains why the wording matters.
+- `step2_decide.py --model gpt-6-luna` runs the same decisions on an OpenAI model.
+- `step2_decide.py --wording v1` uses my first wording of the question. That wording sent too many
+  pairs to a person. Part 10 explains why.
 
 ## Run the comparison
 
@@ -125,7 +144,7 @@ bash compare/run_all.sh            # about 50 minutes, about 6 US dollars
 python compare/summarize.py        # tables in compare/results/summary.md, charts in compare/results/charts/
 ```
 
-To check the comparison on a fresh dataset the wording was never tuned on:
+To check the record pairs on the test set, with both wordings:
 
 ```bash
 python data/make_companies.py --seed 20261007 --out companies-fresh
@@ -135,7 +154,7 @@ python compare/run_compare.py --task pairs-v2-fresh --protocol accuracy
 python compare/summarize.py
 ```
 
-## Let Jev choose the diagram style for each slide
+## Let Jev choose the drawing style for each slide
 
 ```bash
 python tools/choose_register.py
@@ -143,39 +162,42 @@ python tools/choose_register.py
 
 ---
 
-## How the comparison is made fair
+## How the test is kept fair
 
-- Same inputs, same questions, same machine, same network, same evening.
-- OpenAI models use **strict structured output**, so their answers always parse.
-- Each OpenAI model runs at the **fastest reasoning setting it accepts** (`none` for gpt-6-luna,
-  `low` for gpt-6.1-sol).
-- **No automatic retries** on either side, so a slow call is never hidden.
-- **Sequential timing:** 5 warm-up calls per model are thrown away, then 40 items, 3 rounds,
-  models take turns item by item and the order rotates. Median and 90th percentile reported.
-- **Parallel timing:** every item once, 8 calls in flight, wall clock for the whole batch.
-- **Cost** is each response's own token counts times the published price
-  (`jevcourse/prices.py`, read 4 October 2026, with the page addresses).
-- **Accuracy** is checked against labels written by the data generator, not by another model.
+- Same inputs, same questions, same laptop, same network, same evening.
+- OpenAI models use **strict structured output**. Their answers always come in the right shape.
+- Each OpenAI model uses its **fastest thinking setting**: `none` for gpt-6-luna, `low` for
+  gpt-6.1-sol. (gpt-6.1-sol does not accept `none`.)
+- **No automatic retries** on any side. A slow call is never hidden.
+- **One call at a time:** 5 warm-up calls per model are not counted. Then 40 tickets, 3 rounds.
+  The models take turns, and the order changes every round. I report the median and the 90th
+  percentile.
+- **Many calls at once:** every ticket once, 8 calls at the same time. I time the whole batch.
+- **Cost:** each answer's own token count times the published price. The prices are in
+  `jevcourse/prices.py`. I read them on 4 October 2026.
+- **Accuracy:** checked against the right answers that the data maker wrote. No model grades
+  another model.
 
-Your numbers will differ. Time depends on where you are: I ran everything from Kolkata, India,
-and TypeSafe says its service is on the West Coast of the USA.
+Your numbers will differ. Time depends on where you are. I ran everything from Kolkata, India.
+TypeSafe says its service runs on the West Coast of the USA.
 
 ---
 
 ## Results from my runs (4 and 5 October 2026)
 
-Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.jsonl`.
-0 failed calls in every run.
+Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.jsonl`. No call
+failed in any run.
 
-**Support tickets** (300 tickets, 8 calls in flight):
+**Support tickets** (300 tickets, 8 calls at a time):
 
-| model | team right | urgency right | frustration right | median s per call | 300 tickets | $ per 1,000 |
+| model | team right | urgency right | frustration right | median seconds per call | 300 tickets | $ per 1,000 |
 |---|---|---|---|---|---|---|
 | jev-1.13.0 | 94.0% | 72.0% | 77.3% | 0.344 | 12.6 s | $0.0246 |
 | gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 50.1 s | $0.0517 |
 | gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 92.8 s | $1.0679 |
 
-**Three questions in one call, or one call per question** (30 tickets; tokens are the average per ticket, seconds the median):
+**Three questions in one call, or one call per question.** 30 tickets. Tokens are the average
+per ticket. Seconds are the median.
 
 | model | input tokens, one call | input tokens, three calls | seconds, one call | seconds, three calls in a row |
 |---|---|---|---|---|
@@ -183,20 +205,20 @@ Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.js
 | gpt-6-luna | 363 | 531 | 1.357 | 3.459 |
 | gpt-6.1-sol | 363 | 531 | 2.985 | 6.431 |
 
-On this job the chat models were more accurate: a little on the team question, and more on
-urgency and frustration. So test on your own data before you switch. That is why Jev returns a
-confidence number with every answer.
+On this job the chat models were more accurate. They were a little better on the team question.
+They were clearly better on urgency and frustration. So test on your own data before you switch.
+That is why Jev gives a confidence number with every answer.
 
-Every other run (the record pairs, both question wordings, the fresh test set) is in
-`compare/results/summary.md`, with every raw call next to it.
+Every other run is in `compare/results/summary.md`. That means the record pairs, both question
+wordings, and the test set. Every raw call is next to it.
 
 ---
 
 ## Safety
 
-- Keys live only in `.env` or in your shell. The code reads them and never prints them.
-- `.env` is in `.gitignore`. Check with `git check-ignore -v .env` before you commit.
-- If a key ever reaches GitHub, delete it in the console at once and make a new one.
+- Keys live only in `.env` or in your terminal. The code reads them. It never prints them.
+- `.env` is listed in `.gitignore`. Check with `git check-ignore -v .env` before you commit.
+- Did a key reach GitHub? Delete that key in the console at once. Then make a new one.
 
 ## Licence
 

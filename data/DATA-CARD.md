@@ -6,8 +6,8 @@ No real customer, company or person is in it. Any match with a real company name
 ## Why synthetic
 
 To measure accuracy you need the right answers. With real records you rarely know them for
-sure. Here the generator writes the right answer at the same moment it writes the record, so
-every accuracy number in the course is checked against a truth we are certain of.
+sure. Here the data maker writes the right answer when it writes the record. So
+every accuracy number in the course is checked against a known truth.
 
 ## tickets.jsonl
 
@@ -20,16 +20,22 @@ every accuracy number in the course is checked against a truth we are certain of
 | Per team | billing 71, technical 56, shipping 64, account 54, sales 55 |
 
 **How a ticket is built.** One main problem sentence decides the team. One urgency phrase
-decides urgency. One mood phrase decides frustration. Then mess is added: a greeting, a
-signature, sometimes an unrelated detail (35%), a side remark about another team's topic (25%),
-a swapped-letter typo (30%), all lowercase (15%). The `traits` field lists what was added.
+decides urgency. One mood phrase decides frustration. Then some mess is added:
 
-**Known limits.** The phrases come from small lists, so the text repeats more than real tickets
-do. Urgency and mood phrases are drawn on their own, so a few tickets pair a calm mood with a
-furious phrase in a way a real customer would not. A few problem sentences could fairly belong to
-two teams (for example "change the billing email on our account"); the label is the team of the
-problem sentence's list. Treat accuracy here as a comparison between models on the same data,
-not as the accuracy you will get on your own tickets.
+- a greeting and a signature.
+- an unrelated detail (35% of tickets).
+- a side remark about another team's topic (25%).
+- a typo with two letters swapped (30%).
+- all small letters (15%).
+
+The `traits` field lists what was added.
+
+**Known limits.** The phrases come from small lists. So the text repeats more than real
+tickets do. Urgency and mood phrases are picked separately. So a few tickets mix a calm mood with
+a furious phrase. A real customer would not write that. A few problem sentences could belong to
+two teams. One example: "change the billing email on our account". The label is the team of the
+list that sentence came from. So compare models on this data. Do not expect the same accuracy on
+your own tickets.
 
 ## companies/ and companies-fresh/
 
@@ -41,34 +47,45 @@ not as the accuracy you will get on your own tickets.
 | Records | 730 | 716 |
 | Look-alikes | 30 subsidiaries, 25 namesakes | 30 subsidiaries, 25 namesakes |
 
-**What a record is.** One company as typed into one of three systems: `crm` (sales), `billing`
-(finance) and `support` (help desk). Each real company appears in one to three systems. Fields:
-name, address, country, phone, website, and one contact person with role and email.
+**What a record is.** A record is one company, as typed into one system. There are three
+systems: `crm` (sales), `billing` (finance) and `support` (help desk). Each real company appears
+in one to three systems. Fields: name, address, country, phone, website and a contact person.
+The contact has a role and an email.
 
-**The mess.** More mess in billing and support than in the CRM. Legal suffix changed or dropped
-(Pvt Ltd, Private Limited, Inc., GmbH), short forms (Engg, Pharmaceuticals, Hosp.), "M/s." in
-front of Indian names, all capitals, swapped-letter typos, old city names (Bombay, Bangalore,
-Gurgaon, Calcutta, Madras, München), street words shortened (Rd, St.), a floor or suite added,
-phone numbers written four ways or missing, a second phone line, websites with or without
-`www.` or missing, contacts using gmail, and in billing an office that moved to a new street.
+**The mess.** Billing and support have more mess than the CRM. The kinds of mess:
+
+- legal words changed or dropped: Pvt Ltd, Private Limited, Inc., GmbH.
+- short forms: Engg, Pharmaceuticals, Hosp.
+- "M/s." in front of Indian names.
+- all capital letters.
+- typos with two letters swapped.
+- old city names: Bombay, Bangalore, Gurgaon, Calcutta, Madras, München.
+- short street words: Rd, St.
+- a floor or a suite added.
+- phone numbers written four ways, or missing.
+- a second phone line.
+- websites with or without `www.`, or missing.
+- contacts with a gmail address.
+- in billing, an office that moved to a new street.
+
 `truth.json` → `record_notes` lists the mess added to each record.
 
 **The traps.** Subsidiaries ("Kestrel Logistics" and "Kestrel Logistics UK") are different
 companies. Namesakes (the same name in another country, with a different website) are different
 companies. Siblings ("Cedar Foods" and "Cedar Analytics") share a word and nothing else.
 
-**What the model sees.** Only the two records and two checks done by code (do the last 7 phone
-digits match, does the website match). It never sees `truth.json`.
+**What the model sees.** Only the two records and two checks done by code. Do the last 7 phone
+digits match? Does the website match? The model never sees `truth.json`.
 
-**Known limits.** Look-alikes always differ in country, which makes them easier to separate than
-many real ones. Names come from fixed word lists. Real data has harder cases: mergers, rebrands,
+**Known limits.** Look-alikes are always in different countries. That makes them easier to
+separate than many real ones. Names come from fixed word lists. Real data has harder cases: mergers, rebrands,
 shared offices, people who move between companies.
 
 ### What is not realistic
 
-- Postcodes are random five-digit numbers in every country. Real Indian PIN codes have six digits
-  and UK postcodes mix letters and digits. The records only need a postcode to be present or
-  missing, so the generator does not copy each country's real format.
+- Postcodes are random five-digit numbers in every country. Real Indian PIN codes have six
+  digits. UK postcodes mix letters and digits. The records only need a postcode to be there or
+  missing. So the data maker does not copy each country's real format.
 - Names, streets, phone numbers and emails are made up. Any match with a real company or person
   is chance.
 
