@@ -17,7 +17,7 @@ every accuracy number in the course is checked against a known truth.
 | Seed | 20261006 (same seed, same file) |
 | Rows | 300 support tickets |
 | Labels | `team` (billing, technical, shipping, account, sales), `urgency` (0, 1, 2), `frustration` (0, 1, 2) |
-| Per team | billing 71, technical 56, shipping 64, account 54, sales 55 |
+| Per team | billing 64, technical 63, shipping 60, account 61, sales 52 |
 
 **How a ticket is built.** One main problem sentence decides the team. One urgency phrase
 decides urgency. One mood phrase decides frustration. Then some mess is added:
@@ -36,6 +36,12 @@ a furious phrase. A real customer would not write that. A few problem sentences 
 two teams. One example: "change the billing email on our account". The label is the team of the
 list that sentence came from. So compare models on this data. Do not expect the same accuracy on
 your own tickets.
+
+**Fixed on 5 October 2026.** One urgency phrase was "This looks like someone is in my account at
+this moment." That is a security problem. The prompt gives security to the account team. But the
+phrase was added to tickets of every team. So 13 of its 15 tickets had a label that disagreed with
+the prompt. The phrase is now "Nothing works for us until this is fixed." No label changed. Only
+those 15 ticket texts changed. See `CHANGELOG.md`.
 
 ## companies/ and companies-fresh/
 

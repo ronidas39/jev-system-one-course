@@ -199,9 +199,11 @@ failed in any run.
 
 | model | team right | urgency right | frustration right | median seconds per call | 300 tickets | $ per 1,000 |
 |---|---|---|---|---|---|---|
-| jev-1.13.0 | 94.0% | 72.0% | 77.3% | 0.344 | 12.6 s | $0.0246 |
-| gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 50.1 s | $0.0517 |
-| gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 92.8 s | $1.0679 |
+| jev-1.13.0 | 96.7% | 72.3% | 75.7% | 0.344 | 13.5 s | $0.0246 |
+| gpt-6-luna | 99.7% | 82.0% | 95.3% | 1.325 | 53.7 s | $0.0517 |
+| gpt-6.1-sol | 99.7% | 80.7% | 93.3% | 2.528 | 91.6 s | $1.0566 |
+
+The 300-ticket run was repeated on 5 October, after a labelling fix. See `CHANGELOG.md`.
 
 **Three questions in one call, or one call per question.** 30 tickets. Tokens are the average
 per ticket. Seconds are the median.
@@ -212,8 +214,8 @@ per ticket. Seconds are the median.
 | gpt-6-luna | 363 | 531 | 1.357 | 3.459 |
 | gpt-6.1-sol | 363 | 531 | 2.985 | 6.431 |
 
-On this job the chat models were more accurate. They were a little better on the team question.
-They were clearly better on urgency and frustration. So test on your own data before you switch.
+On this job the chat models were more accurate. On the team question they got 299 of 300 right.
+Jev got 290. They were clearly better on urgency and frustration. So test on your own data before you switch.
 That is why Jev gives a confidence number with every answer.
 
 Every other run is in `compare/results/summary.md`. That means the record pairs, both question

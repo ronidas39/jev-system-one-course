@@ -8,14 +8,14 @@
      "parallel": {
       "workers": 8,
       "items": 300,
-      "wall_seconds": 12.58151183299924,
-      "items_per_second": 23.84451121471342
+      "wall_seconds": 13.528416332999768,
+      "items_per_second": 22.175544617754863
      },
      "cost": {
       "calls": 300,
-      "usd_total": 0.007369152,
-      "usd_per_1000": 0.02456384,
-      "input_tokens_mean": 584.8533333333334,
+      "usd_total": 0.007367304000000001,
+      "usd_per_1000": 0.024557680000000002,
+      "input_tokens_mean": 584.7066666666667,
       "output_tokens_mean": 82
      },
      "sequential": {
@@ -27,36 +27,36 @@
      },
      "accuracy": {
       "items": 300,
-      "team_right": 282,
-      "team_accuracy": 0.94,
-      "urgency_accuracy": 0.72,
-      "frustration_accuracy": 0.7733333333333333,
-      "auto_routed": 289,
-      "auto_routed_share": 0.9633333333333334,
-      "auto_routed_accuracy": 0.9550173010380623,
+      "team_right": 290,
+      "team_accuracy": 0.9666666666666667,
+      "urgency_accuracy": 0.7233333333333334,
+      "frustration_accuracy": 0.7566666666666667,
+      "auto_routed": 291,
+      "auto_routed_share": 0.97,
+      "auto_routed_accuracy": 0.9759450171821306,
       "team_by_confidence": [
        {
         "from": 0.9,
         "to": 1.01,
-        "answers": 265,
-        "right": 261
+        "answers": 272,
+        "right": 272
        },
        {
         "from": 0.7,
         "to": 0.9,
-        "answers": 14,
-        "right": 10
+        "answers": 10,
+        "right": 7
        },
        {
         "from": 0.5,
         "to": 0.7,
-        "answers": 14,
+        "answers": 13,
         "right": 8
        },
        {
         "from": 0.0,
         "to": 0.5,
-        "answers": 7,
+        "answers": 5,
         "right": 3
        }
       ]
@@ -77,15 +77,15 @@
      "parallel": {
       "workers": 8,
       "items": 300,
-      "wall_seconds": 50.071049875004974,
-      "items_per_second": 5.991486113211246
+      "wall_seconds": 53.716055374999996,
+      "items_per_second": 5.584922383180487
      },
      "cost": {
       "calls": 300,
-      "usd_total": 0.015500100000000001,
-      "usd_per_1000": 0.051667000000000005,
-      "input_tokens_mean": 363.30333333333334,
-      "output_tokens_mean": 30.673333333333332
+      "usd_total": 0.0154987,
+      "usd_per_1000": 0.05166233333333334,
+      "input_tokens_mean": 363.1566666666667,
+      "output_tokens_mean": 30.69333333333333
      },
      "sequential": {
       "calls": 120,
@@ -96,31 +96,31 @@
      },
      "accuracy": {
       "items": 300,
-      "team_right": 294,
-      "team_accuracy": 0.98,
-      "urgency_accuracy": 0.8033333333333333,
+      "team_right": 299,
+      "team_accuracy": 0.9966666666666667,
+      "urgency_accuracy": 0.82,
       "frustration_accuracy": 0.9533333333333334,
-      "auto_routed": 298,
-      "auto_routed_share": 0.9933333333333333,
-      "auto_routed_accuracy": 0.9865771812080537,
+      "auto_routed": 300,
+      "auto_routed_share": 1.0,
+      "auto_routed_accuracy": 0.9966666666666667,
       "team_by_confidence": [
        {
         "from": 0.9,
         "to": 1.01,
-        "answers": 276,
-        "right": 276
+        "answers": 286,
+        "right": 286
        },
        {
         "from": 0.7,
         "to": 0.9,
-        "answers": 22,
-        "right": 18
+        "answers": 12,
+        "right": 11
        },
        {
         "from": 0.5,
         "to": 0.7,
         "answers": 2,
-        "right": 0
+        "right": 2
        },
        {
         "from": 0.0,
@@ -146,15 +146,15 @@
      "parallel": {
       "workers": 8,
       "items": 300,
-      "wall_seconds": 92.84640600000421,
-      "items_per_second": 3.2311428403592317
+      "wall_seconds": 91.55303275000188,
+      "items_per_second": 3.2767893207775125
      },
      "cost": {
       "calls": 300,
-      "usd_total": 0.320382,
-      "usd_per_1000": 1.0679400000000001,
-      "input_tokens_mean": 363.30333333333334,
-      "output_tokens_mean": 34.13333333333333
+      "usd_total": 0.316974,
+      "usd_per_1000": 1.0565799999999999,
+      "input_tokens_mean": 363.1566666666667,
+      "output_tokens_mean": 33.026666666666664
      },
      "sequential": {
       "calls": 120,
@@ -165,30 +165,30 @@
      },
      "accuracy": {
       "items": 300,
-      "team_right": 290,
-      "team_accuracy": 0.9666666666666667,
-      "urgency_accuracy": 0.82,
-      "frustration_accuracy": 0.9433333333333334,
+      "team_right": 299,
+      "team_accuracy": 0.9966666666666667,
+      "urgency_accuracy": 0.8066666666666666,
+      "frustration_accuracy": 0.9333333333333333,
       "auto_routed": 300,
       "auto_routed_share": 1.0,
-      "auto_routed_accuracy": 0.9666666666666667,
+      "auto_routed_accuracy": 0.9966666666666667,
       "team_by_confidence": [
        {
         "from": 0.9,
         "to": 1.01,
-        "answers": 279,
-        "right": 278
+        "answers": 291,
+        "right": 291
        },
        {
         "from": 0.7,
         "to": 0.9,
-        "answers": 20,
-        "right": 12
+        "answers": 9,
+        "right": 8
        },
        {
         "from": 0.5,
         "to": 0.7,
-        "answers": 1,
+        "answers": 0,
         "right": 0
        },
        {
@@ -223,9 +223,10 @@
      ],
      "items": 300,
      "rounds": 3,
+     "wording": null,
      "workers": 8,
-     "started_utc": "2026-10-04T16:32:52+00:00",
-     "finished_utc": "2026-10-04T16:35:27+00:00",
+     "started_utc": "2026-10-05T17:29:55+00:00",
+     "finished_utc": "2026-10-05T17:32:34+00:00",
      "machine": "Darwin arm64, Python 3.13.15",
      "prices_read_on": "2026-10-04"
     },

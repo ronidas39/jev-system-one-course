@@ -88,7 +88,11 @@ URGENCY: list[list[str]] = [
     ["Our whole team is blocked right now.", "This is stopping our payroll run today.",
      "We cannot take any orders until this is fixed.", "I need this fixed within the hour.",
      "Customers are complaining right now and we are losing sales.",
-     "This looks like someone is in my account at this moment."],
+     # Was "This looks like someone is in my account at this moment." (fixed 5 Oct 2026). That
+     # phrase describes an account-security problem, which the prompt gives to the account team,
+     # but it was added to tickets of every team, so 13 of 15 labels contradicted the prompt.
+     # Same position in the list, so every other ticket comes out exactly as before.
+     "Nothing works for us until this is fixed."],
 ]
 
 MOOD: list[list[str]] = [

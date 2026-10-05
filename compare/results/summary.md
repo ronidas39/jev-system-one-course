@@ -4,17 +4,17 @@
 
 | model | team right | urgency right | frustration right | median s | p90 s | 300 in parallel (8 at once) | $ per 1,000 |
 |---|---|---|---|---|---|---|---|
-| jev-1.13.0 | 94.0% | 72.0% | 77.3% | 0.344 | 0.403 | 12.6 s | $0.0246 |
-| gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 1.756 | 50.1 s | $0.0517 |
-| gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 3.362 | 92.8 s | $1.0679 |
+| jev-1.13.0 | 96.7% | 72.3% | 75.7% | 0.344 | 0.403 | 13.5 s | $0.0246 |
+| gpt-6-luna | 99.7% | 82.0% | 95.3% | 1.325 | 1.756 | 53.7 s | $0.0517 |
+| gpt-6.1-sol | 99.7% | 80.7% | 93.3% | 2.528 | 3.362 | 91.6 s | $1.0566 |
 
 Team answers right, by the model's own confidence (Jev: from its probabilities; OpenAI: the number the model writes):
 
 | model | 0.9 or more | 0.7 to 0.9 | 0.5 to 0.7 | under 0.5 |
 |---|---|---|---|---|
-| jev-1.13.0 | 261 of 265 | 10 of 14 | 8 of 14 | 3 of 7 |
-| gpt-6-luna | 276 of 276 | 18 of 22 | 0 of 2 | 0 of 0 |
-| gpt-6.1-sol | 278 of 279 | 12 of 20 | 0 of 1 | 0 of 0 |
+| jev-1.13.0 | 272 of 272 | 7 of 10 | 8 of 13 | 3 of 5 |
+| gpt-6-luna | 286 of 286 | 11 of 12 | 2 of 2 | 0 of 0 |
+| gpt-6.1-sol | 291 of 291 | 8 of 9 | 0 of 0 | 0 of 0 |
 
 All questions in one call, against one call per question:
 
