@@ -30,12 +30,15 @@ Money: every run in the course cost me under one US dollar on Jev in total. The 
 ## Set up, step by step
 
 These are the exact commands, in order. Every one was run on a fresh clone before it was put
-here. On Windows, the two lines marked differ.
+here on a Mac. On Windows, the lines marked differ. The Windows forms were not run by me, so if
+one fails, the easiest path on Windows is **Git Bash** (it comes with Git for Windows): there, the
+Mac commands below work, with two changes: type `py` where they say `python3`, and activate with
+`source .venv/Scripts/activate`.
 
 ```bash
 git clone https://github.com/ronidas39/jev-system-one-course.git
 cd jev-system-one-course
-python3 -m venv .venv
+python3 -m venv .venv               # Windows: py -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pip install -e .
@@ -54,7 +57,9 @@ python 01_first_call.py
 cd ..
 ```
 
-The first call with curl reads the key from your shell, so load `.env` into the shell first:
+The first call with curl reads the key from your shell, so load `.env` into the shell first.
+This step needs bash (Mac, Linux, or Git Bash on Windows). You can skip it: `01_first_call.py`
+above makes the same call from Python.
 
 ```bash
 cd handson
@@ -74,7 +79,7 @@ cd ..
 | `capstone/` | the big project: messy company records from three systems, cheap blocking, Jev decides each pair, a merge policy, a knowledge graph, and measurement against the truth | 10 |
 | `compare/` | the fair comparison of Jev with gpt-6-luna and gpt-6.1-sol: accuracy, latency, cost, parallel and sequential timing, many questions in one call | 7 |
 | `data/` | the seeded generators, the data they made, and `DATA-CARD.md` | 7, 10 |
-| `tools/` | `choose_register.py`: Jev picks the diagram style for every slide in the course | 5, 10 |
+| `tools/` | `choose_register.py`: Jev picks the diagram style for every slide in the course | 11 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
 
 ---

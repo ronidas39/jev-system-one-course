@@ -33,7 +33,33 @@
       "frustration_accuracy": 0.7733333333333333,
       "auto_routed": 289,
       "auto_routed_share": 0.9633333333333334,
-      "auto_routed_accuracy": 0.9550173010380623
+      "auto_routed_accuracy": 0.9550173010380623,
+      "team_by_confidence": [
+       {
+        "from": 0.9,
+        "to": 1.01,
+        "answers": 265,
+        "right": 261
+       },
+       {
+        "from": 0.7,
+        "to": 0.9,
+        "answers": 14,
+        "right": 10
+       },
+       {
+        "from": 0.5,
+        "to": 0.7,
+        "answers": 14,
+        "right": 8
+       },
+       {
+        "from": 0.0,
+        "to": 0.5,
+        "answers": 7,
+        "right": 3
+       }
+      ]
      },
      "batching": {
       "items": 30,
@@ -76,7 +102,33 @@
       "frustration_accuracy": 0.9533333333333334,
       "auto_routed": 298,
       "auto_routed_share": 0.9933333333333333,
-      "auto_routed_accuracy": 0.9865771812080537
+      "auto_routed_accuracy": 0.9865771812080537,
+      "team_by_confidence": [
+       {
+        "from": 0.9,
+        "to": 1.01,
+        "answers": 276,
+        "right": 276
+       },
+       {
+        "from": 0.7,
+        "to": 0.9,
+        "answers": 22,
+        "right": 18
+       },
+       {
+        "from": 0.5,
+        "to": 0.7,
+        "answers": 2,
+        "right": 0
+       },
+       {
+        "from": 0.0,
+        "to": 0.5,
+        "answers": 0,
+        "right": 0
+       }
+      ]
      },
      "batching": {
       "items": 30,
@@ -119,7 +171,33 @@
       "frustration_accuracy": 0.9433333333333334,
       "auto_routed": 300,
       "auto_routed_share": 1.0,
-      "auto_routed_accuracy": 0.9666666666666667
+      "auto_routed_accuracy": 0.9666666666666667,
+      "team_by_confidence": [
+       {
+        "from": 0.9,
+        "to": 1.01,
+        "answers": 279,
+        "right": 278
+       },
+       {
+        "from": 0.7,
+        "to": 0.9,
+        "answers": 20,
+        "right": 12
+       },
+       {
+        "from": 0.5,
+        "to": 0.7,
+        "answers": 1,
+        "right": 0
+       },
+       {
+        "from": 0.0,
+        "to": 0.5,
+        "answers": 0,
+        "right": 0
+       }
+      ]
      },
      "batching": {
       "items": 30,

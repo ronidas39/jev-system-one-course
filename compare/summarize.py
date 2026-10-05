@@ -59,6 +59,11 @@ def cost_block(calls: list[dict[str, Any]]) -> dict[str, float]:
             "output_tokens_mean": statistics.mean(c["output_tokens"] for c in calls)}
 
 
+CONFIDENCE_GROUPS = [(0.9, 1.01), (0.7, 0.9), (0.5, 0.7), (0.0, 0.5)]
+"""Confidence groups for the "is the confidence honest?" check. For Jev, confidence comes from
+its probabilities; for the OpenAI models it is the team_confidence number they write themselves."""
+
+
 def ticket_accuracy(calls: list[dict[str, Any]], gold: dict[str, dict]) -> dict[str, Any]:
     """Team, urgency and frustration accuracy, plus the confidence-gated routing."""
     ok = [c for c in calls if c.get("common")]
@@ -74,6 +79,12 @@ def ticket_accuracy(calls: list[dict[str, Any]], gold: dict[str, dict]) -> dict[
                                     for c in ok) / n,
         "auto_routed": len(auto), "auto_routed_share": len(auto) / n,
         "auto_routed_accuracy": auto_right / len(auto) if auto else None,
+        "team_by_confidence": [
+            {"from": lo, "to": hi, "answers": len(group),
+             "right": sum(c["common"]["team"] == gold[c["item"]]["team"] for c in group)}
+            for lo, hi in CONFIDENCE_GROUPS
+            for group in [[c for c in ok if lo <= c["common"]["team_confidence"] < hi]]
+        ],
     }
 
 
@@ -200,6 +211,14 @@ def write_markdown(summary: dict[str, Any]) -> str:
                              f"{a['merge_recall']:.1%} | {a['wrong_merges']} | "
                              f"{a['sent_to_person']} | {secs(q, 'median_s')} | {secs(q, 'p90_s')} | "
                              f"{p['wall_seconds']:.1f} s | ${c['usd_per_1000']:.4f} |")
+        if task == "tickets":
+            lines.append("\nTeam answers right, by the model's own confidence "
+                         "(Jev: from its probabilities; OpenAI: the number the model writes):\n")
+            lines.append("| model | 0.9 or more | 0.7 to 0.9 | 0.5 to 0.7 | under 0.5 |")
+            lines.append("|---|---|---|---|---|")
+            for model, m in s["models"].items():
+                cells = [f"{g['right']} of {g['answers']}" for g in m["accuracy"]["team_by_confidence"]]
+                lines.append(f"| {model} | " + " | ".join(cells) + " |")
         if "batching" not in next(iter(s["models"].values())):
             continue
         lines.append("\nAll questions in one call, against one call per question:\n")
