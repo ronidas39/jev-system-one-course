@@ -174,25 +174,19 @@ Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.js
 | gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 50.1 s | $0.0517 |
 | gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 92.8 s | $1.0679 |
 
-**Company record pairs**, first wording (v1), 1,010 pairs, 473 real duplicates:
+**Three questions in one call, or one call per question** (30 tickets, median per ticket):
 
-| model | merged | wrong merges | duplicates found | sent to a person | median s | 1,010 pairs | $ per 1,000 |
-|---|---|---|---|---|---|---|---|
-| jev-1.13.0 | 324 | 0 | 68.5% | 159 | 0.348 | 42.3 s | $0.0308 |
-| gpt-6-luna | 465 | 0 | 98.3% | 8 | 1.223 | 160.1 s | $0.0618 |
-| gpt-6.1-sol | 470 | 0 | 99.4% | 3 | 2.177 | 271.6 s | $1.2548 |
+| model | input tokens, one call | input tokens, three calls | seconds, one call | seconds, three calls in a row |
+|---|---|---|---|---|
+| jev-1.13.0 | 584 | 1,186 | 0.399 | 0.994 |
+| gpt-6-luna | 363 | 531 | 1.357 | 3.459 |
+| gpt-6.1-sol | 363 | 531 | 2.985 | 6.431 |
 
-**Both wordings on a fresh dataset** (seed 20261007, 1,014 pairs, 463 real duplicates), share of
-real duplicates found. No model merged two different companies in either wording.
+A large chat model was a little more accurate on this job, so test on your own data before you
+switch. That is why Jev returns a confidence number with every answer.
 
-| model | wording v1 | wording v2 | sent to a person, v1 / v2 |
-|---|---|---|---|
-| jev-1.13.0 | 67.6% | 95.7% | 156 / 28 |
-| gpt-6-luna | 98.9% | 92.2% | 6 / 40 |
-| gpt-6.1-sol | 100.0% | 99.8% | 0 / 1 |
-
-The second wording fixed Jev and made gpt-6-luna worse. A wording is part of the model setup:
-test each model on data the wording was never tuned on.
+Every other run (the record pairs, both question wordings, the fresh test set) is in
+`compare/results/summary.md`, with every raw call next to it.
 
 ---
 
