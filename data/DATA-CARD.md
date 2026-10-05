@@ -64,6 +64,14 @@ digits match, does the website match). It never sees `truth.json`.
 many real ones. Names come from fixed word lists. Real data has harder cases: mergers, rebrands,
 shared offices, people who move between companies.
 
+### What is not realistic
+
+- Postcodes are random five-digit numbers in every country. Real Indian PIN codes have six digits
+  and UK postcodes mix letters and digits. The records only need a postcode to be present or
+  missing, so the generator does not copy each country's real format.
+- Names, streets, phone numbers and emails are made up. Any match with a real company or person
+  is chance.
+
 ## Candidate pairs (made by `capstone/step1_block.py`)
 
 | | companies | companies-fresh |

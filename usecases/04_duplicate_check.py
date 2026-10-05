@@ -24,7 +24,7 @@ from jevcourse.tasks import PAIR_QUESTIONS, pair_state
 OUTCOME = {0: "keep separate", 1: "send to a person", 2: "merge"}
 
 PAIRS = [
-    {"a": {"name": "Saffron Peak Foods Pvt Ltd", "address": "12 Mill Road, Mumbai 40001",
+    {"a": {"name": "Saffron Peak Foods Pvt Ltd", "address": "12 Mill Road, Mumbai 400001",
            "country": "IN", "phone": "+91 22 4000 1234", "website": "saffronpeakfoods.in",
            "contact": {"name": "Priya Iyer", "role": "Buyer",
                        "email": "priya.iyer@saffronpeakfoods.in"}},

@@ -24,6 +24,7 @@ Created: 2026-10-04
 
 import argparse
 import json
+import math
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -40,16 +41,13 @@ HTML_TEMPLATE = """<!doctype html><html><head><meta charset="utf-8"><title>{titl
 #h{{padding:14px 20px;font-size:20px}}#g{{width:100vw;height:calc(100vh - 56px)}}</style>
 </head><body><div id="h">{title}</div><div id="g"></div><script>
 const data = {data};
-const small = data.nodes.length < 60;
+const small = data.nodes.some(n => n.x !== undefined);
 const net = new vis.Network(document.getElementById("g"),
   {{nodes: new vis.DataSet(data.nodes), edges: new vis.DataSet(data.edges)}},
-  {{physics: {{stabilization: {{iterations: 500}},
-              barnesHut: small ? {{gravitationalConstant: -2500, centralGravity: 0.9,
-                                   springLength: 140, avoidOverlap: 0.2}}
-                               : {{springLength: 90}}}},
+  {{physics: small ? false : {{stabilization: {{iterations: 300}}, barnesHut: {{springLength: 90}}}},
     nodes: {{font: {{size: small ? 24 : 16}}}},
-    edges: {{color: {{color: "#9a9a9a"}}, width: 2}}}});
-net.once("stabilizationIterationsDone", () => {{ net.setOptions({{physics: false}}); net.fit(); }});
+    edges: {{color: {{color: "#9a9a9a"}}, width: small ? 2 : 1}}}});
+net.once("afterDrawing", () => net.fit());
 </script></body></html>"""
 
 
@@ -88,9 +86,30 @@ def build_graph(records: list[dict], group_of: dict[str, str]) -> nx.Graph:
     return g
 
 
+def grid_layout(g: nx.Graph) -> dict[str, tuple[int, int]]:
+    """Fixed positions for a small graph: one cell per company, its people in an arc below it.
+
+    A force layout pushes small, separate groups far apart or on top of each other, so a small
+    view gets a plain grid that reads the same way every time.
+    """
+    companies = sorted((n for n, d in g.nodes(data=True) if d["kind"] == "company"),
+                       key=lambda n: g.nodes[n]["label"].lower())
+    cols = max(1, math.ceil(math.sqrt(len(companies) * 1.6)))
+    pos: dict[str, tuple[int, int]] = {}
+    for i, c in enumerate(companies):
+        cx, cy = (i % cols) * 520, (i // cols) * 330
+        pos[c] = (cx, cy)
+        people = sorted(g[c])
+        for j, person in enumerate(people):
+            angle = math.pi / 2 + (j - (len(people) - 1) / 2) * 0.9
+            pos[person] = (cx + int(150 * math.cos(angle)), cy + int(120 * math.sin(angle)))
+    return pos
+
+
 def to_html(g: nx.Graph, title: str, check_edges: list[tuple[str, str]], path: Path) -> None:
     """A self-contained page that draws the graph with vis-network."""
     nodes = []
+    pos = grid_layout(g) if g.number_of_nodes() < 60 else {}
     for n, d in g.nodes(data=True):
         if d["kind"] == "company":
             nodes.append({"id": n, "label": d["label"], "shape": "box",
@@ -99,6 +118,8 @@ def to_html(g: nx.Graph, title: str, check_edges: list[tuple[str, str]], path: P
         else:
             nodes.append({"id": n, "label": d["label"], "shape": "dot", "size": 10,
                           "color": "#eb6834"})
+        if n in pos:
+            nodes[-1]["x"], nodes[-1]["y"] = pos[n]
     edges = [{"from": a, "to": b} for a, b in g.edges()]
     edges += [{"from": a, "to": b, "dashes": True, "color": {"color": "#e0a100"}, "width": 3}
               for a, b in check_edges]
