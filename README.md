@@ -174,7 +174,7 @@ Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.js
 | gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 50.1 s | $0.0517 |
 | gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 92.8 s | $1.0679 |
 
-**Three questions in one call, or one call per question** (30 tickets, median per ticket):
+**Three questions in one call, or one call per question** (30 tickets; tokens are the average per ticket, seconds the median):
 
 | model | input tokens, one call | input tokens, three calls | seconds, one call | seconds, three calls in a row |
 |---|---|---|---|---|
