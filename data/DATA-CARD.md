@@ -55,7 +55,8 @@ The contact has a role and an email.
 **The mess.** Billing and support have more mess than the CRM. The kinds of mess:
 
 - legal words changed or dropped: Pvt Ltd, Private Limited, Inc., GmbH.
-- short forms: Engg, Pharmaceuticals, Hosp.
+- words written another way: Engg for Engineering, Hosp. for Hospitality, Pharmaceuticals
+  for Pharma.
 - "M/s." in front of Indian names.
 - all capital letters.
 - typos with two letters swapped.
@@ -78,8 +79,9 @@ companies. Siblings ("Cedar Foods" and "Cedar Analytics") share a word and nothi
 digits match? Does the website match? The model never sees `truth.json`.
 
 **Known limits.** Look-alikes are always in different countries. That makes them easier to
-separate than many real ones. Names come from fixed word lists. Real data has harder cases: mergers, rebrands,
-shared offices, people who move between companies.
+separate than many real ones. Names come from fixed word lists. Real data has harder cases.
+Companies merge. Companies change their names. Two companies share an office. People move to a new
+company.
 
 ### What is not realistic
 

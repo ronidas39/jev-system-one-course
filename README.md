@@ -39,8 +39,8 @@ https://docs.typesafe.ai.
 
 An API key is a secret password for a program. It lets your code use the service.
 
-Money: everything I ran on Jev cost me less than one US dollar in total. The full comparison
-(`compare/run_all.sh`) cost about 6 US dollars on OpenAI. Almost all of it was the larger model.
+Money: everything I ran on Jev cost less than one US dollar in total. The full comparison
+(`compare/run_all.sh`) cost about 5 US dollars on OpenAI. Almost all of that was the larger model.
 
 ---
 
@@ -140,7 +140,7 @@ python capstone/step3_graph.py --data companies-fresh --focus orchid
 ## Run the comparison
 
 ```bash
-bash compare/run_all.sh            # about 50 minutes, about 6 US dollars
+bash compare/run_all.sh            # about 50 minutes, about 5 US dollars
 python compare/summarize.py        # tables in compare/results/summary.md, charts in compare/results/charts/
 ```
 
@@ -165,13 +165,14 @@ python tools/choose_register.py
 ## How the test is kept fair
 
 - Same inputs, same questions, same laptop, same network, same evening.
-- OpenAI models use **strict structured output**. Their answers always come in the right shape.
+- OpenAI models use **strict structured output**. This setting forces a fixed answer shape. It is
+  like a form with fixed boxes. So their answers always come in the right shape.
 - Each OpenAI model uses its **fastest thinking setting**: `none` for gpt-6-luna, `low` for
   gpt-6.1-sol. (gpt-6.1-sol does not accept `none`.)
 - **No automatic retries** on any side. A slow call is never hidden.
 - **One call at a time:** 5 warm-up calls per model are not counted. Then 40 tickets, 3 rounds.
-  The models take turns, and the order changes every round. I report the median and the 90th
-  percentile.
+  The models take turns, and the order changes every round. I report the median, the middle
+  time. I also report the 90th percentile: 9 in 10 calls were this fast or faster.
 - **Many calls at once:** every ticket once, 8 calls at the same time. I time the whole batch.
 - **Cost:** each answer's own token count times the published price. The prices are in
   `jevcourse/prices.py`. I read them on 4 October 2026.

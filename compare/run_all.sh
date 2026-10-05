@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run every comparison in the order used for the course. About 50 minutes, about 6 US dollars.
+# Run every comparison in the order used for the course. About 50 minutes, about 5 US dollars.
 # Author: Roni Das. Created: 2026-10-04.
 set -e
 cd "$(dirname "$0")/.."
