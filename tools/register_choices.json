@@ -1,5 +1,35 @@
 [
  {
+  "id": "p01-cold-open",
+  "part": 1,
+  "title": "300 tickets in 12.6 seconds, for less than one cent",
+  "jev_pick": "chart",
+  "confidence": 0.82,
+  "top3": [
+   [
+    "chart",
+    0.84
+   ],
+   [
+    "real_terminal_capture",
+    0.09
+   ],
+   [
+    "typographic_list",
+    0.03
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.355,
+  "usd": 6.3756e-05
+ },
+ {
   "id": "p01-title",
   "part": 1,
   "title": "Jev, the AI model that answers with numbers",
@@ -1053,21 +1083,21 @@
  {
   "id": "p06-million-tickets",
   "part": 6,
-  "title": "What a million tickets cost",
+  "title": "What a million tickets cost on Jev",
   "jev_pick": "chart",
-  "confidence": 0.94,
+  "confidence": 0.96,
   "top3": [
    [
     "chart",
-    0.95
+    0.96
    ],
    [
-    "isometric_3d",
+    "hand_drawn_sketch",
     0.03
    ],
    [
-    "side_by_side_panels",
-    0.02
+    "typographic_list",
+    0.01
    ]
   ],
   "allowed_by_rules": [
@@ -1077,27 +1107,27 @@
   "final": "chart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.337,
-  "usd": 6.1362e-05
+  "seconds": 0.376,
+  "usd": 6.241200000000001e-05
  },
  {
   "id": "p06-weak-spots",
   "part": 6,
-  "title": "Nine weak spots, in TypeSafe's own words",
+  "title": "How to write a good question for Jev",
   "jev_pick": "typographic_list",
-  "confidence": 1.0,
+  "confidence": 0.82,
   "top3": [
    [
     "typographic_list",
-    1.0
+    0.84
    ],
    [
-    "real_terminal_capture",
-    0.0
+    "theme_cards",
+    0.13
    ],
    [
-    "sequence_diagram",
-    0.0
+    "side_by_side_panels",
+    0.03
    ]
   ],
   "allowed_by_rules": [
@@ -1107,8 +1137,8 @@
   "final": "typographic_list",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.396,
-  "usd": 6.2496e-05
+  "seconds": 0.38,
+  "usd": 6.2748e-05
  },
  {
   "id": "p07-fair-test",
@@ -1201,111 +1231,22 @@
   "usd": 6.1572e-05
  },
  {
-  "id": "p07-tickets-quality-cost",
+  "id": "p07-tickets-batch",
   "part": 7,
-  "title": "Ticket triage: right answers and cost",
+  "title": "300 tickets, eight calls at a time",
   "jev_pick": "chart",
-  "confidence": 0.61,
+  "confidence": 0.94,
   "top3": [
    [
     "chart",
-    0.64
+    0.95
    ],
    [
     "side_by_side_panels",
-    0.36
+    0.05
    ],
    [
-    "sequence_diagram",
-    0.0
-   ]
-  ],
-  "allowed_by_rules": [
-   "chart"
-  ],
-  "final": "chart",
-  "overridden": false,
-  "reasons": [],
-  "seconds": 0.372,
-  "usd": 6.1782e-05
- },
- {
-  "id": "p07-pairs-speed",
-  "part": 7,
-  "title": "Duplicate check: time per call",
-  "jev_pick": "chart",
-  "confidence": 0.99,
-  "top3": [
-   [
-    "chart",
-    0.99
-   ],
-   [
-    "side_by_side_panels",
-    0.01
-   ],
-   [
-    "real_screenshot",
-    0.0
-   ]
-  ],
-  "allowed_by_rules": [
-   "chart"
-  ],
-  "final": "chart",
-  "overridden": false,
-  "reasons": [],
-  "seconds": 0.37,
-  "usd": 6.1572e-05
- },
- {
-  "id": "p07-pairs-quality",
-  "part": 7,
-  "title": "Duplicate check: merged, sent to a person, missed",
-  "jev_pick": "side_by_side_panels",
-  "confidence": 0.74,
-  "top3": [
-   [
-    "side_by_side_panels",
-    0.77
-   ],
-   [
-    "chart",
-    0.22
-   ],
-   [
-    "flowchart",
-    0.01
-   ]
-  ],
-  "allowed_by_rules": [
-   "chart"
-  ],
-  "final": "chart",
-  "overridden": true,
-  "reasons": [
-   "'side_by_side_panels' breaks the rule for S10 comparison, S11 scale"
-  ],
-  "seconds": 0.612,
-  "usd": 6.241200000000001e-05
- },
- {
-  "id": "p07-parallel",
-  "part": 7,
-  "title": "Eight calls at once: how long the whole batch takes",
-  "jev_pick": "chart",
-  "confidence": 0.97,
-  "top3": [
-   [
-    "chart",
-    0.98
-   ],
-   [
-    "side_by_side_panels",
-    0.02
-   ],
-   [
-    "interactive_step_diagram",
+    "block_diagram",
     0.0
    ]
   ],
@@ -1318,26 +1259,26 @@
   "reasons": [
    "'chart' was used on the slide before, so 'isometric_3d' instead"
   ],
-  "seconds": 0.334,
-  "usd": 6.165600000000001e-05
+  "seconds": 0.346,
+  "usd": 6.262200000000001e-05
  },
  {
-  "id": "p07-many-questions",
+  "id": "p07-tickets-cost",
   "part": 7,
-  "title": "Many questions in one call, or one call each",
+  "title": "What 1,000 tickets cost",
   "jev_pick": "chart",
-  "confidence": 0.9,
+  "confidence": 0.99,
   "top3": [
    [
     "chart",
-    0.91
+    0.99
    ],
    [
     "side_by_side_panels",
-    0.09
+    0.01
    ],
    [
-    "block_diagram",
+    "real_terminal_capture",
     0.0
    ]
   ],
@@ -1347,39 +1288,69 @@
   "final": "chart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.371,
-  "usd": 6.153e-05
+  "seconds": 0.343,
+  "usd": 6.279e-05
  },
  {
-  "id": "p07-verdict",
+  "id": "p07-many-questions",
   "part": 7,
-  "title": "The honest trade-off",
-  "jev_pick": "side_by_side_panels",
-  "confidence": 1.0,
+  "title": "Three questions in one call",
+  "jev_pick": "chart",
+  "confidence": 0.94,
   "top3": [
    [
-    "side_by_side_panels",
-    1.0
-   ],
-   [
     "chart",
-    0.0
+    0.95
    ],
    [
-    "real_screenshot",
+    "side_by_side_panels",
+    0.05
+   ],
+   [
+    "theme_cards",
     0.0
    ]
   ],
   "allowed_by_rules": [
-   "chart",
-   "hand_drawn_sketch",
-   "side_by_side_panels"
+   "chart"
   ],
-  "final": "side_by_side_panels",
+  "final": "chart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.344,
-  "usd": 6.1782e-05
+  "seconds": 0.386,
+  "usd": 6.195e-05
+ },
+ {
+  "id": "p07-verdict",
+  "part": 7,
+  "title": "What Jev gives you on this job",
+  "jev_pick": "chart",
+  "confidence": 0.88,
+  "top3": [
+   [
+    "chart",
+    0.9
+   ],
+   [
+    "side_by_side_panels",
+    0.06
+   ],
+   [
+    "theme_cards",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": true,
+  "reasons": [
+   "'chart' breaks the rule for S23 checklist"
+  ],
+  "seconds": 0.354,
+  "usd": 6.3378e-05
  },
  {
   "id": "p08-checklist",
@@ -2065,11 +2036,11 @@
     1.0
    ],
    [
-    "hand_drawn_sketch",
+    "sequence_diagram",
     0.0
    ],
    [
-    "side_by_side_panels",
+    "lookup_map",
     0.0
    ]
   ],
@@ -2079,8 +2050,8 @@
   "final": "chart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.346,
-  "usd": 6.258e-05
+  "seconds": 0.352,
+  "usd": 6.329400000000001e-05
  },
  {
   "id": "p10-graph-before-after",
@@ -2114,20 +2085,20 @@
  {
   "id": "p10-wording-fix",
   "part": 10,
-  "title": "Jev reads the words you wrote",
+  "title": "Tune the question on the training set",
   "jev_pick": "side_by_side_panels",
-  "confidence": 0.97,
+  "confidence": 0.96,
   "top3": [
    [
     "side_by_side_panels",
-    0.98
+    0.97
    ],
    [
     "chart",
-    0.02
+    0.03
    ],
    [
-    "interactive_step_diagram",
+    "sequence_diagram",
     0.0
    ]
   ],
@@ -2139,58 +2110,56 @@
   "final": "side_by_side_panels",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.356,
-  "usd": 6.1992e-05
+  "seconds": 0.348,
+  "usd": 6.2958e-05
  },
  {
   "id": "p10-results",
   "part": 10,
-  "title": "The big project: Jev and OpenAI on the same pairs",
-  "jev_pick": "side_by_side_panels",
-  "confidence": 0.56,
+  "title": "The test set: what Jev decided",
+  "jev_pick": "chart",
+  "confidence": 0.93,
   "top3": [
    [
-    "side_by_side_panels",
-    0.59
-   ],
-   [
     "chart",
-    0.41
+    0.94
    ],
    [
-    "real_terminal_capture",
-    0.0
+    "flowchart",
+    0.03
+   ],
+   [
+    "typographic_list",
+    0.03
    ]
   ],
   "allowed_by_rules": [
    "chart"
   ],
   "final": "chart",
-  "overridden": true,
-  "reasons": [
-   "'side_by_side_panels' breaks the rule for S10 comparison, S11 scale"
-  ],
-  "seconds": 0.339,
-  "usd": 6.186600000000001e-05
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.335,
+  "usd": 6.3588e-05
  },
  {
   "id": "p11-which-tool",
   "part": 11,
-  "title": "Jev, a chat model, or both?",
+  "title": "Jev or a chat model?",
   "jev_pick": "flowchart",
-  "confidence": 1.0,
+  "confidence": 0.61,
   "top3": [
    [
     "flowchart",
-    1.0
+    0.65
    ],
    [
-    "real_terminal_capture",
-    0.0
+    "side_by_side_panels",
+    0.32
    ],
    [
-    "block_diagram",
-    0.0
+    "typographic_list",
+    0.03
    ]
   ],
   "allowed_by_rules": [
@@ -2203,8 +2172,8 @@
   "final": "flowchart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.325,
-  "usd": 6.2538e-05
+  "seconds": 0.332,
+  "usd": 6.1992e-05
  },
  {
   "id": "p11-both-together",
@@ -2244,18 +2213,18 @@
   "part": 11,
   "title": "Five things to remember",
   "jev_pick": "typographic_list",
-  "confidence": 0.9,
+  "confidence": 0.88,
   "top3": [
    [
     "typographic_list",
-    0.91
+    0.89
    ],
    [
     "theme_cards",
-    0.09
+    0.11
    ],
    [
-    "block_diagram",
+    "real_terminal_capture",
     0.0
    ]
   ],
@@ -2266,7 +2235,7 @@
   "final": "typographic_list",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.337,
+  "seconds": 0.434,
   "usd": 6.0984000000000004e-05
  },
  {

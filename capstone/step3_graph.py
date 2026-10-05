@@ -16,6 +16,7 @@ close the merged graph is to the truth.
     python capstone/step3_graph.py
     python capstone/step3_graph.py --model gpt-6-luna
     python capstone/step3_graph.py --focus orchid   # also a small, readable view of one name
+    python capstone/step3_graph.py --data companies-fresh   # the test set (run step 2 on it first)
 
 Author: Roni Das
 Created: 2026-10-04
@@ -33,18 +34,22 @@ from jevcourse.calls import JEV_MODEL
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "capstone/out"
-RECORDS = ROOT / "data/companies/records.jsonl"
-TRUTH = ROOT / "data/companies/truth.json"
 HTML_TEMPLATE = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
 <script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
 <style>body{{margin:0;font-family:system-ui,sans-serif;background:#fbfaf6}}
 #h{{padding:14px 20px;font-size:20px}}#g{{width:100vw;height:calc(100vh - 56px)}}</style>
 </head><body><div id="h">{title}</div><div id="g"></div><script>
 const data = {data};
-new vis.Network(document.getElementById("g"),
+const small = data.nodes.length < 60;
+const net = new vis.Network(document.getElementById("g"),
   {{nodes: new vis.DataSet(data.nodes), edges: new vis.DataSet(data.edges)}},
-  {{physics: {{stabilization: {{iterations: 300}}, barnesHut: {{springLength: 90}}}},
-    nodes: {{font: {{size: 16}}}}, edges: {{color: {{color: "#9a9a9a"}}}}}});
+  {{physics: {{stabilization: {{iterations: 500}},
+              barnesHut: small ? {{gravitationalConstant: -2500, centralGravity: 0.9,
+                                   springLength: 140, avoidOverlap: 0.2}}
+                               : {{springLength: 90}}}},
+    nodes: {{font: {{size: small ? 24 : 16}}}},
+    edges: {{color: {{color: "#9a9a9a"}}, width: 2}}}});
+net.once("stabilizationIterationsDone", () => {{ net.setOptions({{physics: false}}); net.fit(); }});
 </script></body></html>"""
 
 
@@ -92,7 +97,7 @@ def to_html(g: nx.Graph, title: str, check_edges: list[tuple[str, str]], path: P
                           "color": "#2a78d6" if d["records"] > 1 else "#9fb7d6",
                           "font": {"color": "#ffffff" if d["records"] > 1 else "#1d2733"}})
         else:
-            nodes.append({"id": n, "label": d["label"], "shape": "dot", "size": 8,
+            nodes.append({"id": n, "label": d["label"], "shape": "dot", "size": 10,
                           "color": "#eb6834"})
     edges = [{"from": a, "to": b} for a, b in g.edges()]
     edges += [{"from": a, "to": b, "dashes": True, "color": {"color": "#e0a100"}, "width": 3}
@@ -106,14 +111,19 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--model", default=JEV_MODEL)
     parser.add_argument("--wording", choices=["v1", "v2"], default="v2")
+    parser.add_argument("--data", default="companies",
+                        help="the data folder: companies (the training set) or companies-fresh "
+                             "(the test set)")
     parser.add_argument("--focus", default="",
                         help="also write a small before/after view of the records whose name "
                              "contains this text, for example 'orchid'")
     args = parser.parse_args()
-    records = [json.loads(x) for x in RECORDS.read_text().splitlines()]
-    truth = json.loads(TRUTH.read_text())["record_to_entity"]
-    decisions = [json.loads(x) for x in
-                 (OUT / f"decisions-{args.model}-{args.wording}.jsonl").read_text().splitlines()]
+    tag = "" if args.data == "companies" else "-" + args.data.removeprefix("companies-")
+    records = [json.loads(x) for x in
+               (ROOT / "data" / args.data / "records.jsonl").read_text().splitlines()]
+    truth = json.loads((ROOT / "data" / args.data / "truth.json").read_text())["record_to_entity"]
+    decisions = [json.loads(x) for x in (OUT / f"decisions-{args.model}-{args.wording}{tag}.jsonl")
+                 .read_text().splitlines()]
 
     ids = [r["record_id"] for r in records]
     uf = UnionFind(ids)
@@ -126,10 +136,10 @@ def main() -> None:
     checks = [(after_group[d["a"]], after_group[d["b"]]) for d in decisions
               if d["action"] == "person_checks" and after_group[d["a"]] != after_group[d["b"]]]
 
-    to_html(before, "Before: one company node per record", [], OUT / "graph_before.html")
+    to_html(before, "Before: one company node per record", [], OUT / f"graph_before{tag}.html")
     to_html(after, f"After: merged by {args.model} (dashed = a person should check)", checks,
-            OUT / "graph_after.html")
-    nx.write_graphml(after, OUT / "graph_after.graphml")
+            OUT / f"graph_after{tag}.html")
+    nx.write_graphml(after, OUT / f"graph_after{tag}.graphml")
     if args.focus:
         keep = {r["record_id"] for r in records if args.focus.lower() in r["name"].lower()}
         groups = {after_group[i] for i in keep}
@@ -139,11 +149,11 @@ def main() -> None:
               and any(m in groups for m in after[n])]
         focus_checks = [(a, b) for a, b in checks if a in groups and b in groups]
         to_html(before.subgraph(nb), f"Before: '{args.focus}' records, one node per record",
-                [], OUT / f"graph_before_{args.focus}.html")
+                [], OUT / f"graph_before{tag}_{args.focus}.html")
         to_html(after.subgraph(na), f"After: '{args.focus}' records merged by {args.model}",
-                focus_checks, OUT / f"graph_after_{args.focus}.html")
+                focus_checks, OUT / f"graph_after{tag}_{args.focus}.html")
         print(f"focus '{args.focus}': {len(keep)} records -> {len(groups)} company nodes; "
-              f"wrote graph_before_{args.focus}.html and graph_after_{args.focus}.html")
+              f"wrote graph_before{tag}_{args.focus}.html and graph_after{tag}_{args.focus}.html")
 
     members: dict[str, set[str]] = defaultdict(set)
     for rid, gid in after_group.items():
@@ -156,13 +166,16 @@ def main() -> None:
     people_after = sum(1 for _, d in after.nodes(data=True) if d["kind"] == "person")
 
     gold = {json.loads(x)["pair_id"]: json.loads(x)["same_entity"]
-            for x in (OUT / "candidate_pairs.jsonl").read_text().splitlines()}
+            for x in (OUT / f"candidate_pairs{tag}.jsonl").read_text().splitlines()}
     merged = [d for d in decisions if d["action"] == "merge"]
     merged_right = sum(gold[d["pair_id"]] for d in merged)
     print(f"pairs merged: {len(merged)}, of which really the same company: {merged_right} "
           f"(precision {merged_right / max(len(merged), 1):.1%})")
     print(f"real duplicate pairs found by merging: {merged_right} of {sum(gold.values())} "
           f"(recall {merged_right / sum(gold.values()):.1%})")
+    review = [d for d in decisions if d["action"] == "person_checks"]
+    print(f"pairs sent to a person that really are the same company: "
+          f"{sum(gold[d['pair_id']] for d in review)} of {len(review)}")
     print(f"company nodes before: {len(ids)}   after: {len(members)}   "
           f"real companies (truth): {real_companies}")
     print(f"person nodes before: {people_before}   after: {people_after}")
@@ -171,7 +184,8 @@ def main() -> None:
     sent = sum(d["action"] == "person_checks" for d in decisions)
     print(f"pairs sent to a person: {sent}; of those, {sent - len(checks)} were already joined "
           f"through other merges, so {len(checks)} still wait for a person")
-    print("wrote capstone/out/graph_before.html, graph_after.html, graph_after.graphml")
+    print(f"wrote capstone/out/graph_before{tag}.html, graph_after{tag}.html, "
+          f"graph_after{tag}.graphml")
 
 
 if __name__ == "__main__":

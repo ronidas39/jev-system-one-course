@@ -19,11 +19,13 @@ Every pick, confidence, probability and override is saved to
 tools/register_choices.json, with the reason in plain words.
 
     python tools/choose_register.py
+    python tools/choose_register.py --only p01-cold-open,p07-verdict   # re-ask a few, keep the rest
 
 Author: Roni Das
 Created: 2026-10-04
 """
 
+import argparse
 import json
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -60,8 +62,18 @@ def best_allowed(probabilities: dict[str, float], allowed: list[str], avoid: str
 
 def main() -> None:
     """Ask Jev about every slide, apply the checks, save and print the log."""
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--only", default="",
+                        help="comma-separated slide ids to ask about again; every other slide "
+                             "keeps its saved decision")
+    args = parser.parse_args()
     reg = json.loads((HERE / "registers.json").read_text())
-    slides = json.loads((HERE / "slides.json").read_text())["slides"]
+    all_slides = json.loads((HERE / "slides.json").read_text())["slides"]
+    only = {x for x in args.only.split(",") if x}
+    saved = {}
+    if only and (HERE / "register_choices.json").exists():
+        saved = {r["id"]: r for r in json.loads((HERE / "register_choices.json").read_text())}
+    slides = [sl for sl in all_slides if not only or sl["id"] in only or sl["id"] not in saved]
     available = set(reg["available_in_this_deck"])
     rules = {k: v for k, v in reg["shape_rules"].items() if not k.startswith("_")}
     question = {"register": Choice(
@@ -79,8 +91,16 @@ def main() -> None:
     with ThreadPoolExecutor(max_workers=6) as pool:
         answers = list(pool.map(ask, slides))
 
+    asked = {sl["id"]: got for sl, got in zip(slides, answers, strict=True)}
     log, previous = [], ""
-    for slide, got in zip(slides, answers, strict=True):
+    for i, slide in enumerate(all_slides):
+        if slide["id"] not in asked:
+            log.append(saved[slide["id"]])
+            previous = saved[slide["id"]]["final"]
+            continue
+        got = asked[slide["id"]]
+        nxt = all_slides[i + 1]["id"] if i + 1 < len(all_slides) else ""
+        following = saved[nxt]["final"] if nxt in saved and nxt not in asked else ""
         pick, conf = got["answer"]["choice"], got["answer"]["confidence"]
         probs = got["answer"]["probabilities"]
         allowed = [r for r in allowed_for(slide["shapes"], rules) if r in available]
@@ -97,6 +117,11 @@ def main() -> None:
             changed = best_allowed(probs, allowed, avoid=final)
             reasons.append(f"'{final}' was used on the slide before, so '{changed}' instead")
             final = changed
+        if final == following and final not in REAL_CAPTURES and len(allowed) > 1:
+            changed = best_allowed(probs, allowed, avoid=final)
+            if changed != previous:
+                reasons.append(f"'{final}' is used on the slide after, so '{changed}' instead")
+                final = changed
         previous = final
         log.append({"id": slide["id"], "part": slide["part"], "title": slide["title"],
                     "jev_pick": pick, "confidence": conf,
@@ -107,13 +132,13 @@ def main() -> None:
 
     (HERE / "register_choices.json").write_text(json.dumps(log, indent=1))
     kept = sum(not r["overridden"] for r in log)
-    for r in log:
+    for r in (x for x in log if not only or x["id"] in asked):
         flag = "KEPT    " if not r["overridden"] else "OVERRIDE"
         print(f"{r['id']:<26} Jev: {r['jev_pick']:<22} {r['confidence']:.2f}  {flag} -> "
               f"{r['final']:<22} {'; '.join(r['reasons'])}")
-    usd = sum(r["usd"] for r in log)
+    usd = sum(r["usd"] for r in log if r["id"] in asked)
     print(f"\n{len(log)} slides. Jev's pick kept on {kept}, overridden on {len(log) - kept}. "
-          f"Cost ${usd:.5f}.")
+          f"Asked now: {len(asked)}, cost ${usd:.5f}.")
 
 
 if __name__ == "__main__":

@@ -103,6 +103,16 @@ python capstone/step3_graph.py
 open capstone/out/graph_after.html        # Windows: start capstone\out\graph_after.html
 ```
 
+The default data is the **training set**, where the question wording was tuned. To see how the
+tuned wording does on records it never saw, run the **test set**:
+
+```bash
+python data/make_companies.py --seed 20261007 --out companies-fresh
+python capstone/step1_block.py --data companies-fresh
+python capstone/step2_decide.py --pairs capstone/out/candidate_pairs-fresh.jsonl
+python capstone/step3_graph.py --data companies-fresh --focus orchid
+```
+
 `step2_decide.py --model gpt-6-luna` runs the same decisions on an OpenAI model.
 `step2_decide.py --wording v1` uses the first wording of the question, the one that sent too many
 pairs to a person. Part 10 explains why the wording matters.
