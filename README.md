@@ -131,7 +131,10 @@ python data/make_companies.py --seed 20261007 --out companies-fresh
 python capstone/step1_block.py --data companies-fresh
 python capstone/step2_decide.py --data companies-fresh
 python capstone/step3_graph.py --data companies-fresh --focus orchid
+python capstone/show_review.py --data companies-fresh
 ```
+
+`show_review.py` prints the pairs that wait for a person. It shows the highest and lowest scores.
 
 - `step2_decide.py --model gpt-6-luna` runs the same decisions on an OpenAI model.
 - `step2_decide.py --wording v1` uses my first wording of the question. That wording sent too many
