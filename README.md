@@ -1,4 +1,7 @@
-# Jev, the AI model that answers with numbers
+# TypeSafe Jev: The Complete Hands-On Course
+
+Learn Jev from zero, then build real projects with it. For engineers.
+Jev is the AI model that answers with numbers.
 
 This is the code for a freeCodeCamp course by Roni Das. I teach at systemdesign.academy. My
 YouTube channel is Total Technology Zonne.

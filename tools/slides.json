@@ -2,6 +2,15 @@
  "_about": "Every slide in the course, described in plain words. choose_register.py sends 'brief' to Jev. 'shapes' are my own reading of the content against the content-shape rules; Jev never sees them, they are only used to check Jev's pick.",
  "slides": [
   {
+   "id": "p00-cover",
+   "part": 1,
+   "title": "TypeSafe Jev: The Complete Hands-On Course",
+   "brief": "The front page of a full engineering course about one AI model. The course name, the instructor and the edition, with a drawing of what the model does: a question goes into the model, a probability comes out, and plain code then acts, checks again, or hands the case to a person.",
+   "shapes": [
+    "S2 mechanism"
+   ]
+  },
+  {
    "id": "p01-cold-open",
    "part": 1,
    "title": "300 tickets in 12.6 seconds, for less than one cent",
@@ -11,19 +20,48 @@
    ]
   },
   {
-   "id": "p01-title",
+   "id": "p00-who-for",
    "part": 1,
-   "title": "Jev, the AI model that answers with numbers",
-   "brief": "The opening title card of a video course, with the course name and the presenter.",
+   "title": "Who this course is for",
+   "brief": "Eight groups of engineers (backend, frontend and full-stack, data engineering, ML and AI engineering, DevOps and platform, QA and test, architects and tech leads, students and career switchers), each with one short line on what they will use the model for in this course.",
    "shapes": [
     "S23 checklist"
    ]
   },
   {
-   "id": "p01-what-you-will-build",
+   "id": "p00-outcomes",
    "part": 1,
-   "title": "What you will be able to do by the end",
-   "brief": "A list of the eleven parts of the course and the four small projects plus one big project the viewer will build.",
+   "title": "Learning outcomes",
+   "brief": "Six learning outcomes of the course, each starting 'You can' with an action the learner can show, and each tagged with the part of the course that teaches it.",
+   "shapes": [
+    "S23 checklist"
+   ]
+  },
+  {
+   "id": "p00-prereqs",
+   "part": 1,
+   "title": "Before you start",
+   "brief": "What a learner needs before starting (basic Python, a terminal, git, an account for the model, an optional second key) next to what they do not need (no maths of machine learning, no graphics card, no earlier AI experience).",
+   "shapes": [
+    "S10 comparison",
+    "S23 checklist"
+   ]
+  },
+  {
+   "id": "p00-syllabus",
+   "part": 1,
+   "title": "The syllabus",
+   "brief": "The eleven parts of the course in order, grouped into three units (ideas, evidence, build), each part with its title and planned minutes, so the learner sees how long each part is and where the four small projects and the final project sit.",
+   "shapes": [
+    "S6 sequence",
+    "S11 scale"
+   ]
+  },
+  {
+   "id": "p01-read-the-numbers",
+   "part": 1,
+   "title": "How to read the numbers in this course",
+   "brief": "Every number in the course is marked as one of two kinds: the company's own claim from a page you can open, or the presenter's own measurement. One real example answer, 0.99, a probability instead of a sentence.",
    "shapes": [
     "S23 checklist"
    ]

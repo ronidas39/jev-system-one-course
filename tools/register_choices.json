@@ -1,5 +1,38 @@
 [
  {
+  "id": "p00-cover",
+  "part": 1,
+  "title": "TypeSafe Jev: The Complete Hands-On Course",
+  "jev_pick": "flowchart",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "flowchart",
+    0.98
+   ],
+   [
+    "block_diagram",
+    0.01
+   ],
+   [
+    "hand_drawn_sketch",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.441,
+  "usd": 6.3252e-05
+ },
+ {
   "id": "p01-cold-open",
   "part": 1,
   "title": "300 tickets in 12.6 seconds, for less than one cent",
@@ -30,22 +63,52 @@
   "usd": 6.3756e-05
  },
  {
-  "id": "p01-title",
+  "id": "p00-who-for",
   "part": 1,
-  "title": "Jev, the AI model that answers with numbers",
+  "title": "Who this course is for",
+  "jev_pick": "theme_cards",
+  "confidence": 0.95,
+  "top3": [
+   [
+    "theme_cards",
+    0.95
+   ],
+   [
+    "typographic_list",
+    0.05
+   ],
+   [
+    "real_screenshot",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.429,
+  "usd": 6.287400000000001e-05
+ },
+ {
+  "id": "p00-outcomes",
+  "part": 1,
+  "title": "Learning outcomes",
   "jev_pick": "typographic_list",
-  "confidence": 1.0,
+  "confidence": 0.96,
   "top3": [
    [
     "typographic_list",
-    1.0
+    0.96
    ],
    [
-    "hand_drawn_sketch",
-    0.0
+    "theme_cards",
+    0.04
    ],
    [
-    "side_by_side_panels",
+    "real_screenshot",
     0.0
    ]
   ],
@@ -56,40 +119,105 @@
   "final": "typographic_list",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.479,
-  "usd": 6.1362e-05
+  "seconds": 0.42,
+  "usd": 6.174e-05
  },
  {
-  "id": "p01-what-you-will-build",
+  "id": "p00-prereqs",
   "part": 1,
-  "title": "What you will be able to do by the end",
-  "jev_pick": "typographic_list",
-  "confidence": 1.0,
+  "title": "Before you start",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.97,
   "top3": [
    [
-    "typographic_list",
-    1.0
+    "side_by_side_panels",
+    0.97
    ],
    [
-    "sequence_diagram",
-    0.0
+    "typographic_list",
+    0.02
    ],
    [
     "theme_cards",
-    0.0
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels",
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.401,
+  "usd": 6.241200000000001e-05
+ },
+ {
+  "id": "p00-syllabus",
+  "part": 1,
+  "title": "The syllabus",
+  "jev_pick": "typographic_list",
+  "confidence": 0.89,
+  "top3": [
+   [
+    "typographic_list",
+    0.9
+   ],
+   [
+    "flowchart",
+    0.060000000000000005
+   ],
+   [
+    "chart",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "flowchart",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": true,
+  "reasons": [
+   "'typographic_list' breaks the rule for S6 sequence, S11 scale"
+  ],
+  "seconds": 0.45,
+  "usd": 6.2454e-05
+ },
+ {
+  "id": "p01-read-the-numbers",
+  "part": 1,
+  "title": "How to read the numbers in this course",
+  "jev_pick": "typographic_list",
+  "confidence": 0.3,
+  "top3": [
+   [
+    "typographic_list",
+    0.35
+   ],
+   [
+    "real_screenshot",
+    0.27
+   ],
+   [
+    "side_by_side_panels",
+    0.14
    ]
   ],
   "allowed_by_rules": [
    "theme_cards",
    "typographic_list"
   ],
-  "final": "theme_cards",
-  "overridden": true,
-  "reasons": [
-   "'typographic_list' was used on the slide before, so 'theme_cards' instead"
-  ],
-  "seconds": 0.416,
-  "usd": 6.161400000000001e-05
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.61,
+  "usd": 6.2664e-05
  },
  {
   "id": "p01-next-word-game",
