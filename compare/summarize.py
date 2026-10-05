@@ -31,6 +31,7 @@ RESULTS = ROOT / "compare/results"
 CHARTS = RESULTS / "charts"
 TRUTH_FILES = {"tickets": ROOT / "data/tickets.jsonl",
                "pairs": ROOT / "capstone/out/candidate_pairs.jsonl",
+               "pairs-v1-fresh": ROOT / "capstone/out/candidate_pairs-fresh.jsonl",
                "pairs-v2-fresh": ROOT / "capstone/out/candidate_pairs-fresh.jsonl"}
 ROUTE_AT = 0.60
 COLORS = {"jev-1.13.0": "#2a78d6", "gpt-6-luna": "#9a9a9a", "gpt-6.1-sol": "#eb6834"}
@@ -129,7 +130,8 @@ def summarize_task(task: str) -> dict[str, Any]:
     acc_meta, acc_rows = load(f"{task}-accuracy")
     has_timing = (RESULTS / f"{task}-latency.jsonl").exists()
     lat_meta, lat_rows = load(f"{task}-latency") if has_timing else ({}, [])
-    bat_meta, bat_rows = load(f"{task}-batching") if has_timing else ({}, [])
+    has_batching = (RESULTS / f"{task}-batching.jsonl").exists()
+    bat_meta, bat_rows = load(f"{task}-batching") if has_batching else ({}, [])
     out["meta"] = {"accuracy": acc_meta, "latency": lat_meta, "batching": bat_meta}
     for model in acc_meta["models"]:
         calls = [r for r in acc_rows if r.get("model") == model and "item" in r]
@@ -146,7 +148,7 @@ def summarize_task(task: str) -> dict[str, Any]:
         m["accuracy"] = (ticket_accuracy if task == "tickets" else pair_accuracy)(calls, gold)
         if task != "tickets":
             m["threshold_sweep"] = threshold_sweep(calls, gold)
-        if not has_timing:
+        if not has_batching:
             out["models"][model] = m
             continue
         one = [r for r in bat_rows if r["model"] == model and r["mode"] == "one_call"]
@@ -166,6 +168,11 @@ def summarize_task(task: str) -> dict[str, Any]:
     return out
 
 
+def secs(timing: dict[str, float] | None, key: str) -> str:
+    """A timing cell, or a note when this task had no sequential timing run."""
+    return f"{timing[key]:.3f}" if timing else "not timed"
+
+
 def write_markdown(summary: dict[str, Any]) -> str:
     """The two comparison tables plus the batching table, as Markdown."""
     lines = []
@@ -176,20 +183,22 @@ def write_markdown(summary: dict[str, Any]) -> str:
                          "median s | p90 s | 300 in parallel (8 at once) | $ per 1,000 |")
         else:
             lines.append("| model | merged | merge precision | merge recall | wrong merges | "
-                         "sent to a person | median s | p90 s | 1,010 in parallel | $ per 1,000 |")
+                         f"sent to a person | median s | p90 s | "
+                         f"{next(iter(s['models'].values()))['parallel']['items']:,} in parallel | "
+                         "$ per 1,000 |")
         lines.append("|" + "---|" * (8 if task == "tickets" else 10))
         for model, m in s["models"].items():
             a, p, c = m["accuracy"], m["parallel"], m["cost"]
-            q = m.get("sequential", {"median_s": float("nan"), "p90_s": float("nan")})
+            q = m.get("sequential")
             if task == "tickets":
                 lines.append(f"| {model} | {a['team_accuracy']:.1%} | {a['urgency_accuracy']:.1%} "
-                             f"| {a['frustration_accuracy']:.1%} | {q['median_s']:.3f} | "
-                             f"{q['p90_s']:.3f} | {p['wall_seconds']:.1f} s | "
+                             f"| {a['frustration_accuracy']:.1%} | {secs(q, 'median_s')} | "
+                             f"{secs(q, 'p90_s')} | {p['wall_seconds']:.1f} s | "
                              f"${c['usd_per_1000']:.4f} |")
             else:
                 lines.append(f"| {model} | {a['merged']} | {a['merge_precision']:.1%} | "
                              f"{a['merge_recall']:.1%} | {a['wrong_merges']} | "
-                             f"{a['sent_to_person']} | {q['median_s']:.3f} | {q['p90_s']:.3f} | "
+                             f"{a['sent_to_person']} | {secs(q, 'median_s')} | {secs(q, 'p90_s')} | "
                              f"{p['wall_seconds']:.1f} s | ${c['usd_per_1000']:.4f} |")
         if "batching" not in next(iter(s["models"].values())):
             continue
@@ -225,7 +234,7 @@ def bar_chart(summary: dict[str, Any], task: str, value: str, label: str, fname:
 
 def main() -> None:
     """Write summary.json, summary.md and the charts."""
-    tasks = [t for t in ("tickets", "pairs", "pairs-v2-fresh")
+    tasks = [t for t in TRUTH_FILES
              if (RESULTS / f"{t}-accuracy.jsonl").exists()]
     summary = {"tasks": {t: summarize_task(t) for t in tasks}}
     (RESULTS / "summary.json").write_text(json.dumps(summary, indent=1, default=str))

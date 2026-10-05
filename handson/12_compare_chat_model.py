@@ -106,6 +106,7 @@ with TypeSafeClient(model="jev-1.13.0") as client:
                      usage["completion_tokens"], seconds, provider="openai", usd=usd,
                      note=f"ticket {ticket['id']}")
 
+Path("outputs").mkdir(exist_ok=True)
 Path("outputs/12_compare_results.json").write_text(json.dumps(results, indent=1))
 
 n = len(tickets)

@@ -23,7 +23,7 @@ Only TypeSafe's own platform is used: https://console.typesafe.ai and https://do
 | An OpenAI API key | only for the comparisons (`compare/`, use case 2, hands-on 12) |
 
 Money: every run in the course cost me under one US dollar on Jev in total. The full comparison
-(`compare/run_all.sh`) cost about 3 US dollars on OpenAI, almost all of it on the larger model.
+(`compare/run_all.sh`) cost about 6 US dollars on OpenAI, almost all of it on the larger model.
 
 ---
 
@@ -105,7 +105,7 @@ pairs to a person. Part 10 explains why the wording matters.
 ## Run the comparison
 
 ```bash
-bash compare/run_all.sh            # about 35 minutes, about 3 US dollars
+bash compare/run_all.sh            # about 50 minutes, about 6 US dollars
 python compare/summarize.py        # tables in compare/results/summary.md, charts in compare/results/charts/
 ```
 
@@ -114,7 +114,9 @@ To check the comparison on a fresh dataset the wording was never tuned on:
 ```bash
 python data/make_companies.py --seed 20261007 --out companies-fresh
 python capstone/step1_block.py --data companies-fresh
+python compare/run_compare.py --task pairs-v1-fresh --protocol accuracy
 python compare/run_compare.py --task pairs-v2-fresh --protocol accuracy
+python compare/summarize.py
 ```
 
 ## Let Jev choose the diagram style for each slide
@@ -144,10 +146,38 @@ and TypeSafe says its service is on the West Coast of the USA.
 
 ---
 
-## Results from my runs (4 October 2026)
+## Results from my runs (4 and 5 October 2026)
 
-See `compare/results/summary.md` for the full tables and `compare/results/*.jsonl` for every raw
-call.
+Full tables: `compare/results/summary.md`. Every raw call: `compare/results/*.jsonl`.
+0 failed calls in every run.
+
+**Support tickets** (300 tickets, 8 calls in flight):
+
+| model | team right | urgency right | frustration right | median s per call | 300 tickets | $ per 1,000 |
+|---|---|---|---|---|---|---|
+| jev-1.13.0 | 94.0% | 72.0% | 77.3% | 0.344 | 12.6 s | $0.0246 |
+| gpt-6-luna | 98.0% | 80.3% | 95.3% | 1.325 | 50.1 s | $0.0517 |
+| gpt-6.1-sol | 96.7% | 82.0% | 94.3% | 2.528 | 92.8 s | $1.0679 |
+
+**Company record pairs**, first wording (v1), 1,010 pairs, 473 real duplicates:
+
+| model | merged | wrong merges | duplicates found | sent to a person | median s | 1,010 pairs | $ per 1,000 |
+|---|---|---|---|---|---|---|---|
+| jev-1.13.0 | 324 | 0 | 68.5% | 159 | 0.348 | 42.3 s | $0.0308 |
+| gpt-6-luna | 465 | 0 | 98.3% | 8 | 1.223 | 160.1 s | $0.0618 |
+| gpt-6.1-sol | 470 | 0 | 99.4% | 3 | 2.177 | 271.6 s | $1.2548 |
+
+**Both wordings on a fresh dataset** (seed 20261007, 1,014 pairs, 463 real duplicates), share of
+real duplicates found. No model merged two different companies in either wording.
+
+| model | wording v1 | wording v2 | sent to a person, v1 / v2 |
+|---|---|---|---|
+| jev-1.13.0 | 67.6% | 95.7% | 156 / 28 |
+| gpt-6-luna | 98.9% | 92.2% | 6 / 40 |
+| gpt-6.1-sol | 100.0% | 99.8% | 0 / 1 |
+
+The second wording fixed Jev and made gpt-6-luna worse. A wording is part of the model setup:
+test each model on data the wording was never tuned on.
 
 ---
 

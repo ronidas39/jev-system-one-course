@@ -6,6 +6,10 @@ Created: 2026-10-04
 
 from typesafe_sdk import Choice, Noul, Score, TypeSafeClient
 
+from common import check_key_present
+
+check_key_present()   # loads the key from ../.env, like every other exercise
+
 text = "I was charged twice and I can't log in. Fix this today!"
 with TypeSafeClient(model="jev-1.13.0") as client:   # key from TYPESAFE_API_KEY
     r = client.system_one(

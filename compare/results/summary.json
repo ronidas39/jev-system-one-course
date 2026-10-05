@@ -1,0 +1,1041 @@
+{
+ "tasks": {
+  "tickets": {
+   "task": "tickets",
+   "models": {
+    "jev-1.13.0": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 300,
+      "wall_seconds": 12.58151183299924,
+      "items_per_second": 23.84451121471342
+     },
+     "cost": {
+      "calls": 300,
+      "usd_total": 0.007369152,
+      "usd_per_1000": 0.02456384,
+      "input_tokens_mean": 584.8533333333334,
+      "output_tokens_mean": 82
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 0.3435423959963373,
+      "p90_s": 0.4027640420026728,
+      "min_s": 0.28900570800033165,
+      "max_s": 0.8974897919979412
+     },
+     "accuracy": {
+      "items": 300,
+      "team_right": 282,
+      "team_accuracy": 0.94,
+      "urgency_accuracy": 0.72,
+      "frustration_accuracy": 0.7733333333333333,
+      "auto_routed": 289,
+      "auto_routed_share": 0.9633333333333334,
+      "auto_routed_accuracy": 0.9550173010380623
+     },
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 2.4526600000000003e-05,
+      "split_usd_per_item": 4.98078e-05,
+      "one_call_tokens_per_item": 583.9666666666667,
+      "split_tokens_per_item": 1185.9,
+      "one_call_median_s": 0.3986609999956272,
+      "split_median_s_one_after_another": 0.9938601460016798
+     }
+    },
+    "gpt-6-luna": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 300,
+      "wall_seconds": 50.071049875004974,
+      "items_per_second": 5.991486113211246
+     },
+     "cost": {
+      "calls": 300,
+      "usd_total": 0.015500100000000001,
+      "usd_per_1000": 0.051667000000000005,
+      "input_tokens_mean": 363.30333333333334,
+      "output_tokens_mean": 30.673333333333332
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 1.324787979003304,
+      "p90_s": 1.7558063329997822,
+      "min_s": 0.9330797089933185,
+      "max_s": 2.5195786250042147
+     },
+     "accuracy": {
+      "items": 300,
+      "team_right": 294,
+      "team_accuracy": 0.98,
+      "urgency_accuracy": 0.8033333333333333,
+      "frustration_accuracy": 0.9533333333333334,
+      "auto_routed": 298,
+      "auto_routed_share": 0.9933333333333333,
+      "auto_routed_accuracy": 0.9865771812080537
+     },
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 5.164666666666667e-05,
+      "split_usd_per_item": 8.010666666666668e-05,
+      "one_call_tokens_per_item": 362.8,
+      "split_tokens_per_item": 531.4,
+      "one_call_median_s": 1.3569743750013004,
+      "split_median_s_one_after_another": 3.458859582999139
+     }
+    },
+    "gpt-6.1-sol": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 300,
+      "wall_seconds": 92.84640600000421,
+      "items_per_second": 3.2311428403592317
+     },
+     "cost": {
+      "calls": 300,
+      "usd_total": 0.320382,
+      "usd_per_1000": 1.0679400000000001,
+      "input_tokens_mean": 363.30333333333334,
+      "output_tokens_mean": 34.13333333333333
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 2.527573104500334,
+      "p90_s": 3.362459999996645,
+      "min_s": 1.88139733299613,
+      "max_s": 9.723678542002745
+     },
+     "accuracy": {
+      "items": 300,
+      "team_right": 290,
+      "team_accuracy": 0.9666666666666667,
+      "urgency_accuracy": 0.82,
+      "frustration_accuracy": 0.9433333333333334,
+      "auto_routed": 300,
+      "auto_routed_share": 1.0,
+      "auto_routed_accuracy": 0.9666666666666667
+     },
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 0.0010726,
+      "split_usd_per_item": 0.0017518000000000002,
+      "one_call_tokens_per_item": 362.8,
+      "split_tokens_per_item": 531.4,
+      "one_call_median_s": 2.984748437498638,
+      "split_median_s_one_after_another": 6.4305672500049695
+     }
+    }
+   },
+   "meta": {
+    "accuracy": {
+     "meta": true,
+     "task": "tickets",
+     "protocol": "accuracy",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 300,
+     "rounds": 3,
+     "workers": 8,
+     "started_utc": "2026-10-04T16:32:52+00:00",
+     "finished_utc": "2026-10-04T16:35:27+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "latency": {
+     "meta": true,
+     "task": "tickets",
+     "protocol": "latency",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 40,
+     "rounds": 3,
+     "workers": 8,
+     "started_utc": "2026-10-04T16:43:22+00:00",
+     "finished_utc": "2026-10-04T16:52:36+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "batching": {
+     "meta": true,
+     "task": "tickets",
+     "protocol": "batching",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 30,
+     "rounds": 3,
+     "wording": null,
+     "workers": 8,
+     "started_utc": "2026-10-04T17:00:50+00:00",
+     "finished_utc": "2026-10-04T17:09:10+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    }
+   }
+  },
+  "pairs": {
+   "task": "pairs",
+   "models": {
+    "jev-1.13.0": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1010,
+      "wall_seconds": 42.326917165999475,
+      "items_per_second": 23.861884295493095
+     },
+     "cost": {
+      "calls": 1010,
+      "usd_total": 0.031104444000000002,
+      "usd_per_1000": 0.030796479207920797,
+      "input_tokens_mean": 733.2495049504951,
+      "output_tokens_mean": 51
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 0.3484704164984578,
+      "p90_s": 0.4298415829980513,
+      "min_s": 0.285640667003463,
+      "max_s": 0.9268010839950875
+     },
+     "accuracy": {
+      "items": 1010,
+      "true_duplicates": 473,
+      "merged": 324,
+      "merge_precision": 1.0,
+      "merge_recall": 0.6849894291754757,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 159,
+      "review_share": 0.15742574257425743,
+      "review_that_were_duplicates": 149,
+      "kept_separate": 527,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.8425742574257425
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 324,
+       "precision": 1.0,
+       "recall": 0.6849894291754757
+      },
+      {
+       "threshold": 0.6,
+       "merged": 272,
+       "precision": 1.0,
+       "recall": 0.5750528541226215
+      },
+      {
+       "threshold": 0.7,
+       "merged": 222,
+       "precision": 1.0,
+       "recall": 0.4693446088794926
+      },
+      {
+       "threshold": 0.8,
+       "merged": 169,
+       "precision": 1.0,
+       "recall": 0.3572938689217759
+      },
+      {
+       "threshold": 0.9,
+       "merged": 104,
+       "precision": 1.0,
+       "recall": 0.21987315010570824
+      },
+      {
+       "threshold": 0.95,
+       "merged": 56,
+       "precision": 1.0,
+       "recall": 0.11839323467230443
+      },
+      {
+       "threshold": 0.99,
+       "merged": 24,
+       "precision": 1.0,
+       "recall": 0.0507399577167019
+      }
+     ],
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 3.06908e-05,
+      "split_usd_per_item": 7.619640000000001e-05,
+      "one_call_tokens_per_item": 730.7333333333333,
+      "split_tokens_per_item": 1814.2,
+      "one_call_median_s": 0.37296954149999806,
+      "split_median_s_one_after_another": 1.0101398115000393
+     }
+    },
+    "gpt-6-luna": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1010,
+      "wall_seconds": 160.07126670800062,
+      "items_per_second": 6.309689557479579
+     },
+     "cost": {
+      "calls": 1010,
+      "usd_total": 0.06243870000000001,
+      "usd_per_1000": 0.06182049504950496,
+      "input_tokens_mean": 468.54158415841584,
+      "output_tokens_mean": 29.932673267326734
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 1.2230771664944768,
+      "p90_s": 1.5602165829986916,
+      "min_s": 0.9009129999976722,
+      "max_s": 2.0095967919987743
+     },
+     "accuracy": {
+      "items": 1010,
+      "true_duplicates": 473,
+      "merged": 465,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9830866807610994,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 8,
+      "review_share": 0.007920792079207921,
+      "review_that_were_duplicates": 8,
+      "kept_separate": 537,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.9920792079207921
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 465,
+       "precision": 1.0,
+       "recall": 0.9830866807610994
+      },
+      {
+       "threshold": 0.6,
+       "merged": 465,
+       "precision": 1.0,
+       "recall": 0.9830866807610994
+      },
+      {
+       "threshold": 0.7,
+       "merged": 465,
+       "precision": 1.0,
+       "recall": 0.9830866807610994
+      },
+      {
+       "threshold": 0.8,
+       "merged": 465,
+       "precision": 1.0,
+       "recall": 0.9830866807610994
+      },
+      {
+       "threshold": 0.9,
+       "merged": 463,
+       "precision": 1.0,
+       "recall": 0.9788583509513742
+      },
+      {
+       "threshold": 0.95,
+       "merged": 449,
+       "precision": 1.0,
+       "recall": 0.9492600422832981
+      },
+      {
+       "threshold": 0.99,
+       "merged": 343,
+       "precision": 1.0,
+       "recall": 0.7251585623678647
+      }
+     ],
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 6.170333333333334e-05,
+      "split_usd_per_item": 0.00012321,
+      "one_call_tokens_per_item": 467.3666666666667,
+      "split_tokens_per_item": 977.1,
+      "one_call_median_s": 1.0825776460000327,
+      "split_median_s_one_after_another": 3.132511458499991
+     }
+    },
+    "gpt-6.1-sol": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1010,
+      "wall_seconds": 271.58255199999985,
+      "items_per_second": 3.7189428870231716
+     },
+     "cost": {
+      "calls": 1010,
+      "usd_total": 1.267384,
+      "usd_per_1000": 1.2548356435643564,
+      "input_tokens_mean": 468.54158415841584,
+      "output_tokens_mean": 31.775247524752476
+     },
+     "sequential": {
+      "calls": 120,
+      "median_s": 2.1773989994981093,
+      "p90_s": 2.789765333000105,
+      "min_s": 1.828215208995971,
+      "max_s": 3.5412295829955838
+     },
+     "accuracy": {
+      "items": 1010,
+      "true_duplicates": 473,
+      "merged": 470,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9936575052854123,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 3,
+      "review_share": 0.0029702970297029703,
+      "review_that_were_duplicates": 3,
+      "kept_separate": 537,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.997029702970297
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 470,
+       "precision": 1.0,
+       "recall": 0.9936575052854123
+      },
+      {
+       "threshold": 0.6,
+       "merged": 470,
+       "precision": 1.0,
+       "recall": 0.9936575052854123
+      },
+      {
+       "threshold": 0.7,
+       "merged": 470,
+       "precision": 1.0,
+       "recall": 0.9936575052854123
+      },
+      {
+       "threshold": 0.8,
+       "merged": 470,
+       "precision": 1.0,
+       "recall": 0.9936575052854123
+      },
+      {
+       "threshold": 0.9,
+       "merged": 469,
+       "precision": 1.0,
+       "recall": 0.9915433403805497
+      },
+      {
+       "threshold": 0.95,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9767441860465116
+      },
+      {
+       "threshold": 0.99,
+       "merged": 379,
+       "precision": 1.0,
+       "recall": 0.8012684989429175
+      }
+     ],
+     "batching": {
+      "items": 30,
+      "questions": 3,
+      "one_call_usd_per_item": 0.0012844,
+      "split_usd_per_item": 0.0024971999999999998,
+      "one_call_tokens_per_item": 467.3666666666667,
+      "split_tokens_per_item": 977.1,
+      "one_call_median_s": 2.194121729499983,
+      "split_median_s_one_after_another": 6.693861541500013
+     }
+    }
+   },
+   "meta": {
+    "accuracy": {
+     "meta": true,
+     "task": "pairs",
+     "protocol": "accuracy",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 1010,
+     "rounds": 3,
+     "workers": 8,
+     "started_utc": "2026-10-04T16:35:28+00:00",
+     "finished_utc": "2026-10-04T16:43:22+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "latency": {
+     "meta": true,
+     "task": "pairs",
+     "protocol": "latency",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 40,
+     "rounds": 3,
+     "wording": "v1",
+     "workers": 8,
+     "started_utc": "2026-10-04T16:52:37+00:00",
+     "finished_utc": "2026-10-04T17:00:50+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "batching": {
+     "meta": true,
+     "task": "pairs",
+     "protocol": "batching",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 30,
+     "rounds": 3,
+     "wording": "v1",
+     "workers": 8,
+     "started_utc": "2026-10-05T01:39:04+00:00",
+     "finished_utc": "2026-10-05T01:46:48+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    }
+   }
+  },
+  "pairs-v1-fresh": {
+   "task": "pairs-v1-fresh",
+   "models": {
+    "jev-1.13.0": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 41.544190125000114,
+      "items_per_second": 24.407745028824227
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 0.031304322,
+      "usd_per_1000": 0.030872112426035506,
+      "input_tokens_mean": 735.0502958579882,
+      "output_tokens_mean": 51
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 313,
+      "merge_precision": 1.0,
+      "merge_recall": 0.6760259179265659,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 156,
+      "review_share": 0.15384615384615385,
+      "review_that_were_duplicates": 150,
+      "kept_separate": 545,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.8461538461538461
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 313,
+       "precision": 1.0,
+       "recall": 0.6760259179265659
+      },
+      {
+       "threshold": 0.6,
+       "merged": 276,
+       "precision": 1.0,
+       "recall": 0.5961123110151187
+      },
+      {
+       "threshold": 0.7,
+       "merged": 249,
+       "precision": 1.0,
+       "recall": 0.5377969762419006
+      },
+      {
+       "threshold": 0.8,
+       "merged": 191,
+       "precision": 1.0,
+       "recall": 0.41252699784017277
+      },
+      {
+       "threshold": 0.9,
+       "merged": 133,
+       "precision": 1.0,
+       "recall": 0.28725701943844495
+      },
+      {
+       "threshold": 0.95,
+       "merged": 78,
+       "precision": 1.0,
+       "recall": 0.16846652267818574
+      },
+      {
+       "threshold": 0.99,
+       "merged": 35,
+       "precision": 1.0,
+       "recall": 0.0755939524838013
+      }
+     ]
+    },
+    "gpt-6-luna": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 154.4674943749999,
+      "items_per_second": 6.564487914449611
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 0.0628809,
+      "usd_per_1000": 0.06201272189349113,
+      "input_tokens_mean": 470.4230769230769,
+      "output_tokens_mean": 29.940828402366865
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 458,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9892008639308856,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 6,
+      "review_share": 0.005917159763313609,
+      "review_that_were_duplicates": 5,
+      "kept_separate": 550,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.9940828402366864
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 458,
+       "precision": 1.0,
+       "recall": 0.9892008639308856
+      },
+      {
+       "threshold": 0.6,
+       "merged": 458,
+       "precision": 1.0,
+       "recall": 0.9892008639308856
+      },
+      {
+       "threshold": 0.7,
+       "merged": 458,
+       "precision": 1.0,
+       "recall": 0.9892008639308856
+      },
+      {
+       "threshold": 0.8,
+       "merged": 458,
+       "precision": 1.0,
+       "recall": 0.9892008639308856
+      },
+      {
+       "threshold": 0.9,
+       "merged": 458,
+       "precision": 1.0,
+       "recall": 0.9892008639308856
+      },
+      {
+       "threshold": 0.95,
+       "merged": 443,
+       "precision": 1.0,
+       "recall": 0.9568034557235421
+      },
+      {
+       "threshold": 0.99,
+       "merged": 339,
+       "precision": 1.0,
+       "recall": 0.7321814254859611
+      }
+     ]
+    },
+    "gpt-6.1-sol": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 324.77570283399996,
+      "items_per_second": 3.1221547398768243
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 1.285108,
+      "usd_per_1000": 1.2673648915187374,
+      "input_tokens_mean": 470.4230769230769,
+      "output_tokens_mean": 32.65187376725838
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 463,
+      "merge_precision": 1.0,
+      "merge_recall": 1.0,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 0,
+      "review_share": 0.0,
+      "review_that_were_duplicates": 0,
+      "kept_separate": 551,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 1.0
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 463,
+       "precision": 1.0,
+       "recall": 1.0
+      },
+      {
+       "threshold": 0.6,
+       "merged": 463,
+       "precision": 1.0,
+       "recall": 1.0
+      },
+      {
+       "threshold": 0.7,
+       "merged": 463,
+       "precision": 1.0,
+       "recall": 1.0
+      },
+      {
+       "threshold": 0.8,
+       "merged": 463,
+       "precision": 1.0,
+       "recall": 1.0
+      },
+      {
+       "threshold": 0.9,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.95,
+       "merged": 450,
+       "precision": 1.0,
+       "recall": 0.9719222462203023
+      },
+      {
+       "threshold": 0.99,
+       "merged": 379,
+       "precision": 1.0,
+       "recall": 0.8185745140388769
+      }
+     ]
+    }
+   },
+   "meta": {
+    "accuracy": {
+     "meta": true,
+     "task": "pairs-v1-fresh",
+     "protocol": "accuracy",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 1014,
+     "rounds": 3,
+     "wording": "v1",
+     "workers": 8,
+     "started_utc": "2026-10-05T01:57:06+00:00",
+     "finished_utc": "2026-10-05T02:05:47+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "latency": {},
+    "batching": {}
+   }
+  },
+  "pairs-v2-fresh": {
+   "task": "pairs-v2-fresh",
+   "models": {
+    "jev-1.13.0": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 41.75236700000005,
+      "items_per_second": 24.28604826164703
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 0.033561486,
+      "usd_per_1000": 0.033098112426035504,
+      "input_tokens_mean": 788.0502958579882,
+      "output_tokens_mean": 51
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 443,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9568034557235421,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 28,
+      "review_share": 0.027613412228796843,
+      "review_that_were_duplicates": 20,
+      "kept_separate": 543,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.9723865877712031
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 444,
+       "precision": 1.0,
+       "recall": 0.958963282937365
+      },
+      {
+       "threshold": 0.6,
+       "merged": 420,
+       "precision": 1.0,
+       "recall": 0.9071274298056156
+      },
+      {
+       "threshold": 0.7,
+       "merged": 381,
+       "precision": 1.0,
+       "recall": 0.8228941684665226
+      },
+      {
+       "threshold": 0.8,
+       "merged": 337,
+       "precision": 1.0,
+       "recall": 0.7278617710583153
+      },
+      {
+       "threshold": 0.9,
+       "merged": 288,
+       "precision": 1.0,
+       "recall": 0.6220302375809935
+      },
+      {
+       "threshold": 0.95,
+       "merged": 232,
+       "precision": 1.0,
+       "recall": 0.5010799136069114
+      },
+      {
+       "threshold": 0.99,
+       "merged": 101,
+       "precision": 1.0,
+       "recall": 0.21814254859611232
+      }
+     ]
+    },
+    "gpt-6-luna": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 146.18297566599995,
+      "items_per_second": 6.936512240090087
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 0.0681477,
+      "usd_per_1000": 0.06720680473372782,
+      "input_tokens_mean": 522.4230769230769,
+      "output_tokens_mean": 29.928994082840237
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 427,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9222462203023758,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 40,
+      "review_share": 0.03944773175542406,
+      "review_that_were_duplicates": 36,
+      "kept_separate": 547,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.960552268244576
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 427,
+       "precision": 1.0,
+       "recall": 0.9222462203023758
+      },
+      {
+       "threshold": 0.6,
+       "merged": 427,
+       "precision": 1.0,
+       "recall": 0.9222462203023758
+      },
+      {
+       "threshold": 0.7,
+       "merged": 427,
+       "precision": 1.0,
+       "recall": 0.9222462203023758
+      },
+      {
+       "threshold": 0.8,
+       "merged": 427,
+       "precision": 1.0,
+       "recall": 0.9222462203023758
+      },
+      {
+       "threshold": 0.9,
+       "merged": 427,
+       "precision": 1.0,
+       "recall": 0.9222462203023758
+      },
+      {
+       "threshold": 0.95,
+       "merged": 422,
+       "precision": 1.0,
+       "recall": 0.9114470842332614
+      },
+      {
+       "threshold": 0.99,
+       "merged": 347,
+       "precision": 1.0,
+       "recall": 0.7494600431965442
+      }
+     ]
+    },
+    "gpt-6.1-sol": {
+     "failed_calls": 0,
+     "parallel": {
+      "workers": 8,
+      "items": 1014,
+      "wall_seconds": 322.978027667,
+      "items_per_second": 3.1395324546518824
+     },
+     "cost": {
+      "calls": 1014,
+      "usd_total": 1.381864,
+      "usd_per_1000": 1.362785009861933,
+      "input_tokens_mean": 522.4230769230769,
+      "output_tokens_mean": 31.79388560157791
+     },
+     "accuracy": {
+      "items": 1014,
+      "true_duplicates": 463,
+      "merged": 462,
+      "merge_precision": 1.0,
+      "merge_recall": 0.9978401727861771,
+      "wrong_merges": 0,
+      "wrong_merges_by_kind": {},
+      "sent_to_person": 1,
+      "review_share": 0.0009861932938856016,
+      "review_that_were_duplicates": 1,
+      "kept_separate": 551,
+      "separate_precision": 1.0,
+      "duplicates_wrongly_kept_separate": 0,
+      "decided_automatically_right": 0.9990138067061144
+     },
+     "threshold_sweep": [
+      {
+       "threshold": 0.5,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.6,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.7,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.8,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.9,
+       "merged": 462,
+       "precision": 1.0,
+       "recall": 0.9978401727861771
+      },
+      {
+       "threshold": 0.95,
+       "merged": 461,
+       "precision": 1.0,
+       "recall": 0.9956803455723542
+      },
+      {
+       "threshold": 0.99,
+       "merged": 399,
+       "precision": 1.0,
+       "recall": 0.8617710583153347
+      }
+     ]
+    }
+   },
+   "meta": {
+    "accuracy": {
+     "meta": true,
+     "task": "pairs-v2-fresh",
+     "protocol": "accuracy",
+     "models": [
+      "jev-1.13.0",
+      "gpt-6-luna",
+      "gpt-6.1-sol"
+     ],
+     "items": 1014,
+     "rounds": 3,
+     "wording": "v2",
+     "workers": 8,
+     "started_utc": "2026-10-05T01:46:48+00:00",
+     "finished_utc": "2026-10-05T01:55:19+00:00",
+     "machine": "Darwin arm64, Python 3.13.15",
+     "prices_read_on": "2026-10-04"
+    },
+    "latency": {},
+    "batching": {}
+   }
+  }
+ }
+}

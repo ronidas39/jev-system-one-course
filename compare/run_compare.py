@@ -78,6 +78,13 @@ TASKS: dict[str, dict[str, Any]] = {
         "from_jev": pair_from_jev, "from_openai": pair_from_openai,
         "confidence_field": {"link": "link_confidence"},
     },
+    "pairs-v1-fresh": {
+        "file": ROOT / "capstone/out/candidate_pairs-fresh.jsonl", "id": "pair_id",
+        "wording": "v1", "questions": pair_questions("v1"), "prompt": pair_system_prompt("v1"),
+        "schema": PAIR_SCHEMA, "state": pair_state, "user": pair_user_message,
+        "from_jev": pair_from_jev, "from_openai": pair_from_openai,
+        "confidence_field": {"link": "link_confidence"},
+    },
     "pairs-v2-fresh": {
         "file": ROOT / "capstone/out/candidate_pairs-fresh.jsonl", "id": "pair_id",
         "wording": "v2", "questions": pair_questions("v2"), "prompt": pair_system_prompt("v2"),

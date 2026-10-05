@@ -168,7 +168,9 @@ def main() -> None:
     print(f"person nodes before: {people_before}   after: {people_after}")
     print(f"company nodes that wrongly mix two real companies: {mixed}")
     print(f"real companies still split over more than one node: {still_split}")
-    print(f"pairs waiting for a person: {len(checks)}")
+    sent = sum(d["action"] == "person_checks" for d in decisions)
+    print(f"pairs sent to a person: {sent}; of those, {sent - len(checks)} were already joined "
+          f"through other merges, so {len(checks)} still wait for a person")
     print("wrote capstone/out/graph_before.html, graph_after.html, graph_after.graphml")
 
 

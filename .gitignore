@@ -10,3 +10,4 @@ __pycache__/
 # per-run spend logs
 spend*.json
 .DS_Store
+handson/outputs/

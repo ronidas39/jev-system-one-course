@@ -45,6 +45,7 @@ with TypeSafeClient(model="jev-1.13.0") as client:  # pinned, so results stay co
         log_call("11_smart_inbox.py", response.model, response.usage.input_tokens,
                  response.usage.output_tokens, seconds, note=f"ticket {ticket['id']}")
 
+Path("outputs").mkdir(exist_ok=True)
 Path("outputs/11_smart_inbox_results.json").write_text(json.dumps(rows, indent=1))
 
 print(f"{'id':>2} {'gold team':<10} {'Jev team':<10} {'conf':>5} {'route':<8} "
