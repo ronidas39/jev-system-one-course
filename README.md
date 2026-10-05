@@ -109,7 +109,7 @@ tuned wording does on records it never saw, run the **test set**:
 ```bash
 python data/make_companies.py --seed 20261007 --out companies-fresh
 python capstone/step1_block.py --data companies-fresh
-python capstone/step2_decide.py --pairs capstone/out/candidate_pairs-fresh.jsonl
+python capstone/step2_decide.py --data companies-fresh
 python capstone/step3_graph.py --data companies-fresh --focus orchid
 ```
 

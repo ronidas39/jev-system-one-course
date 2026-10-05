@@ -12,6 +12,7 @@ Eight calls run at the same time, so 1,010 pairs take seconds, not minutes.
     python capstone/step2_decide.py                      # Jev, wording v2
     python capstone/step2_decide.py --wording v1         # the first wording
     python capstone/step2_decide.py --model gpt-6-luna   # the same job on an OpenAI model
+    python capstone/step2_decide.py --data companies-fresh   # the test set
 
 Author: Roni Das
 Created: 2026-10-04
@@ -64,8 +65,14 @@ def main() -> None:
     parser.add_argument("--model", default=JEV_MODEL)
     parser.add_argument("--wording", choices=["v1", "v2"], default="v2",
                         help="which wording of the middle level to use (see jevcourse/tasks.py)")
-    parser.add_argument("--pairs", default="capstone/out/candidate_pairs.jsonl")
+    parser.add_argument("--data", default="companies",
+                        help="companies (the training set) or companies-fresh (the test set)")
+    parser.add_argument("--pairs", default="",
+                        help="a candidate-pairs file; by default the one step 1 wrote for --data")
     args = parser.parse_args()
+    if not args.pairs:
+        tag = "" if args.data == "companies" else "-" + args.data.removeprefix("companies-")
+        args.pairs = f"capstone/out/candidate_pairs{tag}.jsonl"
     pairs = [json.loads(line) for line in (ROOT / args.pairs).read_text().splitlines()]
     start = time.perf_counter()
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
