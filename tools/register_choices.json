@@ -2154,6 +2154,36 @@
   "usd": 6.123600000000001e-05
  },
  {
+  "id": "p08-get-the-code",
+  "part": 8,
+  "title": "Get the code and your keys",
+  "jev_pick": "typographic_list",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "typographic_list",
+    0.97
+   ],
+   [
+    "real_screenshot",
+    0.03
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.4,
+  "usd": 6.5562e-05
+ },
+ {
   "id": "p08-first-python",
   "part": 8,
   "title": "Your first call, with Python",
@@ -2243,6 +2273,37 @@
   "reasons": [],
   "seconds": 0.367,
   "usd": 6.174e-05
+ },
+ {
+  "id": "p09-at-a-glance",
+  "part": 9,
+  "title": "Speed, cost and tokens at a glance",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.76,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.78
+   ],
+   [
+    "chart",
+    0.22
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.346,
+  "usd": 6.7284e-05
  },
  {
   "id": "p09-answers-move",
