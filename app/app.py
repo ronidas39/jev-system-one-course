@@ -68,7 +68,7 @@ def safe(fn, *args):
     """Run a call; show an API error on the page instead of crashing."""
     try:
         return fn(*args)
-    except Exception as error:  # noqa: BLE001  any API failure is shown, never hidden
+    except (Exception, SystemExit) as error:  # noqa: BLE001  a missing key raises SystemExit
         st.error(f"The call failed: {type(error).__name__}: {str(error)[:300]}")
         return None
 
@@ -123,7 +123,8 @@ with tab2:
     names = sorted(p.stem for p in EGGS.glob("*.jpg"))
     pick = st.selectbox("Egg photo (CC0 and public domain, see decisions/eggs/CREDITS.md)", names,
                         index=names.index("tray-06"), key="c_pick")
-    upload = st.file_uploader("Or upload your own JPEG or PNG", type=["jpg", "jpeg", "png"], key="c_up")
+    upload = st.file_uploader("Or upload your own JPEG or PNG (it is sent to OpenAI when you click Ask)",
+                              type=["jpg", "jpeg", "png"], key="c_up")
     if upload:
         kind = "png" if upload.name.lower().endswith(".png") else "jpeg"
         import base64
@@ -139,7 +140,7 @@ with tab2:
             {"type": "input_text", "text": "One egg from a grading line."},
             {"type": "input_image", "image_url": url}]}], EGG_QUESTIONS[0])
         st.session_state["c_src"] = source
-    low, high = st.slider("Score = P(not clean) = 1 - P(clean). Pass below, reject above:",
+    low, high = st.slider("Not clean = 1 - P(clean). Pass below the left handle, reject above the right:",
                           0.0, 1.0, (0.30, 0.70), 0.05, key="c_cut")
     r = st.session_state.get("c")
     if r:
@@ -149,10 +150,10 @@ with tab2:
         else:
             probs = {x["value"]: x["probability"] for x in r["answer"]["probabilities"]}
             bars(probs)
-            score = 1.0 - probs.get("clean", 0.0)
-            verdict = ("PASS" if score < low else "REJECT" if score > high
+            not_clean = 1.0 - probs.get("clean", 0.0)
+            verdict = ("PASS" if not_clean < low else "REJECT" if not_clean > high
                        else "SEND TO A PERSON")
-            st.markdown(f"**{verdict}**: score {score:.2f}. Pass below {low:.2f}, "
+            st.markdown(f"**{verdict}**: not clean {not_clean:.2f}. Pass below {low:.2f}, "
                         f"reject above {high:.2f}, a person checks the band in between.")
         footer(r)
 

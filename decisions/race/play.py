@@ -6,7 +6,9 @@ lane 1, lane 2 or lane 3. Our code then decides:
   - the top lane's probability is at or above the cut-off -> drive into that lane
     (if that lane has a barrier or cone at 20 m, that is a crash)
   - below the cut-off, or a refusal                       -> slow down and stay
-    (slowing down never crashes in this game, but it costs time)
+    (in this toy, slowing down never crashes, but it costs time; if the lane we
+    stay in has something 20 m ahead, we count it as a "close call", because
+    a real car would still be in danger there)
 
 Players (all on the same seeded road):
     picture   a picture of the road, drawn with Pillow, sent to the Decisions API
@@ -99,7 +101,7 @@ def main() -> None:
     road = make_road(args.seed, args.steps)
     out = HERE.parent / "results" / "race" / args.run
     out.mkdir(parents=True, exist_ok=True)
-    clip = out / f"clip-seed{args.seed}.mp4"
+    clip = out / f"clip-seed{args.seed}-{args.steps}steps.mp4"
     if args.player.startswith("clip") and not clip.exists():
         make_clip(road, args.steps + 1, clip)
         print(f"made the clip {clip.relative_to(HERE.parent)} ({(args.steps + 1) * SUB} frames)")
@@ -140,6 +142,8 @@ def main() -> None:
             lane = int(top[-1])
             action = "CRASH" if lane in blocked else f"drive lane {lane}"
             car = lane
+        elif car in blocked:
+            action = "slow down, close call"
         else:
             action = "slow down"
         rows.append({"step": step, "probs": probs, "action": action, "car_lane": car,
@@ -153,11 +157,12 @@ def main() -> None:
     (out / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in [meta, *rows]))
     write_replay(road, rows, meta, out / f"{name}.html")
     crashes = sum(r["action"] == "CRASH" for r in rows)
-    slow = sum(r["action"] == "slow down" for r in rows)
+    slow = sum(r["action"].startswith("slow down") for r in rows)
+    close = sum(r["action"] == "slow down, close call" for r in rows)
     ms = statistics.median(r["seconds"] for r in rows) * 1000
     tok = sum(r["tokens"] for r in rows)
     usd = sum(r["usd"] for r in rows)
-    print(f"\n{args.player}: {crashes} crashes, {slow} slow-downs, "
+    print(f"\n{args.player}: {crashes} crashes, {slow} slow-downs ({close} close calls), "
           f"{len(rows) - crashes - slow} clean moves in {len(rows)} steps")
     print(f"median {ms:.0f} ms per call, {tok} input tokens, ${usd:.6f} "
           f"(${usd / len(rows) * 1000:.4f} per 1,000 steps)")

@@ -22,16 +22,19 @@ parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
 parser.add_argument("--run", default="mine")
 args = parser.parse_args()
 folder = HERE.parent / "results" / "race" / args.run
-print(f"{'player':<27} {'crashes':>7} {'slow':>5} {'moves':>6} {'median ms':>9} "
+print(f"{'player':<27} {'crashes':>7} {'slow':>5} {'close':>5} {'moves':>6} {'median ms':>9} "
       f"{'tokens/step':>11} {'$ per 1,000':>11}")
 for name in ORDER:
     for path in sorted(folder.glob(f"{name}-seed*.jsonl")):
         meta, *rows = [json.loads(line) for line in path.read_text().splitlines()]
         crashes = sum(r["action"] == "CRASH" for r in rows)
-        slow = sum(r["action"] == "slow down" for r in rows)
+        slow = sum(r["action"].startswith("slow down") for r in rows)
+        # a close call: slowed down but stayed in a lane with something 20 m ahead
+        close = sum(r["action"].startswith("slow down") and r["car_lane"] in r["blocked_20m"]
+                    for r in rows)
         ms = statistics.median(r["seconds"] for r in rows) * 1000
         tokens = sum(r["tokens"] for r in rows) / len(rows)
         usd = sum(r["usd"] for r in rows) / len(rows) * 1000
-        print(f"{SAYS[name]:<27} {crashes:>7} {slow:>5} {len(rows) - crashes - slow:>6} "
+        print(f"{SAYS[name]:<27} {crashes:>7} {slow:>5} {close:>5} {len(rows) - crashes - slow:>6} "
               f"{ms:>9.0f} {tokens:>11.0f} {usd:>11.4f}")
 print(f"\nseed {meta['seed']}, {meta['steps']} steps each, cut-off {meta['cutoff']}")

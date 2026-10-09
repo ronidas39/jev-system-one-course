@@ -54,6 +54,8 @@ def decide(model: str, wording: str, pair: dict[str, Any]) -> dict[str, Any]:
             return {**decide_once(model, wording, pair), "attempts": attempt}
         except Exception as error:  # noqa: BLE001  timeouts, rate limits, server errors
             last = f"{type(error).__name__}: {str(error)[:200]}"
+            if any(w in type(error).__name__ for w in ("Authentication", "Permission", "BadRequest")):
+                raise  # a wrong key or a broken request will not fix itself; stop and say so
             if attempt < ATTEMPTS:
                 time.sleep(2 ** attempt)
     print(f"  pair {pair['pair_id']}: {ATTEMPTS} tries failed ({last}); a person checks it")

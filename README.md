@@ -42,7 +42,7 @@ https://docs.typesafe.ai.
 | git | to copy (clone) this repository. Check with `git --version` |
 | An editor | the course uses VS Code |
 | A TypeSafe API key | from https://console.typesafe.ai/keys |
-| An OpenAI API key | for Parts 11 to 14 (`decisions/`, `compare_decisions/`), and for `compare/`, use case 2 and hands-on script 12. Your OpenAI account needs a little credit |
+| An OpenAI API key | for Parts 11 to 16 (`decisions/`, `compare_decisions/`, `app/`), and for `compare/`, use case 2 and hands-on script 12. Your OpenAI account needs a little credit |
 
 An API key is a secret password for a program. It lets your code use the service.
 

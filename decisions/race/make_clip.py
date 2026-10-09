@@ -29,7 +29,7 @@ parser.add_argument("--run", default="mine")
 args = parser.parse_args()
 
 out = HERE.parent / "results" / "race" / args.run
-clip = out / f"clip-seed{args.seed}.mp4"
+clip = out / f"clip-seed{args.seed}-{args.steps}steps.mp4"
 if not clip.exists():
     make_clip(make_road(args.seed, args.steps + 1), args.steps + 1, clip)
 info = subprocess.run([ffmpeg(), "-i", str(clip)], capture_output=True, text=True).stderr
