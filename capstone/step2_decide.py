@@ -43,7 +43,26 @@ WORKERS = 8
 _local = threading.local()
 
 
+ATTEMPTS = 3
+"""A batch job should not die on one slow call. Try up to 3 times, waiting 2 s, then 4 s."""
+
+
 def decide(model: str, wording: str, pair: dict[str, Any]) -> dict[str, Any]:
+    """One pair, with retries. If every try fails, the pair goes to a person."""
+    for attempt in range(1, ATTEMPTS + 1):
+        try:
+            return {**decide_once(model, wording, pair), "attempts": attempt}
+        except Exception as error:  # noqa: BLE001  timeouts, rate limits, server errors
+            last = f"{type(error).__name__}: {str(error)[:200]}"
+            if attempt < ATTEMPTS:
+                time.sleep(2 ** attempt)
+    print(f"  pair {pair['pair_id']}: {ATTEMPTS} tries failed ({last}); a person checks it")
+    return {"pair_id": pair["pair_id"], "a": pair["a"]["record_id"], "b": pair["b"]["record_id"],
+            "action": "person_checks", "error": last, "attempts": ATTEMPTS,
+            "seconds": 0.0, "input_tokens": 0, "usd": 0.0}
+
+
+def decide_once(model: str, wording: str, pair: dict[str, Any]) -> dict[str, Any]:
     """One call about one pair, turned into an action."""
     if not hasattr(_local, "client"):
         _local.client = make_jev_client() if model == JEV_MODEL else make_openai_client()

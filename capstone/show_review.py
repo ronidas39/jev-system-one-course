@@ -53,7 +53,7 @@ def main() -> None:
             parent[find(d["a"])] = find(d["b"])
 
     review = sorted((d for d in decisions if d["action"] == "person_checks"),
-                    key=lambda d: d["link_score"], reverse=True)
+                    key=lambda d: d.get("link_score", -1.0), reverse=True)
     joined = sum(find(d["a"]) == find(d["b"]) for d in review)
     print(f"{len(review)} pairs were sent to a person; {joined} of them were already joined "
           f"through other merges, so {len(review) - joined} still wait")
@@ -67,7 +67,8 @@ def main() -> None:
         a, b = records[d["a"]], records[d["b"]]
         note = "   (already joined through other merges)" if find(d["a"]) == find(d["b"]) else ""
         answer = "same company" if truth[d["a"]] == truth[d["b"]] else "different companies"
-        print(f"link score {d['link_score']:.2f}   answer key: {answer}{note}")
+        score = f"{d['link_score']:.2f}" if "link_score" in d else "none (the call failed)"
+        print(f"link score {score}   answer key: {answer}{note}")
         for r in (a, b):
             print(f"  {r['source']:<8} {r['name']:<42} {r['address']}, {r['country']}")
             print(f"  {'':<8} phone {r['phone'] or '-':<18} website {r['website'] or '-'}")
