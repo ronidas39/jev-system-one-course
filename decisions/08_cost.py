@@ -10,7 +10,6 @@ Created: 2026-10-09
 """
 
 import json
-import statistics
 
 from jevcourse.tasks import FRUSTRATION_LEVELS, TEAMS, URGENCY_LEVELS
 
@@ -45,6 +44,6 @@ total = sum(tokens)
 print()
 print(f"price: ${USD_PER_MILLION_INPUT_TOKENS} per million input tokens (read {PRICE_READ_ON})")
 print(f"20 tickets: {total} input tokens, ${cost_usd(total):.6f}")
-print(f"median tokens per ticket: {statistics.median(tokens):.0f}")
+print(f"average tokens per ticket: {total / len(tokens):.1f}")
 print(f"so 1,000 tickets cost about ${cost_usd(total) / 20 * 1000:.4f}, "
       f"and one million about ${cost_usd(total) / 20 * 1_000_000:.2f}")

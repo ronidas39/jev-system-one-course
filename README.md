@@ -36,7 +36,7 @@ https://docs.typesafe.ai.
 
 | | |
 |---|---|
-| Python | 3.10 or newer. Check with `python3 --version` (Windows: `py --version`) |
+| Python | 3.12 or newer (networkx 3.7 needs 3.12). I ran the course on 3.13, and checked a few scripts on 3.12. Check with `python3 --version` (Windows: `py --version`) |
 | git | to copy (clone) this repository. Check with `git --version` |
 | An editor | the course uses VS Code |
 | A TypeSafe API key | from https://console.typesafe.ai/keys |

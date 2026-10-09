@@ -29,7 +29,7 @@ import threading
 import time
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -229,7 +229,7 @@ def main() -> None:
     if args.protocol != "accuracy":
         items = random.Random(SAMPLE_SEED).sample(items, min(args.sample, len(items)))
     models = args.models.split(",")
-    started = datetime.now(UTC)
+    started = datetime.now(timezone.utc)
     print(f"{args.task} / {args.protocol}: {len(items)} items, models {models}")
 
     if args.protocol == "accuracy":
@@ -244,7 +244,7 @@ def main() -> None:
     meta = {"meta": True, "task": args.task, "protocol": args.protocol, "models": models,
             "items": len(items), "rounds": args.rounds, "wording": task.get("wording"), "workers": args.workers,
             "started_utc": started.isoformat(timespec="seconds"),
-            "finished_utc": datetime.now(UTC).isoformat(timespec="seconds"),
+            "finished_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "machine": f"{platform.system()} {platform.machine()}, Python "
                        f"{platform.python_version()}",
             "prices_read_on": PRICES_READ_ON}

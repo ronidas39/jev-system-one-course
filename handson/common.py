@@ -12,7 +12,7 @@ Created: 2026-10-04
 import json
 import os
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -63,7 +63,7 @@ def log_call(script: str, model: str, input_tokens: int | None, output_tokens: i
     log_file = Path(path)
     rows: list[dict[str, Any]] = json.loads(log_file.read_text()) if log_file.exists() else []
     rows.append({
-        "time_utc": datetime.now(UTC).isoformat(timespec="seconds"),
+        "time_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "script": script,
         "provider": provider,
         "model": model,

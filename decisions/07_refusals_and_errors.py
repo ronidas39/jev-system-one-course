@@ -6,6 +6,9 @@ support tool has no business guessing. The API may refuse that one question.
 The other answers still come back. Our code sends a refusal to a person,
 never to a default answer.
 
+Then the same health question again, in its own request, but with a fair
+way out: an "other" option. Watch whether it is still refused.
+
 Part 2, errors. A broken request fails as a whole, with an HTTP error code.
 We cause two on purpose and print what they look like.
 
@@ -60,6 +63,15 @@ for answer in decision.answers:
     show(answer.name, route(answer))
 show("input tokens", decision.usage.input_tokens)
 show("cost (US$)", f"{cost_usd(decision.usage.input_tokens):.8f}")
+
+print()
+print("The same health question, now with an 'other' option")
+with_other = dict(QUESTIONS[2])
+with_other["choices"] = [*QUESTIONS[2]["choices"],
+                         {"value": "other", "description": "Something else, or not stated"}]
+again, _ = ask(client, input=MESSAGE, questions=[with_other],
+               script="07_refusals_and_errors.py", note="refusal demo, with other")
+show("illness", route(again.answers[0]))
 
 print()
 print("Part 2 · errors")

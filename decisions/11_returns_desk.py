@@ -18,6 +18,7 @@ The claims are in returns_claims.json. They are made up for this course.
 
     python 11_returns_desk.py              # message and photo in one call
     python 11_returns_desk.py --separate   # the photo question gets the photo only
+    python 11_returns_desk.py --one-question  # my first design: one combined question
 
 Why --separate: in one call, the photo question also sees the message. A
 message that says "cracked" can pull the photo answer toward "broken". With
@@ -77,6 +78,8 @@ def decide(answers: dict) -> tuple[str, float | None]:
 parser = argparse.ArgumentParser(description="A refund desk that reads text and a photo.")
 parser.add_argument("--separate", action="store_true",
                     help="ask about the photo in its own call, without the message")
+parser.add_argument("--one-question", action="store_true",
+                    help="my first design: one predicate that asks if the photo shows the claim")
 args = parser.parse_args()
 
 
@@ -89,12 +92,37 @@ def photo_part(claim: dict) -> dict:
 
 
 claims = json.loads((HERE / "returns_claims.json").read_text())["claims"]
+
+ONE_QUESTION = [
+    QUESTIONS[0],
+    {"type": "predicate", "name": "photo_shows_claim",
+     "instructions": "Does the photo clearly show the problem the customer describes in the "
+     "message?"},
+]
+
+
+def decide_one_question(answers: dict) -> tuple[str, float | None]:
+    """My first design: one combined question decides."""
+    if any(a.type == "refusal" for a in answers.values()):
+        return "person (a question was refused)", None
+    if answers["claim"].choice not in ("broken", "dirty"):
+        return "person (not a damage claim)", None
+    p = answers["photo_shows_claim"].probability
+    if p >= AUTO_REFUND_AT:
+        return "REFUND automatically", p
+    return "person (photo does not clearly agree)", p
 start = time.perf_counter()
 tokens = 0
 actions = []
 print(f"{'id':<4} {'photo file':<10} {'message says':<12} {'photo shows':<12} {'P(agree)':>8}  action")
 for claim in claims:
-    if args.separate:
+    if args.one_question:
+        decision, _ = ask(client, input=[{"role": "user", "content": [message_part(claim),
+                                                                      photo_part(claim)]}],
+                          questions=ONE_QUESTION, script="11_returns_desk.py", note=claim["id"])
+        tokens += decision.usage.input_tokens
+        answers = {a.name: a for a in decision.answers}
+    elif args.separate:
         first, _ = ask(client, input=claim["message"], questions=QUESTIONS[:1],
                        script="11_returns_desk.py", note=claim["id"] + " message")
         second, _ = ask(client, input=[{"role": "user", "content": [photo_part(claim)]}],
@@ -108,17 +136,22 @@ for claim in claims:
                           questions=QUESTIONS, script="11_returns_desk.py", note=claim["id"])
         tokens += decision.usage.input_tokens
         answers = {a.name: a for a in decision.answers}
-    action, agree = decide(answers)
+    if args.one_question:
+        action, agree = decide_one_question(answers)
+        shows = "(one question)"
+    else:
+        action, agree = decide(answers)
+        shows = answers["photo"].choice if answers["photo"].type == "choice" else "refused"
     actions.append(action)
     said = answers["claim"].choice if answers["claim"].type == "choice" else "refused"
-    shows = answers["photo"].choice if answers["photo"].type == "choice" else "refused"
     p = "-" if agree is None else f"{agree:.2f}"
     print(f"{claim['id']:<4} {claim['photo']:<10} {said:<12} {shows:<12} {p:>8}  {action}")
 
 seconds = time.perf_counter() - start
 auto = sum(a.startswith("REFUND") for a in actions)
 print()
-mode = "two calls per claim (photo on its own)" if args.separate else "one call per claim"
+mode = ("one combined question per claim" if args.one_question
+        else "two calls per claim (photo on its own)" if args.separate else "one call per claim")
 print(f"{mode}. {len(claims)} claims in {seconds:.1f} s: {auto} refunded automatically, "
       f"{len(claims) - auto} sent to a person")
 print(f"input tokens {tokens}, cost ${cost_usd(tokens):.6f} "

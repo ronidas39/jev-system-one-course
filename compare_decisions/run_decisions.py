@@ -40,7 +40,7 @@ import random
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -220,7 +220,7 @@ def main() -> None:
     tickets = [json.loads(line) for line in TICKETS.read_text().splitlines()]
     if args.protocol in ("latency", "batching"):
         tickets = random.Random(SAMPLE_SEED).sample(tickets, args.sample)
-    started = datetime.now(UTC)
+    started = datetime.now(timezone.utc)
     print(f"{args.protocol}: {len(tickets)} tickets, APIs {APIS}")
     if args.protocol == "accuracy":
         rows = run_accuracy(tickets, args.workers)
@@ -236,7 +236,7 @@ def main() -> None:
     meta = {"meta": True, "protocol": args.protocol, "apis": APIS, "items": len(tickets),
             "rounds": args.rounds, "workers": args.workers, "calls": _calls,
             "started_utc": started.isoformat(timespec="seconds"),
-            "finished_utc": datetime.now(UTC).isoformat(timespec="seconds"),
+            "finished_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "machine": f"{platform.system()} {platform.machine()}, Python "
                        f"{platform.python_version()}",
             "prices_read_on": PRICES_READ_ON,

@@ -17,7 +17,7 @@ import base64
 import json
 import os
 import time
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -48,7 +48,12 @@ def check_key_present() -> None:
 
 
 def make_client() -> Any:
-    """An OpenAI client with retries off, so every time we print is one real call."""
+    """An OpenAI client with retries off, so every time we print is one real call.
+
+    Retries are off only so the course can time single calls honestly. In a real
+    service, turn them back on (the SDK's default is 2 retries) and handle
+    rate-limit errors (HTTP 429) by waiting and trying again.
+    """
     from openai import OpenAI
     return OpenAI(max_retries=0, timeout=60.0)
 
@@ -64,7 +69,7 @@ def ask(client: Any, input: Any, questions: list[dict[str, Any]],
     start = time.perf_counter()
     decision = client.decisions.create(model=MODEL, input=input, questions=questions)
     seconds = time.perf_counter() - start
-    log_call(script, decision.usage.input_tokens, seconds, note)
+    log_call(script, decision.usage.input_tokens, seconds, note, model=decision.model)
     return decision, seconds
 
 
@@ -95,7 +100,7 @@ def image_data_url(path: Path) -> str:
 
 def log_call(script: str, input_tokens: int | None, seconds: float, note: str = "",
              provider: str = "openai-decisions", output_tokens: int = 0,
-             usd: float | None = None) -> None:
+             usd: float | None = None, model: str = MODEL) -> None:
     """Add one call's cost to the spend log named by JEV_SPEND_LOG, if it is set."""
     path = os.environ.get(SPEND_LOG_ENV)
     if not path:
@@ -103,10 +108,10 @@ def log_call(script: str, input_tokens: int | None, seconds: float, note: str = 
     log_file = Path(path)
     rows: list[dict[str, Any]] = json.loads(log_file.read_text()) if log_file.exists() else []
     rows.append({
-        "time_utc": datetime.now(UTC).isoformat(timespec="seconds"),
+        "time_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "script": script,
         "provider": provider,
-        "model": MODEL,
+        "model": model,
         "input_tokens": input_tokens,
         "output_tokens": output_tokens,
         "seconds": round(seconds, 3),

@@ -2,7 +2,7 @@
 name = "jevcourse"
 version = "1.0.0"
 description = "Helpers for the Jev System One course: prices, timed calls, shared tasks."
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 
 [tool.setuptools]
 packages = ["jevcourse"]

@@ -13,8 +13,9 @@ Prices, read 9 October 2026:
 - Decisions API, gpt-6-luna: $0.10 per million input tokens, no output charge.
   https://developers.openai.com/api/docs/guides/decisions
 
-The Decisions API was called with plain HTTP through the OpenAI client (`client.post`), because
-the pinned `openai` 3.24.0 has no `decisions` method yet (the guide asks for Python SDK 3.26.0).
+The Decisions API is called with plain HTTP through the OpenAI client (`client.post`). This file
+was written when the course pinned `openai` 3.24.0, which had no `decisions` method. The course now
+pins 3.26.1; `decisions/` uses `client.decisions.create`. Both send the same request.
 
 Note on tokens: the input `"."` with the three questions billed 270 tokens on Decisions, but the
 fitted fixed part on real tickets is about 466. So the per-ticket text tokens are fitted from all
