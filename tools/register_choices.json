@@ -3726,6 +3726,37 @@
   "usd": 6.1908e-05
  },
  {
+  "id": "p11-both-together-c",
+  "part": 15,
+  "title": "Using both: the cheap check first",
+  "jev_pick": "flowchart",
+  "confidence": 0.76,
+  "top3": [
+   [
+    "flowchart",
+    0.78
+   ],
+   [
+    "block_diagram",
+    0.22
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "isometric_3d"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.476,
+  "usd": 6.3588e-05
+ },
+ {
   "id": "d14-takeaways",
   "part": 14,
   "title": "Five things to remember",

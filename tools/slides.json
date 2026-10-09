@@ -1295,6 +1295,22 @@
    "shapes": [
     "S2 mechanism",
     "S5 topology"
+   ],
+   "kits": [
+    "jev"
+   ]
+  },
+  {
+   "id": "p11-both-together-c",
+   "part": 15,
+   "title": "Using both: the cheap check first",
+   "brief": "A cascade, as in Part 6: either Jev (TypeSafe) or the Decisions API (OpenAI) can sit in front, each named in words with its logo, neither shown as the only front tool. High confidence: your code acts. Low confidence: the request moves on, to a larger model or to a person.",
+   "shapes": [
+    "S2 mechanism",
+    "S5 topology"
+   ],
+   "kits": [
+    "combined"
    ]
   },
   {
