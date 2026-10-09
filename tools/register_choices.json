@@ -1449,23 +1449,54 @@
   "usd": 6.195e-05
  },
  {
+  "id": "p07-decisions",
+  "part": 7,
+  "title": "A new option from OpenAI: the Decisions API",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.92,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.93
+   ],
+   [
+    "chart",
+    0.07
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.434,
+  "usd": 6.4554e-05
+ },
+ {
   "id": "p07-verdict",
   "part": 7,
   "title": "What Jev gives you on this job",
   "jev_pick": "chart",
-  "confidence": 0.88,
+  "confidence": 0.6,
   "top3": [
    [
     "chart",
-    0.9
+    0.63
    ],
    [
     "side_by_side_panels",
-    0.06
+    0.37
    ],
    [
-    "theme_cards",
-    0.02
+    "block_diagram",
+    0.0
    ]
   ],
   "allowed_by_rules": [
@@ -1477,8 +1508,8 @@
   "reasons": [
    "'chart' breaks the rule for S23 checklist"
   ],
-  "seconds": 0.354,
-  "usd": 6.3378e-05
+  "seconds": 0.433,
+  "usd": 6.4218e-05
  },
  {
   "id": "p08-checklist",
@@ -2275,19 +2306,19 @@
   "part": 11,
   "title": "Jev or a chat model?",
   "jev_pick": "flowchart",
-  "confidence": 0.61,
+  "confidence": 0.72,
   "top3": [
    [
     "flowchart",
-    0.65
+    0.74
    ],
    [
     "side_by_side_panels",
-    0.32
+    0.24
    ],
    [
     "typographic_list",
-    0.03
+    0.02
    ]
   ],
   "allowed_by_rules": [
@@ -2300,8 +2331,8 @@
   "final": "flowchart",
   "overridden": false,
   "reasons": [],
-  "seconds": 0.332,
-  "usd": 6.1992e-05
+  "seconds": 0.416,
+  "usd": 6.346200000000001e-05
  },
  {
   "id": "p11-both-together",

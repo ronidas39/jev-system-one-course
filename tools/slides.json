@@ -435,10 +435,19 @@
    ]
   },
   {
+   "id": "p07-decisions",
+   "part": 7,
+   "title": "A new option from OpenAI: the Decisions API",
+   "brief": "Measured on the same 300 support tickets on 9 October 2026: Jev against OpenAI's new Decisions API, which also answers typed questions with probabilities. For each, with the product logo: time for all 300 tickets, median time per call, team answers right, cost per 1,000 tickets, price per million input tokens, and whether it can read photos.",
+   "shapes": [
+    "S10 comparison"
+   ]
+  },
+  {
    "id": "p07-verdict",
    "part": 7,
    "title": "What Jev gives you on this job",
-   "brief": "Three measured benefits of Jev on ticket sorting: faster per call and for the whole batch, cheaper per thousand tickets, many questions answered in one call. One short line: a large chat model can be a little more accurate on some tasks, so test on your own data, and that is why Jev gives a confidence number.",
+   "brief": "What I measured on ticket sorting: against two OpenAI chat models Jev was faster per call and cheaper; against OpenAI's Decisions API Jev still cost about half as much, but the Decisions API was faster. Every one answered three questions in one call. One short line: OpenAI was more accurate on this job, so test on your own data and use Jev's confidence number.",
    "shapes": [
     "S23 checklist"
    ]
@@ -690,7 +699,7 @@
    "id": "p11-which-tool",
    "part": 11,
    "title": "Jev or a chat model?",
-   "brief": "A simple choice: if the program needs a decision from a fixed list of answers, use Jev; if it needs written text for a person, use a chat model.",
+   "brief": "A simple choice: if the program needs a decision from a fixed list of answers about text, use Jev; if it needs written text for a person, use a chat model. One note: Jev reads text only, so a decision about a photo needs a model that reads images, such as OpenAI's Decisions API.",
    "shapes": [
     "S2 mechanism"
    ]
