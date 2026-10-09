@@ -101,6 +101,7 @@ cd ..
 | `usecases/` | four small projects: ticket triage, a check on a chat model's draft reply, tool choice for an AI agent, a duplicate check on two records | 10 |
 | `capstone/` | the big project: messy company records, cheap blocking, Jev decides each pair, a merge rule, a knowledge graph, and a check against the truth | 10 |
 | `compare/` | the speed and cost test of Jev, gpt-6-luna and gpt-6.1-sol on the same tickets. Every other run is here too, with accuracy | 7 |
+| `compare_decisions/` | the same 300 tickets on Jev and on OpenAI's Decisions API (added 9 October 2026) | 7 |
 | `data/` | the data makers, the data they made, and `DATA-CARD.md` | 7, 10 |
 | `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 11 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
@@ -220,6 +221,61 @@ That is why Jev gives a confidence number with every answer.
 
 Every other run is in `compare/results/summary.md`. That means the record pairs, both question
 wordings, and the test set. Every raw call is next to it.
+
+---
+
+## Update, 9 October 2026: OpenAI's Decisions API
+
+On 6 October 2026 OpenAI released the Decisions API in public beta: `POST /v1/decisions`,
+model gpt-6-luna. It works like Jev. You send text (or images) and typed questions. You get
+probabilities back, not written text. It bills input tokens only: $0.10 per million.
+Source: https://developers.openai.com/api/docs/guides/decisions (read 9 October 2026).
+
+The tables above were made before it existed. So I ran the same 300 tickets again, with the same
+labels and the same three questions, on Jev and on the Decisions API. Code and every raw response:
+`compare_decisions/`.
+
+```bash
+python compare_decisions/run_decisions.py --protocol baseline
+python compare_decisions/run_decisions.py --protocol accuracy
+python compare_decisions/run_decisions.py --protocol latency
+python compare_decisions/run_decisions.py --protocol batching
+python compare_decisions/summarize.py      # compare_decisions/results/summary.md
+```
+
+All four runs together cost about 3 US cents on OpenAI and about 1.3 US cents on Jev.
+
+| | Decisions API (gpt-6-luna) | Jev (jev-1.13.0) |
+|---|---|---|
+| team right | 295 of 300 (98.3%) | 290 of 300 (96.7%) |
+| urgency right | 79.7% | 72.3% |
+| frustration right | 79.7% | 75.3% |
+| failed calls, refusals | 0, 0 | 0, 0 |
+| cost per 1,000 tickets | $0.0506 | $0.0246 |
+| 300 tickets, 8 calls at a time | 7.7 s | 12.5 s |
+| one call at a time, median / 95th percentile | 0.189 / 0.233 s | 0.323 / 0.369 s |
+| input tokens per ticket | 506 | 585 |
+| three questions in one call | yes | yes |
+
+What this shows, in plain words:
+
+- On this job the Decisions API was faster and a little more accurate. Jev cost about half as much.
+- Both tokenizers read the ticket text at about the same rate: about 4.2 to 4.3 characters per
+  token, about 40 tokens per ticket. Most tokens per call are the questions and each API's own
+  wrapping (fitted: about 466 for Decisions, about 543 for Jev).
+- So per ticket, Decisions cost 2.1 times Jev here. Per token the price gap is 2.4 times.
+- I ran each API once. Jev's scores move a little between runs. Your numbers will differ.
+
+What each can do that the other cannot (from each vendor's docs, read 9 October 2026):
+
+- **Images:** the Decisions API takes images, up to 128 per request. Jev takes text only.
+- **Structured state:** Jev's state can be a JSON object, and questions can point at fields by
+  name. Decisions takes a string or user messages with text and image parts.
+- **Yes or no:** Jev's Noul returns one probability. Decisions' predicate does the same.
+- **Confidence:** both return a probability for every option of a choice or score, and a
+  confidence number. A Decisions predicate returns only the probability.
+- **Refusals:** a Decisions answer can be a refusal for one question. Jev has no refusal type.
+  Neither refused any ticket here.
 
 ---
 

@@ -1,0 +1,138 @@
+{
+ "apis": {
+  "decisions/gpt-6-luna": {
+   "calls": 300,
+   "failed": 0,
+   "refusals": 0,
+   "answered_all_three": 300,
+   "team_right": 295,
+   "urgency_right": 239,
+   "frustration_right": 239,
+   "team_accuracy": 0.9833333333333333,
+   "urgency_accuracy": 0.7966666666666666,
+   "frustration_accuracy": 0.7966666666666666,
+   "input_tokens_total": 151847,
+   "output_tokens_total": 0,
+   "usd_total_300": 0.0151847,
+   "usd_per_1000": 0.05061566666666667,
+   "wall_seconds_300_8_in_flight": 7.692764082996291,
+   "per_call_seconds_8_in_flight": {
+    "p50": 0.19211556249501882,
+    "p95": 0.2649011250032345
+   },
+   "per_call_seconds_one_at_a_time": {
+    "calls": 120,
+    "p50": 0.1889206460036803,
+    "p95": 0.2331957499991404
+   },
+   "tokens_per_ticket_with_questions_mean": 506.1566666666667,
+   "input_dot_tokens": 270,
+   "fixed_tokens_fitted": 466.0913530788207,
+   "ticket_text_tokens_mean": 40.065313587845964,
+   "chars_per_text_token": 4.333840200350767,
+   "fit_correlation": 0.951092713973793,
+   "mean_ticket_chars": 173.63666666666666,
+   "team_by_confidence": [
+    {
+     "from": 0.9,
+     "to": 1.0,
+     "answers": 267,
+     "right": 267
+    },
+    {
+     "from": 0.7,
+     "to": 0.9,
+     "answers": 18,
+     "right": 18
+    },
+    {
+     "from": 0.5,
+     "to": 0.7,
+     "answers": 11,
+     "right": 6
+    },
+    {
+     "from": 0.0,
+     "to": 0.5,
+     "answers": 4,
+     "right": 4
+    }
+   ],
+   "batching": {
+    "tickets": 40,
+    "tokens_one_call": 505.25,
+    "tokens_split": 593.75,
+    "usd_one_call": 5.052500000000001e-05,
+    "usd_split": 5.9375e-05,
+    "median_s_one_call": 0.19351066650415305
+   }
+  },
+  "jev-1.13.0": {
+   "calls": 300,
+   "failed": 0,
+   "refusals": 0,
+   "answered_all_three": 300,
+   "team_right": 290,
+   "urgency_right": 217,
+   "frustration_right": 226,
+   "team_accuracy": 0.9666666666666667,
+   "urgency_accuracy": 0.7233333333333334,
+   "frustration_accuracy": 0.7533333333333333,
+   "input_tokens_total": 175412,
+   "output_tokens_total": 24600,
+   "usd_total_300": 0.007367304000000001,
+   "usd_per_1000": 0.024557680000000002,
+   "wall_seconds_300_8_in_flight": 12.515796749998117,
+   "per_call_seconds_8_in_flight": {
+    "p50": 0.3213140624939115,
+    "p95": 0.4042177919909591
+   },
+   "per_call_seconds_one_at_a_time": {
+    "calls": 120,
+    "p50": 0.3225172914972063,
+    "p95": 0.369430167003884
+   },
+   "tokens_per_ticket_with_questions_mean": 584.7066666666667,
+   "input_dot_tokens": 543,
+   "fixed_tokens_fitted": 543.2209979859446,
+   "ticket_text_tokens_mean": 41.48566868072219,
+   "chars_per_text_token": 4.185461442190835,
+   "fit_correlation": 0.913249338480358,
+   "mean_ticket_chars": 173.63666666666666,
+   "team_by_confidence": [
+    {
+     "from": 0.9,
+     "to": 1.0,
+     "answers": 272,
+     "right": 272
+    },
+    {
+     "from": 0.7,
+     "to": 0.9,
+     "answers": 12,
+     "right": 8
+    },
+    {
+     "from": 0.5,
+     "to": 0.7,
+     "answers": 13,
+     "right": 8
+    },
+    {
+     "from": 0.0,
+     "to": 0.5,
+     "answers": 3,
+     "right": 2
+    }
+   ],
+   "batching": {
+    "tickets": 40,
+    "tokens_one_call": 583.4,
+    "tokens_split": 1184.2,
+    "usd_one_call": 2.45028e-05,
+    "usd_split": 4.97364e-05,
+    "median_s_one_call": 0.32913912500225706
+   }
+  }
+ }
+}
