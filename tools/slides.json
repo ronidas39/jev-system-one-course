@@ -32,6 +32,21 @@
    "brief": "The opening moment of the course: 300 customer support tickets were each sorted by team, urgency and mood in 12.6 seconds, and the whole job cost 0.74 of one US cent. Measured numbers from a real run, shown so the size of the result is clear at once.",
    "shapes": [
     "S11 scale"
+   ],
+   "kits": [
+    "jev"
+   ]
+  },
+  {
+   "id": "p01-meet-both-tools",
+   "part": 1,
+   "title": "Meet the two tools: TypeSafe Jev and the OpenAI Decisions API",
+   "brief": "Two cards side by side, one per tool, so a beginner meets both before using them. Left: Jev, an AI model from TypeSafe (San Francisco), launched 15 September 2026. You send text plus questions with fixed options; you get a probability for each option, never a sentence. Reads text only. Example: a support ticket, 'Which team should take it?' returns, shipping or billing. Right: the Decisions API, a service from OpenAI (the company that makes ChatGPT), public beta released 6 October 2026. Same idea: questions with fixed options in, a probability for each option out. Reads text and photos. Example: an egg photo, 'Does the shell look cracked?'. Under both: both run on the company's computers; your program calls them over the internet through an API. No measured numbers on this slide.",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
    ]
   },
   {

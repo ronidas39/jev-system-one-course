@@ -96,6 +96,37 @@
   "usd": 6.3756e-05
  },
  {
+  "id": "p01-meet-both-tools",
+  "part": 1,
+  "title": "Meet the two tools: TypeSafe Jev and the OpenAI Decisions API",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.95,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.95
+   ],
+   [
+    "theme_cards",
+    0.05
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.465,
+  "usd": 6.892200000000002e-05
+ },
+ {
   "id": "p00-who-for-c",
   "part": 1,
   "title": "Who this course is for",
