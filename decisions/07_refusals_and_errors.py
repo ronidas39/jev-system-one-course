@@ -13,6 +13,8 @@ Author: Roni Das
 Created: 2026-10-09
 """
 
+import textwrap
+
 import openai
 
 from common import ask, check_key_present, cost_usd, make_client, show
@@ -74,4 +76,6 @@ for label, questions in bad_requests.items():
         show(label, "no error (unexpected)")
     except openai.APIStatusError as error:
         show(label, f"HTTP {error.status_code}: {type(error).__name__}")
-        print(f"{'':<28} {str(error.message)[:110]}")
+        message = (error.body or {}).get("message", "") if isinstance(error.body, dict) else ""
+        for line in textwrap.wrap(message, 70):
+            print(f"{'':<29}{line}")

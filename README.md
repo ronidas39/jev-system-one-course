@@ -264,24 +264,30 @@ All four runs together cost about 3 US cents on OpenAI and about 1.3 US cents on
 
 | | Decisions API (gpt-6-luna) | Jev (jev-1.13.0) |
 |---|---|---|
-| team right | 295 of 300 (98.3%) | 290 of 300 (96.7%) |
-| urgency right | 79.7% | 72.3% |
-| frustration right | 79.7% | 75.3% |
-| failed calls, refusals | 0, 0 | 0, 0 |
+| team right | 295 of 300 (98.3%), every run | 290 or 291 of 300 |
+| urgency right | 79.7%, every run | 72.0% to 72.3% |
+| frustration right | 79.7%, every run | 75.3% to 75.7% |
+| failed calls, refusals (each run) | 0, 0 | 0, 0 |
 | cost per 1,000 tickets | $0.0506 | $0.0246 |
-| 300 tickets, 8 calls at a time | 7.7 s | 12.5 s |
-| one call at a time, median / 95th percentile | 0.189 / 0.233 s | 0.323 / 0.369 s |
+| 300 tickets, 8 calls at a time | 7.7 s, then 13.3 s and 13.4 s | 12.5 s, 12.9 s, 12.6 s |
+| one call at a time, median | 0.189, 0.389, 0.190 s | 0.323, 0.329, 0.324 s |
 | input tokens per ticket | 506 | 585 |
 | three questions in one call | yes | yes |
 
 What this shows, in plain words:
 
-- On this job the Decisions API was faster and a little more accurate. Jev cost about half as much.
+- I ran it three times on 9 October: at 11:25, 12:02 (from a fresh clone) and 12:06, India time.
+  The speed rows above show all three runs, in that order.
+- Accuracy and cost came out the same every time. The Decisions API was a little more accurate.
+  Jev cost about half as much.
+- Speed did not repeat. In the first run the Decisions API was faster on every speed measure. In
+  the two later runs, Jev finished the 300 tickets first. I do not know why. The Decisions API is
+  a public beta, and I measured from India. Measure speed at your own time and place.
 - Both tokenizers read the ticket text at about the same rate: about 4.2 to 4.3 characters per
   token, about 40 tokens per ticket. Most tokens per call are the questions and each API's own
   wrapping (fitted: about 466 for Decisions, about 543 for Jev).
 - So per ticket, Decisions cost 2.1 times Jev here. Per token the price gap is 2.4 times.
-- I ran each API once. Jev's scores move a little between runs. Your numbers will differ.
+- Jev's scores move a little between runs. Your numbers will differ.
 
 What each can do that the other cannot (from each vendor's docs, read 9 October 2026):
 

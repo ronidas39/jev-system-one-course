@@ -19,3 +19,10 @@ the pinned `openai` 3.24.0 has no `decisions` method yet (the guide asks for Pyt
 Note on tokens: the input `"."` with the three questions billed 270 tokens on Decisions, but the
 fitted fixed part on real tickets is about 466. So the per-ticket text tokens are fitted from all
 300 tickets (tokens against characters), not taken from the `"."` call.
+
+## Three runs on 9 October 2026
+
+`results/runs/` keeps three accuracy and latency runs from the same day: 11:25, 12:02 (from a fresh
+clone of this repo) and 12:06, India time. Accuracy and cost were the same every time. Decisions
+speed was not: its 300-ticket batch took 7.7 s in the first run and 13.3 s and 13.4 s in the
+other two (Jev: 12.5, 12.9 and 12.6 s). The files directly in `results/` are the first run.
