@@ -1,7 +1,7 @@
-# TypeSafe Jev: The Complete Hands-On Course
+# Build AI that answers with probabilities: TypeSafe Jev and the OpenAI Decisions API
 
-Learn Jev from zero, then build real projects with it. For engineers.
-Jev is an AI model that answers with numbers.
+The full course. Learn both from zero, then build real projects with them. For engineers.
+Jev and the Decisions API are AI models that answer with numbers, not with text.
 
 This is the code for a freeCodeCamp course by Roni Das. I teach at systemdesign.academy. My
 YouTube channel is Total Technology Zonne.
@@ -12,6 +12,8 @@ Everything in the course is here:
 - four small projects.
 - one big project: messy company records become a knowledge graph.
 - a speed and cost test on support tickets.
+- the OpenAI Decisions API, hands-on: `decisions/`. Text, photos, cut-offs, a refund desk.
+- the same 300 tickets on Jev and on the Decisions API: `compare_decisions/`.
 - the made-up (synthetic) data.
 - every raw result.
 
@@ -38,7 +40,7 @@ https://docs.typesafe.ai.
 | git | to copy (clone) this repository. Check with `git --version` |
 | An editor | the course uses VS Code |
 | A TypeSafe API key | from https://console.typesafe.ai/keys |
-| An OpenAI API key | optional. Only for `compare/`, use case 2 and hands-on script 12 |
+| An OpenAI API key | for Parts 11 to 14 (`decisions/`, `compare_decisions/`), and for `compare/`, use case 2 and hands-on script 12. Your OpenAI account needs a little credit |
 
 An API key is a secret password for a program. It lets your code use the service.
 
@@ -101,9 +103,10 @@ cd ..
 | `usecases/` | four small projects: ticket triage, a check on a chat model's draft reply, tool choice for an AI agent, a duplicate check on two records | 10 |
 | `capstone/` | the big project: messy company records, cheap blocking, Jev decides each pair, a merge rule, a knowledge graph, and a check against the truth | 10 |
 | `compare/` | the speed and cost test of Jev, gpt-6-luna and gpt-6.1-sol on the same tickets. Every other run is here too, with accuracy | 7 |
-| `compare_decisions/` | the same 300 tickets on Jev and on OpenAI's Decisions API (added 9 October 2026) | 7 |
+| `decisions/` | the OpenAI Decisions API, hands-on: first call, the three question types, many questions, refusals, cost, photos of eggs, cut-offs, a refund desk | 11, 12, 13 |
+| `compare_decisions/` | the same 300 tickets on Jev and on OpenAI's Decisions API (added 9 October 2026) | 14 |
 | `data/` | the data makers, the data they made, and `DATA-CARD.md` | 7, 10 |
-| `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 11 |
+| `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 14 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
 
 ---
@@ -116,6 +119,20 @@ python usecases/02_answer_guardrail.py
 python usecases/03_tool_routing.py
 python usecases/04_duplicate_check.py
 ```
+
+## Run the Decisions API part (Parts 11 to 13)
+
+```bash
+cd decisions
+python 00_check_setup.py
+python 02_first_call_sdk.py
+python 10_egg_grading.py classify
+python 10_egg_grading.py sweep
+python 11_returns_desk.py
+cd ..
+```
+
+The full list, in course order, is in `decisions/README.md`.
 
 ## Run the big project
 

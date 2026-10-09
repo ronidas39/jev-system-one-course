@@ -1,5 +1,7 @@
-# Exact versions used for every run in the course (4 October 2026).
+# Exact versions used for every run in the course.
+# openai moved from 3.24.0 to 3.26.1 on 9 October 2026: the Decisions API needs 3.26.0 or newer.
 typesafe-sdk==0.7.2
-openai==3.24.0
+openai==3.26.1
+httpx==0.28.1
 networkx==3.7
 matplotlib==3.11.2

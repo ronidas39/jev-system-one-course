@@ -1,0 +1,13 @@
+{
+  "about": "Eight made-up refund claims for a grocery delivery shop. The messages were written for this course. Each claim points to one egg photo from eggs/ (CC0 or public domain, see eggs/CREDITS.md). Some photos match the message and some do not, on purpose.",
+  "claims": [
+    {"id": "C01", "message": "Two of my eggs arrived smashed. The yolk is all over the box.", "photo": "broken-02"},
+    {"id": "C02", "message": "The eggs came covered in muck. I can't use them.", "photo": "duck-05"},
+    {"id": "C03", "message": "One egg in my pack is cracked.", "photo": "box10-03"},
+    {"id": "C04", "message": "The shells on the eggs I got today are dirty.", "photo": "duck-01"},
+    {"id": "C05", "message": "My order came a day late.", "photo": "tray-02"},
+    {"id": "C06", "message": "Broken egg in the pack, see the photo.", "photo": "broken-01"},
+    {"id": "C07", "message": "These eggs are filthy.", "photo": "single-01"},
+    {"id": "C08", "message": "The egg I got was rotten and broken open.", "photo": "broken-03"}
+  ]
+}
