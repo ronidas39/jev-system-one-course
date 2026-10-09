@@ -1,5 +1,38 @@
 [
  {
+  "id": "p00-cover-c",
+  "part": 1,
+  "title": "Build AI that answers with probabilities: TypeSafe Jev and the OpenAI Decisions API",
+  "jev_pick": "flowchart",
+  "confidence": 0.42,
+  "top3": [
+   [
+    "flowchart",
+    0.46
+   ],
+   [
+    "block_diagram",
+    0.4
+   ],
+   [
+    "side_by_side_panels",
+    0.07
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.39,
+  "usd": 6.489e-05
+ },
+ {
   "id": "p00-cover",
   "part": 1,
   "title": "TypeSafe Jev: The Complete Hands-On Course",
@@ -61,6 +94,133 @@
   "reasons": [],
   "seconds": 0.355,
   "usd": 6.3756e-05
+ },
+ {
+  "id": "p00-who-for-c",
+  "part": 1,
+  "title": "Who this course is for",
+  "jev_pick": "theme_cards",
+  "confidence": 0.75,
+  "top3": [
+   [
+    "theme_cards",
+    0.77
+   ],
+   [
+    "typographic_list",
+    0.2
+   ],
+   [
+    "side_by_side_panels",
+    0.03
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.389,
+  "usd": 6.573000000000001e-05
+ },
+ {
+  "id": "p00-outcomes-c",
+  "part": 1,
+  "title": "Learning outcomes",
+  "jev_pick": "typographic_list",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "typographic_list",
+    0.99
+   ],
+   [
+    "lookup_map",
+    0.01
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.564,
+  "usd": 7.026600000000001e-05
+ },
+ {
+  "id": "p00-prereqs-c",
+  "part": 1,
+  "title": "Before you start",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.95,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.95
+   ],
+   [
+    "typographic_list",
+    0.05
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels",
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.353,
+  "usd": 6.4428e-05
+ },
+ {
+  "id": "p00-syllabus-c",
+  "part": 1,
+  "title": "The syllabus",
+  "jev_pick": "typographic_list",
+  "confidence": 0.96,
+  "top3": [
+   [
+    "typographic_list",
+    0.96
+   ],
+   [
+    "theme_cards",
+    0.02
+   ],
+   [
+    "block_diagram",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "flowchart",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": true,
+  "reasons": [
+   "'typographic_list' breaks the rule for S6 sequence, S11 scale"
+  ],
+  "seconds": 0.435,
+  "usd": 6.8082e-05
  },
  {
   "id": "p00-who-for",
@@ -499,6 +659,37 @@
   "reasons": [],
   "seconds": 0.396,
   "usd": 6.2286e-05
+ },
+ {
+  "id": "a-p02-fixed-options",
+  "part": 2,
+  "title": "Fixed options and probabilities, and two tools that work this way",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.55,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.58
+   ],
+   [
+    "chart",
+    0.22
+   ],
+   [
+    "block_diagram",
+    0.11
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S10 comparison, S9 threshold"
+  ],
+  "seconds": 0.374,
+  "usd": 6.9426e-05
  },
  {
   "id": "p03-typesafe-page",
@@ -1449,6 +1640,68 @@
   "usd": 6.195e-05
  },
  {
+  "id": "p07-verdict-c",
+  "part": 7,
+  "title": "What Jev gives you on this job",
+  "jev_pick": "chart",
+  "confidence": 0.56,
+  "top3": [
+   [
+    "chart",
+    0.59
+   ],
+   [
+    "side_by_side_panels",
+    0.41
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "theme_cards",
+  "overridden": true,
+  "reasons": [
+   "'chart' breaks the rule for S23 checklist"
+  ],
+  "seconds": 0.429,
+  "usd": 6.489e-05
+ },
+ {
+  "id": "p08-checklist-c",
+  "part": 8,
+  "title": "What you need",
+  "jev_pick": "typographic_list",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "typographic_list",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.385,
+  "usd": 6.472200000000001e-05
+ },
+ {
   "id": "p07-decisions",
   "part": 7,
   "title": "A new option from OpenAI: the Decisions API",
@@ -1569,6 +1822,36 @@
   "reasons": [],
   "seconds": 0.337,
   "usd": 6.1026e-05
+ },
+ {
+  "id": "p08-clone-and-venv-c",
+  "part": 8,
+  "title": "Clone the repository and make a virtual environment",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.358,
+  "usd": 6.4764e-05
  },
  {
   "id": "p08-clone-and-venv",
@@ -2302,6 +2585,742 @@
   "usd": 6.3588e-05
  },
  {
+  "id": "c11-what-it-is",
+  "part": 11,
+  "title": "OpenAI's Decisions API",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.4,
+  "top3": [
+   [
+    "sequence_diagram",
+    0.44
+   ],
+   [
+    "block_diagram",
+    0.4
+   ],
+   [
+    "flowchart",
+    0.13
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.366,
+  "usd": 6.816600000000001e-05
+ },
+ {
+  "id": "c11-when-to-use",
+  "part": 11,
+  "title": "When to use it, and when not",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.336,
+  "usd": 6.5268e-05
+ },
+ {
+  "id": "c11-same-three-types",
+  "part": 11,
+  "title": "The same three question types as Jev",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' was used on the slide before, so 'hand_drawn_sketch' instead"
+  ],
+  "seconds": 0.524,
+  "usd": 6.6864e-05
+ },
+ {
+  "id": "c11-raw-json",
+  "part": 11,
+  "title": "Reading the raw answer",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.343,
+  "usd": 6.757800000000001e-05
+ },
+ {
+  "id": "c11-cost-one-call",
+  "part": 11,
+  "title": "What one call cost",
+  "jev_pick": "hand_drawn_sketch",
+  "confidence": 0.97,
+  "top3": [
+   [
+    "hand_drawn_sketch",
+    0.97
+   ],
+   [
+    "real_terminal_capture",
+    0.03
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.385,
+  "usd": 6.699000000000001e-05
+ },
+ {
+  "id": "c12-predicate-vs-noul",
+  "part": 12,
+  "title": "Same six messages, two tools",
+  "jev_pick": "chart",
+  "confidence": 0.92,
+  "top3": [
+   [
+    "chart",
+    0.93
+   ],
+   [
+    "side_by_side_panels",
+    0.07
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.395,
+  "usd": 7.0434e-05
+ },
+ {
+  "id": "c12-low-confidence",
+  "part": 12,
+  "title": "A ticket that belongs to two teams",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.372,
+  "usd": 6.657000000000001e-05
+ },
+ {
+  "id": "c12-score-between",
+  "part": 12,
+  "title": "A score between two levels",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'chart' was used on the slide before, so 'isometric_3d' instead"
+  ],
+  "seconds": 0.359,
+  "usd": 6.741000000000001e-05
+ },
+ {
+  "id": "c12-many-questions",
+  "part": 12,
+  "title": "Eight questions: one call or eight",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.71,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.73
+   ],
+   [
+    "chart",
+    0.27
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.318,
+  "usd": 6.930000000000002e-05
+ },
+ {
+  "id": "c12-refusal-route",
+  "part": 12,
+  "title": "A refusal goes to a person",
+  "jev_pick": "flowchart",
+  "confidence": 0.48,
+  "top3": [
+   [
+    "flowchart",
+    0.52
+   ],
+   [
+    "sequence_diagram",
+    0.27
+   ],
+   [
+    "side_by_side_panels",
+    0.18
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.334,
+  "usd": 6.841800000000001e-05
+ },
+ {
+  "id": "c12-cost-scale",
+  "part": 12,
+  "title": "What a thousand tickets cost",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.326,
+  "usd": 6.8292e-05
+ },
+ {
+  "id": "c13-egg-photos",
+  "part": 13,
+  "title": "33 egg photos, and whose they are",
+  "jev_pick": "real_screenshot",
+  "confidence": 0.58,
+  "top3": [
+   [
+    "real_screenshot",
+    0.61
+   ],
+   [
+    "typographic_list",
+    0.2
+   ],
+   [
+    "lookup_map",
+    0.06
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.537,
+  "usd": 6.7158e-05
+ },
+ {
+  "id": "c13-photo-as-text",
+  "part": 13,
+  "title": "A photo travels as text",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.91,
+  "top3": [
+   [
+    "sequence_diagram",
+    0.92
+   ],
+   [
+    "side_by_side_panels",
+    0.05
+   ],
+   [
+    "flowchart",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "block_diagram",
+   "flowchart",
+   "hand_drawn_sketch",
+   "isometric_3d",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.387,
+  "usd": 6.9132e-05
+ },
+ {
+  "id": "c13-not-clean-scores",
+  "part": 13,
+  "title": "How sure, egg by egg",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.324,
+  "usd": 6.736800000000001e-05
+ },
+ {
+  "id": "c13-two-cutoffs",
+  "part": 13,
+  "title": "Two cut-offs and a person in the middle",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.488,
+  "usd": 7.190400000000001e-05
+ },
+ {
+  "id": "c13-pick-then-check",
+  "part": 13,
+  "title": "Choose on one set, check on another",
+  "jev_pick": "flowchart",
+  "confidence": 0.44,
+  "top3": [
+   [
+    "flowchart",
+    0.48
+   ],
+   [
+    "typographic_list",
+    0.19
+   ],
+   [
+    "sequence_diagram",
+    0.14
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.499,
+  "usd": 6.4344e-05
+ },
+ {
+  "id": "c13-speed-claim",
+  "part": 13,
+  "title": "OpenAI's speed claim, and our small test",
+  "jev_pick": "chart",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "chart",
+    0.99
+   ],
+   [
+    "side_by_side_panels",
+    0.01
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.367,
+  "usd": 7.0812e-05
+ },
+ {
+  "id": "c13-refund-policy",
+  "part": 13,
+  "title": "The refund desk policy",
+  "jev_pick": "flowchart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "flowchart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' breaks the rule for S2 mechanism, S9 threshold"
+  ],
+  "seconds": 0.356,
+  "usd": 6.850200000000002e-05
+ },
+ {
+  "id": "c13-text-pulls-photo",
+  "part": 13,
+  "title": "The message pulls the photo answer",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "side_by_side_panels",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "real_screenshot",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.334,
+  "usd": 7.1148e-05
+ },
+ {
+  "id": "d14-fair-test",
+  "part": 14,
+  "title": "Same tickets, same rules",
+  "jev_pick": "sequence_diagram",
+  "confidence": 0.81,
+  "top3": [
+   [
+    "sequence_diagram",
+    0.8200000000000001
+   ],
+   [
+    "side_by_side_panels",
+    0.15
+   ],
+   [
+    "block_diagram",
+    0.03
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "sequence_diagram",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.318,
+  "usd": 6.7494e-05
+ },
+ {
+  "id": "d14-three-runs",
+  "part": 14,
+  "title": "Three runs on one day",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.53,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.56
+   ],
+   [
+    "chart",
+    0.44
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.406,
+  "usd": 7.560000000000001e-05
+ },
+ {
+  "id": "d14-token-vs-ticket",
+  "part": 14,
+  "title": "Price per token is not price per ticket",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.73,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.75
+   ],
+   [
+    "hand_drawn_sketch",
+    0.15
+   ],
+   [
+    "chart",
+    0.07
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S1 derivation, S2 mechanism"
+  ],
+  "seconds": 0.438,
+  "usd": 7.287e-05
+ },
+ {
+  "id": "d14-can-cannot",
+  "part": 14,
+  "title": "What each one can do",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.99,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.99
+   ],
+   [
+    "theme_cards",
+    0.01
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.396,
+  "usd": 6.7452e-05
+ },
+ {
+  "id": "d14-which-tool",
+  "part": 14,
+  "title": "Which tool for which job",
+  "jev_pick": "flowchart",
+  "confidence": 0.46,
+  "top3": [
+   [
+    "flowchart",
+    0.5
+   ],
+   [
+    "side_by_side_panels",
+    0.47
+   ],
+   [
+    "theme_cards",
+    0.03
+   ]
+  ],
+  "allowed_by_rules": [
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' breaks the rule for S2 mechanism, S9 threshold"
+  ],
+  "seconds": 0.386,
+  "usd": 6.846e-05
+ },
+ {
   "id": "p11-which-tool",
   "part": 11,
   "title": "Jev or a chat model?",
@@ -2366,6 +3385,36 @@
   ],
   "seconds": 0.323,
   "usd": 6.1908e-05
+ },
+ {
+  "id": "d14-takeaways",
+  "part": 14,
+  "title": "Five things to remember",
+  "jev_pick": "typographic_list",
+  "confidence": 0.8,
+  "top3": [
+   [
+    "typographic_list",
+    0.81
+   ],
+   [
+    "theme_cards",
+    0.15
+   ],
+   [
+    "side_by_side_panels",
+    0.04
+   ]
+  ],
+  "allowed_by_rules": [
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.355,
+  "usd": 6.963600000000001e-05
  },
  {
   "id": "p11-takeaways",

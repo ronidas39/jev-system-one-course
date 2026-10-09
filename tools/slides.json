@@ -2,12 +2,27 @@
  "_about": "Every slide in the course, described in plain words. choose_register.py sends 'brief' to Jev. 'shapes' are my own reading of the content against the content-shape rules; Jev never sees them, they are only used to check Jev's pick.",
  "slides": [
   {
+   "id": "p00-cover-c",
+   "part": 1,
+   "title": "Build AI that answers with probabilities: TypeSafe Jev and the OpenAI Decisions API",
+   "brief": "The front page of a full engineering course about two AI tools that answer with probabilities, TypeSafe Jev and OpenAI's Decisions API, each with its product logo. The course name, the instructor and the edition, with a drawing of what both tools do: a question with fixed options goes in, a probability for each option comes out, and plain code then acts, checks again, or hands the case to a person.",
+   "shapes": [
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p00-cover",
    "part": 1,
    "title": "TypeSafe Jev: The Complete Hands-On Course",
    "brief": "The front page of a full engineering course about one AI model. The course name, the instructor and the edition, with a drawing of what the model does: a question goes into the model, a probability comes out, and plain code then acts, checks again, or hands the case to a person.",
    "shapes": [
     "S2 mechanism"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -20,12 +35,65 @@
    ]
   },
   {
+   "id": "p00-who-for-c",
+   "part": 1,
+   "title": "Who this course is for",
+   "brief": "Eight groups of engineers (backend, frontend and full-stack, data engineering, ML and AI engineering, DevOps and platform, QA and test, architects and tech leads, students and career switchers), each with one short line on what they will build in this course. New against the old slide: one line for people who work with photos (send egg photos to OpenAI's Decisions API to find cracked eggs), the architects line now says when to use Jev, the Decisions API or a chat model, and the students line ends with five Jev projects and one Decisions API project.",
+   "shapes": [
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "p00-outcomes-c",
+   "part": 1,
+   "title": "Learning outcomes",
+   "brief": "Eight learning outcomes of the course, each starting 'You can' with an action the learner can show, and each tagged with the parts that teach it. Outcomes 1 to 6 keep the old text and tags (1: Parts 1, 2, 5; 2: Parts 5, 6, 9; 3: Parts 5, 9, 10; 5: Parts 4, 9; 6: Part 10), except outcome 4, which becomes 'install the tools, keep your API keys out of your code, call Jev and the Decisions API' (Parts 8, 11). New outcome 7: 'use OpenAI's Decisions API on text and photos, set cut-offs, and send the unsure middle to a person' (Parts 11, 12, 13). Outcome 8, was 7: 'choose Jev, the Decisions API or a chat model for a task, or use Jev and a chat model together' (Parts 6, 7, 14).",
+   "shapes": [
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "p00-prereqs-c",
+   "part": 1,
+   "title": "Before you start",
+   "brief": "What a learner needs before starting (basic Python, a terminal, a code editor, git, a TypeSafe account and key for Jev, an OpenAI account with a little credit and an OpenAI key for Parts 11 to 14, a few cents is enough for Parts 11 to 13) next to what they do not need (no maths of machine learning, no graphics card, no earlier AI experience, no model training).",
+   "shapes": [
+    "S10 comparison",
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "p00-syllabus-c",
+   "part": 1,
+   "title": "The syllabus",
+   "brief": "The fourteen parts of the course in order, in four groups, each part with its title and planned minutes. Group A, the idea: Parts 1 and 2 (what an LLM is, the gap it leaves for code). Group B, Jev hands-on: Parts 3 to 10 (who built Jev, its claims, how it works, where it helps, 300 tickets against two OpenAI chat models, setup, testing the claims, four small projects and one big one). Group C, OpenAI's Decisions API hands-on: Parts 11 to 13 (first call, the question types, photos with cut-offs and a refund desk). Group D, side by side: Part 14 (both tools on the same 300 tickets, and when to use which). Take the minutes from the final guidebooks.",
+   "shapes": [
+    "S6 sequence",
+    "S11 scale"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p00-who-for",
    "part": 1,
    "title": "Who this course is for",
    "brief": "Eight groups of engineers (backend, frontend and full-stack, data engineering, ML and AI engineering, DevOps and platform, QA and test, architects and tech leads, students and career switchers), each with one short line on what they will use the model for in this course.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -35,6 +103,9 @@
    "brief": "Six learning outcomes of the course, each starting 'You can' with an action the learner can show, and each tagged with the part of the course that teaches it.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -45,6 +116,9 @@
    "shapes": [
     "S10 comparison",
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -55,6 +129,9 @@
    "shapes": [
     "S6 sequence",
     "S11 scale"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -147,6 +224,19 @@
    "shapes": [
     "S2 mechanism",
     "S14 code"
+   ]
+  },
+  {
+   "id": "a-p02-fixed-options",
+   "part": 2,
+   "title": "Fixed options and probabilities, and two tools that work this way",
+   "brief": "A chatbot's sentence next to fixed options with a probability for each, for a decision inside code. Four plain gains on the fixed-options side: no text to parse, the answer is always one of your options, a number you can set a cut-off on, and you pay only for what it reads because it writes no text. One everyday example on a line from 0 to 1: 'Is this review spam?' with hide above 0.9, show below 0.1, and a person in the middle. Underneath, the two tools that work this way, each with its logo and date: Jev from TypeSafe, launched 15 September 2026; OpenAI's Decisions API, public beta, released 6 October 2026. If the slide shows OpenAI's speed line, it must be marked as OpenAI's claim: 'OpenAI says about 10x faster than its Responses API'.",
+   "shapes": [
+    "S10 comparison",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
    ]
   },
   {
@@ -435,12 +525,39 @@
    ]
   },
   {
+   "id": "p07-verdict-c",
+   "part": 7,
+   "title": "What Jev gives you on this job",
+   "brief": "What I measured on ticket sorting: against two OpenAI chat models, Jev was about 4 to 7 times faster per call and cost about 2 and a half cents per 1,000 tickets. Every one answered three questions in one call. One short line: OpenAI was more accurate on this job, so test on your own data and use Jev's confidence number. Nothing about the Decisions API on this slide: its numbers are in Part 14.",
+   "shapes": [
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "p08-checklist-c",
+   "part": 8,
+   "title": "What you need",
+   "brief": "A checklist of everything to install and set up: Python 3.10 or newer, VS Code or any editor, git, the course repository with a virtual environment and the libraries, a terminal. Then two keys: a TypeSafe key for Jev, needed now; an OpenAI key, needed from Part 11 (an OpenAI account with a little credit), also used by script 12, project 2 and the compare folder. The word 'optional' is gone.",
+   "shapes": [
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p07-decisions",
    "part": 7,
    "title": "A new option from OpenAI: the Decisions API",
    "brief": "Measured on the same 300 support tickets on 9 October 2026: Jev against OpenAI's new Decisions API, which also answers typed questions with probabilities. For each, with the product logo: time for all 300 tickets, median time per call, team answers right, cost per 1,000 tickets, price per million input tokens, and whether it can read photos.",
    "shapes": [
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -450,6 +567,9 @@
    "brief": "What I measured on ticket sorting: against two OpenAI chat models Jev was faster per call and cheaper; against OpenAI's Decisions API Jev still cost about half as much, but the Decisions API was faster. Every one answered three questions in one call. One short line: OpenAI was more accurate on this job, so test on your own data and use Jev's confidence number.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -459,6 +579,9 @@
    "brief": "A checklist of everything to install and set up: Python 3.10 or newer, VS Code, git, the course repository, a virtual environment, the SDK, a TypeSafe account and key, an OpenAI key for the comparisons.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -472,6 +595,18 @@
    ]
   },
   {
+   "id": "p08-clone-and-venv-c",
+   "part": 8,
+   "title": "Clone the repository and make a virtual environment",
+   "brief": "A real terminal, re-captured from the 9 October fresh clone, showing git clone, cd, ls, creating the virtual environment and installing the requirements, with the real output. The folder list now has CHANGELOG.md, compare_decisions and decisions. The requirements now pin openai 3.26.1 and add httpx 0.28.1. The last install line still says 'Successfully installed jevcourse-1.0.0'.",
+   "shapes": [
+    "R real_page"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p08-clone-and-venv",
    "part": 8,
    "title": "Clone the repository and make a virtual environment",
@@ -479,6 +614,9 @@
    "shapes": [
     "R real_page",
     "S14 code"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -696,12 +834,314 @@
    ]
   },
   {
+   "id": "c11-what-it-is",
+   "part": 11,
+   "title": "OpenAI's Decisions API",
+   "brief": "What the Decisions API does, as a drawing: material (text, a photo, or both) and typed questions go in to the endpoint POST /v1/decisions, a probability for every allowed answer comes out, and no text is written. Facts around the drawing, each from the guide or changelog: released in public beta on 6 October 2026 (O22, O3); one model, gpt-6-luna (O3); price $0.10 per million input tokens, output not billed (O18). One line, clearly marked as OpenAI's claim: 'OpenAI says about 10x faster than its Responses API' (O1, O2). A small note: Jev reads text only (T2), the Decisions API reads text and photos (O1).",
+   "shapes": [
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c11-when-to-use",
+   "part": 11,
+   "title": "When to use it, and when not",
+   "brief": "Two columns. Use the Decisions API when the answer is one of three kinds: is this true (predicate), which option (choice), how much on ordered levels (score), with one everyday example each: is this photo damaged, which team gets this ticket, how bad is this bug (O6). Use the Responses API instead when the model must write something: Structured Outputs for your own JSON layout, such as fields copied out of a document or a written explanation; function calling when a model must request a tool call (O8).",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c11-same-three-types",
+   "part": 11,
+   "title": "The same three question types as Jev",
+   "brief": "A side-by-side table with three rows. Jev's Noul matches the Decisions API's predicate: one probability from 0 to 1 that a statement is true. Jev's Choice matches choice: one option from your list, with a probability for every option and a confidence. Jev's Score matches score: ordered levels, a score that is the probability-weighted average of the level numbers (O6). Under the table, the guide's rule in one line: no order, like departments, use choice; an order, like severity, use score (O7). One more row at the bottom: Jev reads text only (T2); the Decisions API reads text and images (O1).",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c11-raw-json",
+   "part": 11,
+   "title": "Reading the raw answer",
+   "brief": "A real terminal capture of python 01_first_call_httpx.py from the fresh clone (log 102), with short labels pointing at the parts of the JSON: model gpt-6-luna; answers is a list with one answer per question, each carrying its name 'department'; choice billing; probabilities billing 1.0, technical 0.0, shipping 0.0, other 0.0; confidence 1.0; usage input_tokens 145 and output_tokens 0. A small side note: Jev returns answers keyed by name (the Jev curl answer in the Part 8 guidebook, log 011), the Decisions API returns a list in question order (API reference, 'You'll get the answers back in the order you asked the questions').",
+   "shapes": [
+    "R real_page",
+    "S14 code"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c11-cost-one-call",
+   "part": 11,
+   "title": "What one call cost",
+   "brief": "The cost worked out step by step: 145 input tokens (log 103, 'input tokens 145') times $0.10 per million input tokens (O18) equals $0.0000145, which the script prints as 'cost (US$) 0.00001450' (log 103). Output tokens 0, so nothing to add (log 103, 'output tokens 0'). In plain words: about one and a half thousandths of one US cent. A small footnote with the guide's caveat: 'Regional processing premiums and long-context input pricing multipliers apply' (O19).",
+   "shapes": [
+    "S1 derivation"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-predicate-vs-noul",
+   "part": 12,
+   "title": "Same six messages, two tools",
+   "brief": "A table of the six messages from the Jev Noul docs page, with two columns of probabilities that the customer is asking for a human. Jev (log 013, 'our noul'): Thanks, that fixed it! 0.02; How do I reset my password? 0.08; I need this sorted today, whatever it takes. 0.28; Are you a bot? 0.39; Is there any way to speak to someone about my invoice? 0.85; I have asked three times now. Can I please just talk to a real person? 0.99. Decisions API (log 104): 0.00, 0.00, 0.00, 0.00, 0.98, 1.00. Shown as two rows of dots on a line from 0 to 1 so it is clear the Decisions API numbers sit at the two ends. One line underneath: set each tool's cut-offs from labelled examples from your own application (O17).",
+   "shapes": [
+    "S10 comparison",
+    "S4 distribution"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-low-confidence",
+   "part": 12,
+   "title": "A ticket that belongs to two teams",
+   "brief": "The mixed ticket ('Shoes arrived two weeks late and in the wrong size. Also I see two charges of $120 on my card.') as three measured bars: billing 0.50, returns 0.49, shipping 0.01, with confidence 0.25 (log 105). Billing wins by 0.01. A confidence scale from 0 to 1 beside it with the 0.25 marked low, and an arrow from the low region to 'a person decides'. A small note: Jev chose returns 0.61 with confidence 0.41 on the same ticket (log 014).",
+   "shapes": [
+    "S4 distribution",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-score-between",
+   "part": 12,
+   "title": "A score between two levels",
+   "brief": "The Safari crash report on a scale with three levels numbered from 0 (O12: 'Level indices start at 0'): cosmetic 0, workaround 1, blocking 2. The measured probabilities as bars on each level: cosmetic 0.04, workaround 0.75, blocking 0.21, confidence 0.63 (log 106). The score worked out: 0.04 x 0 + 0.75 x 1 + 0.21 x 2 = 1.17, marked on the scale between 1 and 2 (log 106, score 1.17). A small note: Jev gave the same report 1.45 (log 015).",
+   "shapes": [
+    "S1 derivation",
+    "S11 scale"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-many-questions",
+   "part": 12,
+   "title": "Eight questions: one call or eight",
+   "brief": "One ticket, eight questions (one choice, two scores, five predicates). Two measured rows for the Decisions API (log 107): one call 1,217 input tokens in 0.419 s; eight separate calls 1,532 input tokens in 2.443 s; '8 calls cost 1.3x the tokens and took 5.8x the time (one after another, from this machine)'. The answers were the same both ways. A small side row for Jev on the same ticket and questions (log 016): 4.6x the tokens and 5.3x the time. One line: the part that repeats in every call is about 45 tokens here ((1,532 minus 1,217) divided by 7, my own arithmetic). The guide's rule underneath: 'Put independent questions in the same questions array to evaluate shared input' (O13).",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-refusal-route",
+   "part": 12,
+   "title": "A refusal goes to a person",
+   "brief": "One request, three questions about one support message (the customer was in hospital and missed the return window). Two arrows come back as answers: team returns, confidence 1.00; refund_requested probability 1.00. The third, 'Which illness does the customer have?', comes back as a refusal, and its arrow goes to 'a person', never to a default answer (log 108). The API reference line: 'The model declined to answer this question. Other questions in the same request can still receive answers.' (O20). A small note: the same illness question with an 'other' option was not refused; it answered 'other' 0.97 (working-copy run, refusal probe). Next to it, a contrast box: an error (HTTP 400) fails the whole request, with no answers at all (log 108, Part 2).",
+   "shapes": [
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c12-cost-scale",
+   "part": 12,
+   "title": "What a thousand tickets cost",
+   "brief": "A scale from one ticket to one million. 20 course tickets, three questions each: 10,095 input tokens, $0.001009; median 506 tokens per ticket (log 109). Scaled by the script: about $0.0505 for 1,000 tickets and about $50.48 for one million (log 109). The price line from the guide: $0.10 per million input tokens, no output charge (O18), and the caveat in full: 'Regional processing premiums and long-context input pricing multipliers apply' (O19). One small fact: ticket T0007 has 72 characters and still used 484 tokens, because the questions and their options are sent every time (log 109).",
+   "shapes": [
+    "S11 scale",
+    "S1 derivation"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-egg-photos",
+   "part": 13,
+   "title": "33 egg photos, and whose they are",
+   "brief": "A grid of the 33 real egg crops from decisions/eggs, each with its file name and my label (clean 18, dirty 12, cracked 3, from eggs/labels.csv). Under the grid, the credits from eggs/CREDITS.md: eight Wikimedia Commons photos by Burnerburnerburner8, safaritravelplus, Achim, Sanqui, Aline Ponce, 01x07x2022000, Garitzko and Paolo Neo; six CC0 and two public domain, licences checked on 9 October 2026. A clear line: 'Labels: the course author's draft labels, made by eye. Not an expert's grades.'",
+   "shapes": [
+    "R real_page"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-photo-as-text",
+   "part": 13,
+   "title": "A photo travels as text",
+   "brief": "A photo file becomes base64 text, gets the prefix 'data:image/jpeg;base64,' and goes into the input as an input_image part next to an input_text part ('One egg from a grading line.'), then three questions (choice condition, predicate visible_crack, score dirt_level) come back as three answers. Measured for three photos (log 1010): box10-03, data URL 9,107 characters, 494 input tokens, clean 0.75; duck-04, 30,255 characters, 523 tokens, dirty 1.0; broken-02, 57,775 characters, 650 tokens, cracked 1.0. A footnote on the docs: the guide says base64 data URLs only (O9); the API reference also allows public HTTP(S) URLs (O10); this course always sends base64.",
+   "shapes": [
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-not-clean-scores",
+   "part": 13,
+   "title": "How sure, egg by egg",
+   "brief": "One dot per photo on a line from 0 to 1, the probability the egg is not clean (1 minus P(clean), log 121), coloured by my label. Dirty and cracked eggs sit at 0.89 or higher (lowest duck-01 at 0.89). Clean eggs spread from 0.00 (single-02) to 0.48 (box10-10), except tray-06 at 0.56 (clean 0.44, dirty 0.47 in log 121). Footer: 33 calls, median 353 ms, median 523 input tokens, total $0.001792 (log 121).",
+   "shapes": [
+    "S4 distribution"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-two-cutoffs",
+   "part": 13,
+   "title": "Two cut-offs and a person in the middle",
+   "brief": "The same line of dots from c13-not-clean-scores with two cut-off lines at 0.30 and 0.70: below 0.30 pass, above 0.70 reject, between them a person looks. The five eggs in the middle are named: tray-06 0.56, box10-01 0.35, box10-08 0.31, box10-09 0.45, box10-10 0.48, all clean by my labels (log 122). A small table of the four pairs from log 122: 0.50/0.50 passed bad 0, rejected good 1, to a person 0; 0.20/0.80: 0, 0, 12; 0.10/0.90: 0, 0, 15; 0.30/0.70: 0, 0, 5. The guide's rule underneath: 'Use labeled examples from your application to set thresholds ... Choose thresholds based on the cost of false positives and false negatives.' (O17).",
+   "shapes": [
+    "S9 threshold",
+    "S4 distribution"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-pick-then-check",
+   "part": 13,
+   "title": "Choose on one set, check on another",
+   "brief": "Two steps in order. Step one: choose the cut-offs on one set of labelled photos. Step two: check them on a second labelled set you did not look at while choosing. A clear note beside it: in this lesson the cut-offs were chosen and checked on the same 33 photos (log 122), so the zero mistakes are a demo of the method, not a proof. No numbers other than 33.",
+   "shapes": [
+    "S6 sequence"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-speed-claim",
+   "part": 13,
+   "title": "OpenAI's speed claim, and our small test",
+   "brief": "At the top, marked as OpenAI's claim: 'OpenAI says about 10x faster than its Responses API' (O1, O2). Below, our own small test on 10 egg photos, one question, from my laptop, two runs. Fresh run (log 125): Decisions API median 306 ms, matched my labels 10/10, $0.0235 per 1,000 photos; gpt-6-luna on the Responses API writing JSON median 1314 ms, 9/10, $0.0198 per 1,000 photos. Working-copy run: Decisions median 208 ms, 10/10, $0.0235 per 1,000; Responses median 1867 ms, 8/10, $0.0198 per 1,000. Shown as paired bars. A clear footer: 'Our small test, 10 photos. Not proof of OpenAI's number.'",
+   "shapes": [
+    "S10 comparison",
+    "S4 distribution"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-refund-policy",
+   "part": 13,
+   "title": "The refund desk policy",
+   "brief": "A claim (a customer message and an egg photo) goes into one call with two questions: what the message says is wrong (broken, dirty, late, other) and what the photo shows (clean, dirty, broken, unclear). Then the written policy as a short flow: any question refused, a person checks; the message claims broken or dirty and the photo shows the same problem with probability 0.90 or more, refund automatically; anything else, a person checks. A bold line: the shop never refuses a refund automatically. A small note on why there are two questions: one combined question ('Does the photo clearly show the problem the customer describes?') refunded 2 of 8 and sent clear broken eggs to a person (C01 0.15, C06 0.00; ~/lab-data/jev-decisions-course/logs/11-returns-desk-v1-output.txt).",
+   "shapes": [
+    "S2 mechanism",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "c13-text-pulls-photo",
+   "part": 13,
+   "title": "The message pulls the photo answer",
+   "brief": "Before and after for two claims. C03 (photo box10-03, a clean egg by my label; the message says one egg is cracked): with the message in the same call, the photo answer was broken, P 0.66, sent to a person (log 126); photo asked alone, the answer was clean, P(broken) 0.01 (log 127). C04 (duck-01, a borderline dirty egg): with the message 0.92, refunded automatically (log 126); alone 0.57, sent to a person (log 127). Totals: one call per claim, 5 refunded and 3 to a person, 1.7 s, 3,463 tokens (log 126); photo on its own, 4 refunded and 4 to a person, 3.1 s, 3,479 tokens (log 127). The guide lines underneath: 'Separate different concerns into different questions' (O15) and 'For decisions that depend on an earlier answer, send separate requests.' (O14).",
+   "shapes": [
+    "S13 before_after"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d14-fair-test",
+   "part": 14,
+   "title": "Same tickets, same rules",
+   "brief": "How Jev and OpenAI's Decisions API were tested on the same job, in order, each tool with its product logo. The same 300 support tickets with the same right answers, and the same three questions word for word: which team, how urgent, how frustrated, all three in one call (FACTS line 85). Five warm-up calls per tool, not counted (line 86). For one call at a time: 40 tickets, three rounds, the two tools take turns and the order swaps each time (line 86). For the whole batch: 300 tickets with 8 calls in flight (line 85). No retries; failed calls and refusals: 0 and 0 in every run (line 104).",
+   "shapes": [
+    "S6 sequence"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d14-three-runs",
+   "part": 14,
+   "title": "Three runs on one day",
+   "brief": "The same test run three times on 9 October 2026 from Kolkata, at 11:25, 12:02 (fresh clone) and 12:06 India time (FACTS lines 82-84), Jev against the Decisions API, each with its product logo. Two rows stay the same every run: team answers right, Decisions 295 of 300 in all three runs, Jev 290, 290, 291 (lines 90-91); cost per 1,000 tickets, Decisions $0.0506 and Jev $0.0246 in all three runs (lines 96-97). One row moves: time for all 300 tickets with 8 calls in flight, Decisions 7.7 s, then 13.3 s, then 13.4 s; Jev 12.5 s, 12.9 s, 12.6 s (lines 98-99). Mark the accuracy and cost rows as repeated and the speed row as not repeated. A footnote: public beta, measured from India, measure speed at your own time and place (lines 108-114). Optional small rows: urgency right, Decisions 239 every run, Jev 217, 217, 216; frustration right, Decisions 239 every run, Jev 226, 227, 226 (lines 92-95).",
+   "shapes": [
+    "S10 comparison",
+    "S13 before_after"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d14-token-vs-ticket",
+   "part": 14,
+   "title": "Price per token is not price per ticket",
+   "brief": "Why Jev's price per token is 2.4 times lower but its cost per ticket is only 2.1 times lower. Price per million input tokens: Decisions $0.10 (FACTS line 33), Jev $0.042 (line 47); 0.10 / 0.042 = 2.4. Cost per 1,000 tickets: $0.0506 against $0.0246 (lines 96-97); 0.0506 / 0.0246 = 2.1. Each call is a parcel: a fixed part (the three questions plus each tool's own wrapping) and the ticket text inside. Fitted fixed part about 466 tokens on Decisions and about 543 on Jev; the ticket text reads at about 4.33 and 4.19 characters per token, about 40 tokens per ticket on both (from compare_decisions/results/summary.md, fresh-run log 204-cd_summarize.txt; these four numbers are not in FACTS). Tokens per ticket in total: Decisions 506, Jev 585 (line 115). The lesson: compare dollars per ticket on your own tickets.",
+   "shapes": [
+    "S1 derivation",
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d14-can-cannot",
+   "part": 14,
+   "title": "What each one can do",
+   "brief": "Three columns, with product logos: only the Decisions API, both, only Jev. Both: many independent questions in one call (FACTS line 28 for Decisions; Jev shown in Part 9), a probability for every option, and a confidence number for a choice or a score (line 31). Only the Decisions API: reads photos, text plus images (line 16), and can return a refusal for one question while the others are still answered (line 35). Only Jev: the state can be a JSON object with named fields, like a form (line 46: 'String, JSON object, or array of text values'). Jev reads text only: 'No image, audio, or video input' (line 46).",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d14-which-tool",
+   "part": 14,
+   "title": "Which tool for which job",
+   "brief": "A simple choice between three tools. Decisions about text only, many of them, where cost matters: Jev, which cost about half as much on these 300 tickets (FACTS lines 96-97). Decisions about photos, or text with photos: OpenAI's Decisions API, the only one of the two that reads images (lines 16 and 46). Written text for a person, or an answer in your own JSON shape: a chat model with structured output, as OpenAI's own Decisions guide says (line 23). Under all three, one rule: test on your own labelled data, set two cut-offs, and send the unsure middle to a person (line 32). On these tickets the Decisions API was a little more accurate (lines 90-95), so the test on your own data matters.",
+   "shapes": [
+    "S2 mechanism",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p11-which-tool",
    "part": 11,
    "title": "Jev or a chat model?",
    "brief": "A simple choice: if the program needs a decision from a fixed list of answers about text, use Jev; if it needs written text for a person, use a chat model. One note: Jev reads text only, so a decision about a photo needs a model that reads images, such as OpenAI's Decisions API.",
    "shapes": [
     "S2 mechanism"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -715,12 +1155,27 @@
    ]
   },
   {
+   "id": "d14-takeaways",
+   "part": 14,
+   "title": "Five things to remember",
+   "brief": "Five practical things to remember about using Jev or the Decisions API, on one screen. One: both answer typed questions (yes or no, one option from a list, a level on a scale) with probabilities; ask all questions about the same material in one call, because every call pays a fixed part (FACTS line 28 and line 116: three questions in one call 505 against 594 tokens per ticket on Decisions, 583 against 1,184 on Jev). Two: wording matters on both; write the question you mean, with options that are clearly different (line 30). Three: use the confidence; two cut-offs, the unsure middle to a person, a stricter cut-off for anything that moves money (line 32). Four: log which model answered every call; on Jev, pin jev-1.13.0. Five: test on your own labelled data; tune on one set, check on a set never used for tuning.",
+   "shapes": [
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "p11-takeaways",
    "part": 11,
    "title": "Five things to remember",
    "brief": "Five practical things to remember about using Jev, on one screen.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
