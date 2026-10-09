@@ -3,3 +3,8 @@ toolbarMode = "minimal"
 
 [browser]
 gatherUsageStats = false
+
+[server]
+# No email prompt on the first run, and only the localhost address is printed.
+headless = true
+address = "localhost"
