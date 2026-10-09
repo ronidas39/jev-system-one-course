@@ -96,7 +96,7 @@
   "usd": 6.3756e-05
  },
  {
-  "id": "p01-meet-both-tools",
+  "id": "p01-meet-jev-and-decisions",
   "part": 1,
   "title": "Meet the two tools: TypeSafe Jev and the OpenAI Decisions API",
   "jev_pick": "side_by_side_panels",
