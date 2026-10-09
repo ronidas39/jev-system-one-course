@@ -113,6 +113,11 @@ def main() -> None:
         check_key_present()
         client = make_client()
 
+    name = f"{args.player}-seed{args.seed}"
+    meta = {"meta": True, "player": args.player, "seed": args.seed, "steps": args.steps,
+            "cutoff": args.cutoff, "model": "jev-1.13.0" if args.player == "jev" else MODEL}
+    steps_file = out / f"{name}.jsonl"
+    steps_file.write_text(json.dumps(meta) + "\n")  # every step is added as it happens
     car, rows = 2, []
     print(f"{args.player}, seed {args.seed}, {args.steps} steps, cut-off {args.cutoff:.2f}")
     print(f"{'step':>4}  {'lane 1':<15}  {'lane 2':<15}  {'lane 3':<15}  {'action':<16} {'ms':>5}")
@@ -149,12 +154,10 @@ def main() -> None:
         rows.append({"step": step, "probs": probs, "action": action, "car_lane": car,
                      "blocked_20m": sorted(blocked), "tokens": tokens, "seconds": round(seconds, 4),
                      "usd": usd})
+        with steps_file.open("a") as fh:
+            fh.write(json.dumps(rows[-1]) + "\n")
         print(f"{step:>4}  {bars(probs)}  {action:<16} {seconds * 1000:>5.0f}", flush=True)
 
-    name = f"{args.player}-seed{args.seed}"
-    meta = {"meta": True, "player": args.player, "seed": args.seed, "steps": args.steps,
-            "cutoff": args.cutoff, "model": "jev-1.13.0" if args.player == "jev" else MODEL}
-    (out / f"{name}.jsonl").write_text("".join(json.dumps(r) + "\n" for r in [meta, *rows]))
     write_replay(road, rows, meta, out / f"{name}.html")
     crashes = sum(r["action"] == "CRASH" for r in rows)
     slow = sum(r["action"].startswith("slow down") for r in rows)
@@ -193,13 +196,13 @@ REPLAY = """<!doctype html><meta charset="utf-8"><title>Lane race replay</title>
 <div class="row"><span class="lab">Lane 2</span><div class="track"><div class="bar" id="b2"></div></div><span class="num" id="n2"></span></div>
 <div class="row"><span class="lab">Lane 3</span><div class="track"><div class="bar" id="b3"></div></div><span class="num" id="n3"></span></div>
 <div id="act"></div><div id="count"></div></div></div>
-<script>const F=__DATA__;let i=0,crash=0,slow=0;
+<script>const F=__DATA__;let i=0,crash=0,slow=0,close=0;
 function show(){const f=F[i];document.getElementById('road').src=f.img;
 for(const k of [1,2,3]){const p=f.probs?f.probs['lane_'+k]||0:0;
 document.getElementById('b'+k).style.width=(p*320)+'px';document.getElementById('n'+k).textContent=f.probs?p.toFixed(2):'-';}
-if(f.action==='CRASH')crash++;if(f.action==='slow down')slow++;
+if(f.action==='CRASH')crash++;if(f.action.startsWith('slow down'))slow++;if(f.action==='slow down, close call')close++;
 document.getElementById('act').textContent='step '+i+': '+f.action;
-document.getElementById('count').textContent='crashes '+crash+' · slow-downs '+slow+' · '+f.ms+' ms';
+document.getElementById('count').textContent='crashes '+crash+' · slow-downs '+slow+' ('+close+' close calls) · '+f.ms+' ms';
 i++;if(i<F.length)setTimeout(show,700);}show();</script>"""
 
 

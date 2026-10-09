@@ -420,6 +420,21 @@
    "brief": "From our own 300 tickets: answers grouped by how confident the model was, and for each group the share that were really right. Honest confidence means the high groups are right more often.",
    "shapes": [
     "S4 distribution"
+   ],
+   "kits": [
+    "jev"
+   ]
+  },
+  {
+   "id": "p05-calibration-c",
+   "part": 5,
+   "title": "Does a confident answer mean a right answer?",
+   "brief": "From our own 300 tickets: answers grouped by how confident the model was, and for each group the share that were really right. Honest confidence means the high groups are right more often. Add one small note: a later run on 9 October gave 272 of 273 at 0.9 or more; Part 15 shows the runs.",
+   "shapes": [
+    "S4 distribution"
+   ],
+   "kits": [
+    "combined"
    ]
   },
   {

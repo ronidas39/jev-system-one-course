@@ -284,7 +284,7 @@ What this shows, in plain words:
 
 - I ran it three times on 9 October: at 11:25, 12:02 (from a fresh clone) and 12:06, India time.
   The speed rows above show all three runs, in that order.
-- Accuracy and cost came out the same every time. The Decisions API was a little more accurate.
+- Accuracy and cost came out the same every time. The Decisions API was more accurate: a little on team, clearly on urgency and frustration.
   Jev cost about half as much.
 - Speed did not repeat. In the first run the Decisions API was faster on every speed measure. In
   the two later runs, Jev finished the 300 tickets first. I do not know why. The Decisions API is

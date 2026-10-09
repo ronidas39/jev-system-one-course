@@ -1307,6 +1307,35 @@
   "usd": 6.2286e-05
  },
  {
+  "id": "p05-calibration-c",
+  "part": 5,
+  "title": "Does a confident answer mean a right answer?",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.412,
+  "usd": 6.388200000000001e-05
+ },
+ {
   "id": "p05-three-paths",
   "part": 5,
   "title": "Act, check, or hand to a person",
