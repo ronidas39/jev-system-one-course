@@ -7,12 +7,14 @@ Two separate questions, because OpenAI's guide says to separate different
 concerns. Then a simple, written-down policy decides what happens:
 
   - any question refused              -> a person checks it
-  - the message claims broken or dirty, and the photo shows that same
-    problem with probability 0.90 or more -> refund automatically
+  - the message clearly claims broken or dirty (confidence 0.90 or more),
+    and the photo shows that same problem with probability 0.90 or more
+                                      -> refund automatically
   - anything else                     -> a person checks it
 
 The shop never refuses a refund automatically. The model can only make the
-easy "yes" faster. Every "no" stays with a person.
+easy "yes" faster. Every "no" stays with a person. A real desk would also cap
+the amount and check for a reused photo. This demo shows only the photo check.
 
 The claims are in returns_claims.json. They are made up for this course.
 
@@ -69,6 +71,8 @@ def decide(answers: dict) -> tuple[str, float | None]:
     said = answers["claim"].choice
     if said not in ("broken", "dirty"):
         return "person (not a damage claim)", None
+    if answers["claim"].confidence < AUTO_REFUND_AT:
+        return "person (message is not clear)", None
     agree = next(p.probability for p in answers["photo"].probabilities if p.value == said)
     if agree >= AUTO_REFUND_AT:
         return "REFUND automatically", agree
