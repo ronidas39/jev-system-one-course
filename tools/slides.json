@@ -592,6 +592,22 @@
    "shapes": [
     "R real_page",
     "S14 code"
+   ],
+   "kits": [
+    "jev"
+   ]
+  },
+  {
+   "id": "p08-python-version-c",
+   "part": 8,
+   "title": "Check your Python version",
+   "brief": "A real terminal showing the command that prints the Python version and its output (Python 3.13.15, fresh run 9 October 2026), and the same git check. The caption under it says Python 3.12 or newer is fine (networkx 3.7 needs 3.12). Same as p08-python-version, only the caption changes.",
+   "shapes": [
+    "R real_page",
+    "S14 code"
+   ],
+   "kits": [
+    "combined"
    ]
   },
   {

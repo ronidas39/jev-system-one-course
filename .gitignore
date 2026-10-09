@@ -12,3 +12,5 @@ spend*.json
 .DS_Store
 handson/outputs/
 decisions/results/mine/
+decisions/results/race/mine/
+decisions/results/race/*/frames-seed*/

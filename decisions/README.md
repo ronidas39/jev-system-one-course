@@ -1,6 +1,6 @@
 # The OpenAI Decisions API, hands-on
 
-This folder is Part C of the course: Parts 11, 12 and 13.
+This folder is Part C of the course: Parts 11 to 14. The web app for the final project is in `../app/`.
 
 The **Decisions API** is from OpenAI. Like Jev, it does not write text. You send some material and
 typed questions. You get back a probability for every answer you allowed. It can also read photos.
@@ -67,3 +67,43 @@ proof. For real use, pick cut-offs on one set of labelled photos and check them 
 - **Speed.** OpenAI says the Decisions API is "about 10x faster than the Responses API". That is
   OpenAI's claim. Script 10 `compare` times both on 10 egg photos from my laptop. It is a small
   test, not a proof of OpenAI's number.
+
+## The lane race (Part 14): pictures, video clips, and text
+
+`race/` is a small game. A seeded road has three lanes, with barriers and cones. At every step a
+model answers one choice question: which lane should the car drive in? Our code drives into that
+lane only when its probability is at or above a cut-off (0.80 by default). Below the cut-off, or on
+a refusal, the car slows down and stays in its lane. In this game, slowing down never crashes. It
+only costs time.
+
+```bash
+python race/make_clip.py                 # the race as a video, and frames cut out of it
+python race/play.py --player text        # Decisions API, road as text
+python race/play.py --player jev         # Jev, road as text (Jev reads text only)
+python race/play.py --player picture     # Decisions API, one drawn picture per step
+python race/play.py --player clip1       # Decisions API, one frame from the video
+python race/play.py --player clip3       # Decisions API, the last three frames in one request
+python race/compare.py                   # all your runs side by side
+python race/compare.py --run reference   # the runs recorded for the course
+```
+
+Each run also writes a replay page (`results/race/<run>/<player>-seed7.html`). Open it in a
+browser to watch the race with the three probability bars.
+
+**Video.** The Decisions API takes text and images. It has no video input. A video is a stack of
+pictures, so your code cuts out the frames it needs and sends them as images. `make_clip.py` and the
+`clip` players do exactly that, with the ffmpeg program that comes with the `imageio-ffmpeg` package.
+
+**Speed.** A call took about 0.2 seconds from my laptop in India. That is fine for a turn-based
+game or a review queue. It is far too slow, and too unreliable, for a real car's control loop.
+This is a toy, not a driving system.
+
+## The web app (Part 16)
+
+```bash
+streamlit run app/app.py
+```
+
+Three tabs, one per question type: a predicate with one cut-off, a choice on an egg photo with
+two cut-offs and a "send to a person" band, and a score with its level probabilities. The text tabs
+can also ask Jev. Keys come from `.env`. Moving a slider never calls the API.

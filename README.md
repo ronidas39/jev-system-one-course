@@ -12,7 +12,9 @@ Everything in the course is here:
 - four small projects.
 - one big project: messy company records become a knowledge graph.
 - a speed and cost test on support tickets.
-- the OpenAI Decisions API, hands-on: `decisions/`. Text, photos, cut-offs, a refund desk.
+- the OpenAI Decisions API, hands-on: `decisions/`. Text, photos, cut-offs, a refund desk, and a
+  lane race that reads pictures, video frames and text.
+- a working web app with Streamlit: `app/`. One tab per question type.
 - the same 300 tickets on Jev and on the Decisions API: `compare_decisions/`.
 - the made-up (synthetic) data.
 - every raw result.
@@ -103,10 +105,11 @@ cd ..
 | `usecases/` | four small projects: ticket triage, a check on a chat model's draft reply, tool choice for an AI agent, a duplicate check on two records | 10 |
 | `capstone/` | the big project: messy company records, cheap blocking, Jev decides each pair, a merge rule, a knowledge graph, and a check against the truth | 10 |
 | `compare/` | the speed and cost test of Jev, gpt-6-luna and gpt-6.1-sol on the same tickets. Every other run is here too, with accuracy | 7 |
-| `decisions/` | the OpenAI Decisions API, hands-on: first call, the three question types, many questions, refusals, cost, photos of eggs, cut-offs, a refund desk | 11, 12, 13 |
-| `compare_decisions/` | the same 300 tickets on Jev and on OpenAI's Decisions API (added 9 October 2026) | 14 |
+| `decisions/` | the OpenAI Decisions API, hands-on: first call, the three question types, many questions, refusals, cost, photos of eggs, cut-offs, a refund desk, the lane race (`race/`) | 11 to 14 |
+| `app/` | the final project: a Streamlit web app with one tab per question type | 16 |
+| `compare_decisions/` | the same 300 tickets on Jev and on OpenAI's Decisions API (added 9 October 2026) | 15 |
 | `data/` | the data makers, the data they made, and `DATA-CARD.md` | 7, 10 |
-| `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 14 |
+| `tools/` | `choose_register.py`: Jev picks the drawing style for every slide in the course | 15 |
 | `jevcourse/` | small shared helpers: prices, timed calls, the shared questions | all |
 
 ---
@@ -120,7 +123,7 @@ python usecases/03_tool_routing.py
 python usecases/04_duplicate_check.py
 ```
 
-## Run the Decisions API part (Parts 11 to 13)
+## Run the Decisions API part (Parts 11 to 14) and the web app (Part 16)
 
 ```bash
 cd decisions
@@ -129,7 +132,10 @@ python 02_first_call_sdk.py
 python 10_egg_grading.py classify
 python 10_egg_grading.py sweep
 python 11_returns_desk.py
+python race/play.py --player text
+python race/compare.py --run reference
 cd ..
+streamlit run app/app.py
 ```
 
 The full list, in course order, is in `decisions/README.md`.

@@ -1,0 +1,61 @@
+{"meta": true, "player": "clip3", "seed": 7, "steps": 60, "cutoff": 0.8, "model": "gpt-6-luna"}
+{"step": 0, "probs": {"lane_1": 0.01, "lane_2": 0.55, "lane_3": 0.44}, "action": "slow down", "car_lane": 2, "blocked_20m": [1], "tokens": 391, "seconds": 0.4668, "usd": 3.91e-05}
+{"step": 1, "probs": {"lane_1": 0.01, "lane_2": 0.12, "lane_3": 0.87}, "action": "drive lane 3", "car_lane": 3, "blocked_20m": [1], "tokens": 679, "seconds": 0.2507, "usd": 6.790000000000001e-05}
+{"step": 2, "probs": {"lane_1": 0.05, "lane_2": 0.81, "lane_3": 0.14}, "action": "drive lane 2", "car_lane": 2, "blocked_20m": [1], "tokens": 679, "seconds": 0.2303, "usd": 6.790000000000001e-05}
+{"step": 3, "probs": {"lane_1": 0.15, "lane_2": 0.7, "lane_3": 0.15}, "action": "slow down", "car_lane": 2, "blocked_20m": [], "tokens": 679, "seconds": 0.2488, "usd": 6.790000000000001e-05}
+{"step": 4, "probs": {"lane_1": 0.21, "lane_2": 0.56, "lane_3": 0.23}, "action": "slow down", "car_lane": 2, "blocked_20m": [1], "tokens": 679, "seconds": 0.1979, "usd": 6.790000000000001e-05}
+{"step": 5, "probs": {"lane_1": 0.51, "lane_2": 0.39, "lane_3": 0.1}, "action": "slow down", "car_lane": 2, "blocked_20m": [], "tokens": 679, "seconds": 0.3444, "usd": 6.790000000000001e-05}
+{"step": 6, "probs": {"lane_1": 0.35, "lane_2": 0.58, "lane_3": 0.07}, "action": "slow down", "car_lane": 2, "blocked_20m": [3], "tokens": 679, "seconds": 0.3475, "usd": 6.790000000000001e-05}
+{"step": 7, "probs": {"lane_1": 0.36, "lane_2": 0.57, "lane_3": 0.07}, "action": "slow down", "car_lane": 2, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.2112, "usd": 6.790000000000001e-05}
+{"step": 8, "probs": {"lane_1": 0.03, "lane_2": 0.89, "lane_3": 0.08}, "action": "drive lane 2", "car_lane": 2, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.2436, "usd": 6.790000000000001e-05}
+{"step": 9, "probs": {"lane_1": 0.24, "lane_2": 0.71, "lane_3": 0.05}, "action": "slow down", "car_lane": 2, "blocked_20m": [], "tokens": 679, "seconds": 0.2356, "usd": 6.790000000000001e-05}
+{"step": 10, "probs": {"lane_1": 0.82, "lane_2": 0.13, "lane_3": 0.05}, "action": "drive lane 1", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2123, "usd": 6.790000000000001e-05}
+{"step": 11, "probs": {"lane_1": 0.63, "lane_2": 0.32, "lane_3": 0.05}, "action": "slow down", "car_lane": 1, "blocked_20m": [3], "tokens": 679, "seconds": 0.1939, "usd": 6.790000000000001e-05}
+{"step": 12, "probs": {"lane_1": 0.23, "lane_2": 0.68, "lane_3": 0.09}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2412, "usd": 6.790000000000001e-05}
+{"step": 13, "probs": {"lane_1": 0.21, "lane_2": 0.6, "lane_3": 0.19}, "action": "slow down", "car_lane": 1, "blocked_20m": [1], "tokens": 679, "seconds": 0.2223, "usd": 6.790000000000001e-05}
+{"step": 14, "probs": {"lane_1": 0.34, "lane_2": 0.49, "lane_3": 0.17}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2491, "usd": 6.790000000000001e-05}
+{"step": 15, "probs": {"lane_1": 0.41, "lane_2": 0.46, "lane_3": 0.13}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.1963, "usd": 6.790000000000001e-05}
+{"step": 16, "probs": {"lane_1": 0.52, "lane_2": 0.25, "lane_3": 0.23}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.1973, "usd": 6.790000000000001e-05}
+{"step": 17, "probs": {"lane_1": 0.41, "lane_2": 0.05, "lane_3": 0.54}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2124, "usd": 6.790000000000001e-05}
+{"step": 18, "probs": {"lane_1": 0.25, "lane_2": 0.15, "lane_3": 0.6}, "action": "slow down", "car_lane": 1, "blocked_20m": [1], "tokens": 679, "seconds": 0.4226, "usd": 6.790000000000001e-05}
+{"step": 19, "probs": {"lane_1": 0.74, "lane_2": 0.11, "lane_3": 0.15}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2457, "usd": 6.790000000000001e-05}
+{"step": 20, "probs": {"lane_1": 0.78, "lane_2": 0.05, "lane_3": 0.17}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.204, "usd": 6.790000000000001e-05}
+{"step": 21, "probs": {"lane_1": 0.31, "lane_2": 0.07, "lane_3": 0.62}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 2], "tokens": 679, "seconds": 0.2415, "usd": 6.790000000000001e-05}
+{"step": 22, "probs": {"lane_1": 0.48, "lane_2": 0.05, "lane_3": 0.47}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2045, "usd": 6.790000000000001e-05}
+{"step": 23, "probs": {"lane_1": 0.74, "lane_2": 0.07, "lane_3": 0.19}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.1914, "usd": 6.790000000000001e-05}
+{"step": 24, "probs": {"lane_1": 0.8, "lane_2": 0.13, "lane_3": 0.07}, "action": "drive lane 1", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2354, "usd": 6.790000000000001e-05}
+{"step": 25, "probs": {"lane_1": 0.82, "lane_2": 0.12, "lane_3": 0.06}, "action": "drive lane 1", "car_lane": 1, "blocked_20m": [3], "tokens": 679, "seconds": 0.2526, "usd": 6.790000000000001e-05}
+{"step": 26, "probs": {"lane_1": 0.72, "lane_2": 0.06, "lane_3": 0.22}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2216, "usd": 6.790000000000001e-05}
+{"step": 27, "probs": {"lane_1": 0.56, "lane_2": 0.05, "lane_3": 0.39}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2753, "usd": 6.790000000000001e-05}
+{"step": 28, "probs": {"lane_1": 0.77, "lane_2": 0.1, "lane_3": 0.13}, "action": "slow down", "car_lane": 1, "blocked_20m": [2, 3], "tokens": 679, "seconds": 0.2233, "usd": 6.790000000000001e-05}
+{"step": 29, "probs": {"lane_1": 0.91, "lane_2": 0.05, "lane_3": 0.04}, "action": "drive lane 1", "car_lane": 1, "blocked_20m": [2, 3], "tokens": 679, "seconds": 0.1909, "usd": 6.790000000000001e-05}
+{"step": 30, "probs": {"lane_1": 0.44, "lane_2": 0.14, "lane_3": 0.42}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 2], "tokens": 679, "seconds": 0.2326, "usd": 6.790000000000001e-05}
+{"step": 31, "probs": {"lane_1": 0.11, "lane_2": 0.1, "lane_3": 0.79}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.1983, "usd": 6.790000000000001e-05}
+{"step": 32, "probs": {"lane_1": 0.4, "lane_2": 0.58, "lane_3": 0.02}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2017, "usd": 6.790000000000001e-05}
+{"step": 33, "probs": {"lane_1": 0.34, "lane_2": 0.62, "lane_3": 0.04}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2094, "usd": 6.790000000000001e-05}
+{"step": 34, "probs": {"lane_1": 0.43, "lane_2": 0.41, "lane_3": 0.16}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.2067, "usd": 6.790000000000001e-05}
+{"step": 35, "probs": {"lane_1": 0.32, "lane_2": 0.04, "lane_3": 0.64}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 2], "tokens": 679, "seconds": 0.2164, "usd": 6.790000000000001e-05}
+{"step": 36, "probs": {"lane_1": 0.28, "lane_2": 0.01, "lane_3": 0.71}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2141, "usd": 6.790000000000001e-05}
+{"step": 37, "probs": {"lane_1": 0.69, "lane_2": 0.03, "lane_3": 0.28}, "action": "slow down", "car_lane": 1, "blocked_20m": [2, 3], "tokens": 679, "seconds": 0.2153, "usd": 6.790000000000001e-05}
+{"step": 38, "probs": {"lane_1": 0.82, "lane_2": 0.05, "lane_3": 0.13}, "action": "drive lane 1", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.1874, "usd": 6.790000000000001e-05}
+{"step": 39, "probs": {"lane_1": 0.44, "lane_2": 0.32, "lane_3": 0.24}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.3592, "usd": 6.790000000000001e-05}
+{"step": 40, "probs": {"lane_1": 0.37, "lane_2": 0.55, "lane_3": 0.08}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2041, "usd": 6.790000000000001e-05}
+{"step": 41, "probs": {"lane_1": 0.3, "lane_2": 0.53, "lane_3": 0.17}, "action": "slow down", "car_lane": 1, "blocked_20m": [1], "tokens": 679, "seconds": 0.2057, "usd": 6.790000000000001e-05}
+{"step": 42, "probs": {"lane_1": 0.34, "lane_2": 0.51, "lane_3": 0.15}, "action": "slow down", "car_lane": 1, "blocked_20m": [3], "tokens": 679, "seconds": 0.2983, "usd": 6.790000000000001e-05}
+{"step": 43, "probs": {"lane_1": 0.38, "lane_2": 0.37, "lane_3": 0.25}, "action": "slow down", "car_lane": 1, "blocked_20m": [1], "tokens": 679, "seconds": 0.3445, "usd": 6.790000000000001e-05}
+{"step": 44, "probs": {"lane_1": 0.41, "lane_2": 0.08, "lane_3": 0.51}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.3057, "usd": 6.790000000000001e-05}
+{"step": 45, "probs": {"lane_1": 0.67, "lane_2": 0.07, "lane_3": 0.26}, "action": "slow down", "car_lane": 1, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.2104, "usd": 6.790000000000001e-05}
+{"step": 46, "probs": {"lane_1": 0.69, "lane_2": 0.14, "lane_3": 0.17}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2407, "usd": 6.790000000000001e-05}
+{"step": 47, "probs": {"lane_1": 0.61, "lane_2": 0.06, "lane_3": 0.33}, "action": "slow down", "car_lane": 1, "blocked_20m": [2], "tokens": 679, "seconds": 0.2119, "usd": 6.790000000000001e-05}
+{"step": 48, "probs": {"lane_1": 0.53, "lane_2": 0.05, "lane_3": 0.42}, "action": "slow down", "car_lane": 1, "blocked_20m": [], "tokens": 679, "seconds": 0.2079, "usd": 6.790000000000001e-05}
+{"step": 49, "probs": {"lane_1": 0.13, "lane_2": 0.07, "lane_3": 0.8}, "action": "drive lane 3", "car_lane": 3, "blocked_20m": [1, 2], "tokens": 679, "seconds": 0.1949, "usd": 6.790000000000001e-05}
+{"step": 50, "probs": {"lane_1": 0.51, "lane_2": 0.27, "lane_3": 0.22}, "action": "slow down", "car_lane": 3, "blocked_20m": [1], "tokens": 679, "seconds": 0.2939, "usd": 6.790000000000001e-05}
+{"step": 51, "probs": {"lane_1": 0.14, "lane_2": 0.82, "lane_3": 0.04}, "action": "drive lane 2", "car_lane": 2, "blocked_20m": [3], "tokens": 679, "seconds": 0.2255, "usd": 6.790000000000001e-05}
+{"step": 52, "probs": {"lane_1": 0.39, "lane_2": 0.43, "lane_3": 0.18}, "action": "slow down", "car_lane": 2, "blocked_20m": [1, 3], "tokens": 679, "seconds": 0.2262, "usd": 6.790000000000001e-05}
+{"step": 53, "probs": {"lane_1": 0.41, "lane_2": 0.29, "lane_3": 0.3}, "action": "slow down", "car_lane": 2, "blocked_20m": [1], "tokens": 679, "seconds": 0.216, "usd": 6.790000000000001e-05}
+{"step": 54, "probs": {"lane_1": 0.67, "lane_2": 0.13, "lane_3": 0.2}, "action": "slow down", "car_lane": 2, "blocked_20m": [2, 3], "tokens": 679, "seconds": 0.2047, "usd": 6.790000000000001e-05}
+{"step": 55, "probs": {"lane_1": 0.69, "lane_2": 0.05, "lane_3": 0.26}, "action": "slow down", "car_lane": 2, "blocked_20m": [], "tokens": 679, "seconds": 0.2387, "usd": 6.790000000000001e-05}
+{"step": 56, "probs": {"lane_1": 0.17, "lane_2": 0.07, "lane_3": 0.76}, "action": "slow down", "car_lane": 2, "blocked_20m": [2], "tokens": 679, "seconds": 0.1979, "usd": 6.790000000000001e-05}
+{"step": 57, "probs": {"lane_1": 0.34, "lane_2": 0.32, "lane_3": 0.34}, "action": "slow down", "car_lane": 2, "blocked_20m": [1], "tokens": 679, "seconds": 0.2156, "usd": 6.790000000000001e-05}
+{"step": 58, "probs": {"lane_1": 0.62, "lane_2": 0.1, "lane_3": 0.28}, "action": "slow down", "car_lane": 2, "blocked_20m": [], "tokens": 679, "seconds": 0.277, "usd": 6.790000000000001e-05}
+{"step": 59, "probs": {"lane_1": 0.63, "lane_2": 0.1, "lane_3": 0.27}, "action": "slow down", "car_lane": 2, "blocked_20m": [2], "tokens": 679, "seconds": 0.3406, "usd": 6.790000000000001e-05}

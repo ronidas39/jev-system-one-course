@@ -1824,6 +1824,35 @@
   "usd": 6.1026e-05
  },
  {
+  "id": "p08-python-version-c",
+  "part": 8,
+  "title": "Check your Python version",
+  "jev_pick": "real_terminal_capture",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "real_terminal_capture",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_terminal_capture"
+  ],
+  "final": "real_terminal_capture",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.554,
+  "usd": 6.3966e-05
+ },
+ {
   "id": "p08-clone-and-venv-c",
   "part": 8,
   "title": "Clone the repository and make a virtual environment",

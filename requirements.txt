@@ -3,5 +3,8 @@
 typesafe-sdk==0.7.2
 openai==3.26.1
 httpx==0.28.1
+pillow==12.3.0
+imageio-ffmpeg==0.6.0
+streamlit==1.65.0
 networkx==3.7
 matplotlib==3.11.2
