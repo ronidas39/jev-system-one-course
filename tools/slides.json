@@ -505,9 +505,6 @@
    "brief": "The test procedure in order: warm-up calls first, then the models take turns on each item, the order rotates every round, three rounds, then median and slowest-ten-percent are computed.",
    "shapes": [
     "S6 sequence"
-   ],
-   "kits": [
-    "jev"
    ]
   },
   {
