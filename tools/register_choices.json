@@ -3197,6 +3197,254 @@
   "usd": 7.1148e-05
  },
  {
+  "id": "e14-openai-example",
+  "part": 14,
+  "title": "OpenAI's lane example",
+  "jev_pick": "real_screenshot",
+  "confidence": 0.98,
+  "top3": [
+   [
+    "real_screenshot",
+    0.98
+   ],
+   [
+    "side_by_side_panels",
+    0.02
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "real_screenshot",
+   "real_terminal_capture"
+  ],
+  "final": "real_screenshot",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.37,
+  "usd": 6.741000000000001e-05
+ },
+ {
+  "id": "e14-race-rules",
+  "part": 14,
+  "title": "The rules of the lane race",
+  "jev_pick": "flowchart",
+  "confidence": 0.72,
+  "top3": [
+   [
+    "flowchart",
+    0.74
+   ],
+   [
+    "hand_drawn_sketch",
+    0.09
+   ],
+   [
+    "chart",
+    0.07
+   ]
+  ],
+  "allowed_by_rules": [
+   "isometric_3d"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'flowchart' breaks the rule for S2 mechanism, S9 threshold"
+  ],
+  "seconds": 0.408,
+  "usd": 6.888e-05
+ },
+ {
+  "id": "e14-picture-result",
+  "part": 14,
+  "title": "From a picture, the model was rarely sure",
+  "jev_pick": "chart",
+  "confidence": 0.75,
+  "top3": [
+   [
+    "chart",
+    0.77
+   ],
+   [
+    "real_screenshot",
+    0.09999999999999999
+   ],
+   [
+    "sequence_diagram",
+    0.05
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.399,
+  "usd": 7.1652e-05
+ },
+ {
+  "id": "e14-video-is-frames",
+  "part": 14,
+  "title": "A video is a stack of pictures",
+  "jev_pick": "flowchart",
+  "confidence": 0.59,
+  "top3": [
+   [
+    "flowchart",
+    0.62
+   ],
+   [
+    "sequence_diagram",
+    0.36
+   ],
+   [
+    "block_diagram",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.352,
+  "usd": 7.035e-05
+ },
+ {
+  "id": "e14-one-vs-three-frames",
+  "part": 14,
+  "title": "Three frames cost more and did not help",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.95,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.95
+   ],
+   [
+    "chart",
+    0.05
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "side_by_side_panels",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.409,
+  "usd": 7.0308e-05
+ },
+ {
+  "id": "e14-race-results",
+  "part": 14,
+  "title": "Five players, one road",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.39,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.43
+   ],
+   [
+    "chart",
+    0.41000000000000003
+   ],
+   [
+    "real_terminal_capture",
+    0.11
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "chart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' was used on the slide before, so 'chart' instead"
+  ],
+  "seconds": 0.354,
+  "usd": 7.4592e-05
+ },
+ {
+  "id": "e14-cutoff-not-safety",
+  "part": 14,
+  "title": "A cut-off lowers the risk, it does not remove it",
+  "jev_pick": "chart",
+  "confidence": 1.0,
+  "top3": [
+   [
+    "chart",
+    1.0
+   ],
+   [
+    "block_diagram",
+    0.0
+   ],
+   [
+    "sequence_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d",
+   "theme_cards",
+   "typographic_list"
+  ],
+  "final": "isometric_3d",
+  "overridden": true,
+  "reasons": [
+   "'chart' was used on the slide before, so 'isometric_3d' instead"
+  ],
+  "seconds": 0.419,
+  "usd": 6.770400000000001e-05
+ },
+ {
+  "id": "e14-speed-honest",
+  "part": 14,
+  "title": "Fine for a game, not for a car",
+  "jev_pick": "chart",
+  "confidence": 0.96,
+  "top3": [
+   [
+    "chart",
+    0.96
+   ],
+   [
+    "side_by_side_panels",
+    0.04
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "isometric_3d"
+  ],
+  "final": "chart",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.35,
+  "usd": 6.7914e-05
+ },
+ {
   "id": "d14-fair-test",
   "part": 14,
   "title": "Same tickets, same rules",
@@ -3286,6 +3534,39 @@
   ],
   "seconds": 0.438,
   "usd": 7.287e-05
+ },
+ {
+  "id": "d15-race-same-seed",
+  "part": 15,
+  "title": "The lane race, text only, both tools",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.98,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.98
+   ],
+   [
+    "chart",
+    0.02
+   ],
+   [
+    "block_diagram",
+    0.0
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "side_by_side_panels"
+  ],
+  "final": "chart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' is used on the slide after, so 'chart' instead"
+  ],
+  "seconds": 0.373,
+  "usd": 7.1568e-05
  },
  {
   "id": "d14-can-cannot",
@@ -3444,6 +3725,133 @@
   "reasons": [],
   "seconds": 0.355,
   "usd": 6.963600000000001e-05
+ },
+ {
+  "id": "f16-app-map",
+  "part": 16,
+  "title": "Every tab is something you already built",
+  "jev_pick": "lookup_map",
+  "confidence": 0.76,
+  "top3": [
+   [
+    "lookup_map",
+    0.78
+   ],
+   [
+    "real_screenshot",
+    0.13
+   ],
+   [
+    "block_diagram",
+    0.04
+   ]
+  ],
+  "allowed_by_rules": [
+   "chart",
+   "hand_drawn_sketch",
+   "real_screenshot",
+   "real_terminal_capture",
+   "side_by_side_panels"
+  ],
+  "final": "real_screenshot",
+  "overridden": true,
+  "reasons": [
+   "'lookup_map' breaks the rule for S10 comparison, R real_page"
+  ],
+  "seconds": 0.354,
+  "usd": 6.9552e-05
+ },
+ {
+  "id": "f16-keys-and-errors",
+  "part": 16,
+  "title": "Keys, errors and refusals",
+  "jev_pick": "typographic_list",
+  "confidence": 0.58,
+  "top3": [
+   [
+    "typographic_list",
+    0.61
+   ],
+   [
+    "flowchart",
+    0.35
+   ],
+   [
+    "sequence_diagram",
+    0.02
+   ]
+  ],
+  "allowed_by_rules": [
+   "typographic_list"
+  ],
+  "final": "typographic_list",
+  "overridden": false,
+  "reasons": [],
+  "seconds": 0.383,
+  "usd": 6.892200000000002e-05
+ },
+ {
+  "id": "f16-rerun-and-state",
+  "part": 16,
+  "title": "The button calls, the slider does not",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.71,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.73
+   ],
+   [
+    "hand_drawn_sketch",
+    0.22
+   ],
+   [
+    "flowchart",
+    0.04
+   ]
+  ],
+  "allowed_by_rules": [
+   "flowchart",
+   "sequence_diagram"
+  ],
+  "final": "flowchart",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S2 mechanism, S6 sequence"
+  ],
+  "seconds": 0.522,
+  "usd": 6.812400000000001e-05
+ },
+ {
+  "id": "f16-cost-per-click",
+  "part": 16,
+  "title": "What one click costs",
+  "jev_pick": "side_by_side_panels",
+  "confidence": 0.63,
+  "top3": [
+   [
+    "side_by_side_panels",
+    0.66
+   ],
+   [
+    "chart",
+    0.32
+   ],
+   [
+    "hand_drawn_sketch",
+    0.01
+   ]
+  ],
+  "allowed_by_rules": [
+   "hand_drawn_sketch"
+  ],
+  "final": "hand_drawn_sketch",
+  "overridden": true,
+  "reasons": [
+   "'side_by_side_panels' breaks the rule for S1 derivation"
+  ],
+  "seconds": 0.423,
+  "usd": 7.1988e-05
  },
  {
   "id": "p11-takeaways",

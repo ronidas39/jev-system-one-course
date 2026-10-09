@@ -1086,6 +1086,106 @@
    ]
   },
   {
+   "id": "e14-openai-example",
+   "part": 14,
+   "title": "OpenAI's lane example",
+   "brief": "A screen capture of OpenAI's Decisions guide (https://developers.openai.com/api/docs/guides/decisions, read 9 October 2026), section 'Select from fixed options', tab 'Driving': the question 'Which lane should the car choose?' with Lane 1 0.03, Lane 2 0.94, Lane 3 0.03 (saved copy videos/research/sources/decisionsapi/decisions-prose.txt lines 900-907). A label on the capture: 'an illustration on OpenAI's page, not a live run'. Beside it, one line: 'Part 14: a real version you can run'. Capture still needed.",
+   "shapes": [
+    "R real_page"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-race-rules",
+   "part": 14,
+   "title": "The rules of the lane race",
+   "brief": "How one step of the game works, left to right. A top-down three-lane road with a row every 20 metres; a row holds a barrier or a cone in at most two lanes, never all three (race/road.py make_road). The road comes from a seed: seed 7, 60 steps, the same road for every player. The model answers one choice question, lane 1, 2 or 3, and returns three probabilities. Our code decides: top lane at 0.80 or more, drive into it; below 0.80 or a refusal, slow down and stay (race/play.py). Driving into a lane with something at 20 metres is a crash. A threshold bar from 0 to 1 with 0.80 marked and the band below it labelled 'not sure: slow down'. A small note: in this toy, slowing down never crashes, it only costs time.",
+   "shapes": [
+    "S2 mechanism",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-picture-result",
+   "part": 14,
+   "title": "From a picture, the model was rarely sure",
+   "brief": "The picture player on seed 7 (log 131-race_picture): 60 steps, one drawn picture per step sent to the Decisions API. Result: 48 slow-downs, 11 clean moves, 1 crash. A strip of 60 small cells, one per step, coloured by action (slow down, drive, crash), with step 35 marked. Step 35 close-up: lane 1 0.83, lane 2 0.02, lane 3 0.15, so the car drove into lane 1, which had a cone at 20 metres (lane 2 had a barrier at 20 metres; fresh-clone results/race/mine/picture-seed7.jsonl, blocked_20m [1, 2]). Step 0 as a second example: lane 2 0.79, just under the cut-off, so it slowed down. Footer: 367 input tokens per step, median 337 ms on the fresh run (213 ms on the run saved in the repository, log 137), $0.0367 per 1,000 steps.",
+   "shapes": [
+    "S4 distribution",
+    "S9 threshold"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-video-is-frames",
+   "part": 14,
+   "title": "A video is a stack of pictures",
+   "brief": "Why and how a video goes to the Decisions API. The API takes text and images only: 'a text string or user messages containing text and images', 'up to 128 images per request'; 'Other message roles, function calls, files, audio, and item references aren't supported'; there is no video type (FACTS O28, O10). A flip-book picture of a video as frames. The steps in order: a video file (race clip: 244 frames, 8 frames per second, 340 by 400 pixels, 245,050 bytes; log 130), the code cuts the frames it needs at the moment a decision is needed (with ffmpeg from the imageio-ffmpeg package), each frame becomes one input_image, oldest first. Two options: one frame (step 10 -> frame_00040) or the last three frames in one request (frame_00038, 39, 40) so motion is visible (log 130).",
+   "shapes": [
+    "S6 sequence",
+    "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-one-vs-three-frames",
+   "part": 14,
+   "title": "Three frames cost more and did not help",
+   "brief": "One frame against three frames per request, same clip, same seed 7, 60 steps, cut-off 0.80 (logs 131-race_clip1, 131-race_clip3). One frame: 0 crashes, 47 slow-downs, 13 clean moves, 391 tokens per step, $0.0391 per 1,000 steps. Three frames: 0 crashes, 50 slow-downs, 10 clean moves, 674 tokens per step, $0.0674 per 1,000 steps; 674 / 391 = 1.7 times the cost. Median time about the same (328 and 345 ms on the fresh run; 203 and 222 ms in the repository run, log 137). Why: in this game the danger does not depend on motion, cones and barriers stand still. One line: send more frames only when the answer depends on movement (not tested here).",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-race-results",
+   "part": 14,
+   "title": "Five players, one road",
+   "brief": "The race/compare.py table for seed 7, 60 steps, cut-off 0.80 (log 136, fresh run; log 137, the run saved in the repository, gives the same crashes, slow-downs, moves, tokens and cost). Rows: Decisions, road as text: 0 crashes, 21 slow, 39 moves, 222 tokens per step, $0.0222 per 1,000 steps. Jev, road as text: 0, 4, 56, 432, $0.0181. Decisions, one picture: 1, 48, 11, 367, $0.0367. Decisions, 1 video frame: 0, 47, 13, 391, $0.0391. Decisions, 3 video frames: 0, 50, 10, 674, $0.0674. Median ms, fresh run then repository run: text 208 / 201, Jev 305 / 313, picture 337 / 213, 1 frame 328 / 203, 3 frames 345 / 222. Mark the two text rows as the most decisive and the crash in the picture row. Product logos for OpenAI and TypeSafe on the rows.",
+   "shapes": [
+    "S10 comparison"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-cutoff-not-safety",
+   "part": 14,
+   "title": "A cut-off lowers the risk, it does not remove it",
+   "brief": "What the 0.80 cut-off did for the picture player (log 131-race_picture): it turned 48 unsure steps into slow-downs, which in this game never crash. But one answer was confident and wrong: step 35, lane 1 at 0.83, into a cone. A threshold line at 0.80 with the 48 slow-down steps below it and the 12 steps at or above it (11 clean moves, 1 crash). Three lessons underneath, true for this one road: text was far more decisive than pictures (39 and 56 moves against 11); more frames cost more and did not help; keep a safe action for the not-sure band, and plain checks around the model.",
+   "shapes": [
+    "S9 threshold",
+    "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "e14-speed-honest",
+   "part": 14,
+   "title": "Fine for a game, not for a car",
+   "brief": "A time scale. Measured: one cloud call took a median 0.20 to 0.35 seconds from India (logs 136 and 137: text 0.201 to 0.208 s, pictures and frames 0.203 to 0.345 s, Jev 0.305 to 0.313 s). Where that is fine: a turn-based game, a review queue such as the egg grading line in Part 13. Where it is not: a real car's control loop, which cannot wait for an internet call, and a call can be slow or fail. A clear label: 'a toy that teaches pictures, frames and cut-offs, not a driving system'. No car brand, no drawn people.",
+   "shapes": [
+    "S11 scale"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
    "id": "d14-fair-test",
    "part": 14,
    "title": "Same tickets, same rules",
@@ -1118,6 +1218,18 @@
    "shapes": [
     "S1 derivation",
     "S2 mechanism"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "d15-race-same-seed",
+   "part": 15,
+   "title": "The lane race, text only, both tools",
+   "brief": "Jev and the Decisions API on the same seeded road (seed 7, 60 steps, cut-off 0.80), both reading the road as text, with product logos (log 136; log 137 has the same counts). Decisions: 0 crashes, 21 slow-downs, 39 clean moves, 222 input tokens per step, $0.0222 per 1,000 steps, median 208 ms (201 ms in log 137). Jev: 0 crashes, 4 slow-downs, 56 clean moves, 432 input tokens per step, $0.0181 per 1,000 steps, median 305 ms (313 ms). Two notes: Jev read more tokens but cost less per step, because its price per token is 2.4 times lower ($0.042 against $0.10 per million, FACTS T3 and O18); and 0.80 means a different thing on each tool, so each needs its own cut-off. One road, one seed: a small test.",
+   "shapes": [
+    "S10 comparison"
    ],
    "kits": [
     "combined"
@@ -1177,6 +1289,57 @@
    "brief": "Five practical things to remember about using Jev or the Decisions API, on one screen. One: both answer typed questions (yes or no, one option from a list, a level on a scale) with probabilities; ask all questions about the same material in one call, because every call pays a fixed part (FACTS line 28 and line 116: three questions in one call 505 against 594 tokens per ticket on Decisions, 583 against 1,184 on Jev). Two: wording matters on both; write the question you mean, with options that are clearly different (line 30). Three: use the confidence; two cut-offs, the unsure middle to a person, a stricter cut-off for anything that moves money (line 32). Four: log which model answered every call; on Jev, pin jev-1.13.0. Five: test on your own labelled data; tune on one set, check on a set never used for tuning.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "f16-app-map",
+   "part": 16,
+   "title": "Every tab is something you already built",
+   "brief": "A map from the web app's three tabs to the course scripts (app/app.py top comment). Predicate tab: decisions/03_predicate.py, Part 12, yes or no with one cut-off (slider, 0.80 to start). Choice tab: decisions/09_one_photo.py and the cut-offs of 10_egg_grading.py, Part 13, an egg photo with one bar per option and two cut-offs (0.30 and 0.70) with a 'send to a person' band. Score tab: decisions/05_score.py, Part 12, ordered levels cosmetic, workaround, blocking, and a weighted score. The two text tabs have an 'Also ask Jev' box; the photo tab does not, because Jev reads text only. Small screenshots of the three tabs from ~/lab-data/jev-decisions-course/logs/fresh-run/app/ (app-predicate.png, app-choice.png, app-score.png). Streamlit logo.",
+   "shapes": [
+    "S10 comparison",
+    "R real_page"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "f16-keys-and-errors",
+   "part": 16,
+   "title": "Keys, errors and refusals",
+   "brief": "A checklist of what app/app.py does to stay safe. Keys come from .env only (load_env_file, line 34); they are never typed in the code and never shown on the page. One OpenAI client and one Jev client, made once and reused (@st.cache_resource, lines 39-48). Automatic retries off, so each time shown is one real call (max_retries=0, line 42); in a real service keep retries on (FACTS 'Retries'). Every call runs inside safe() (lines 67-73): a failed call shows a red error box and the app keeps working. A refusal shows a yellow warning, 'Send it to a person' (lines 108-109, 147-148, 179-180). The fresh-clone app test showed 0 errors on the page (log 140).",
+   "shapes": [
+    "S23 checklist",
+    "S14 code"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "f16-rerun-and-state",
+   "part": 16,
+   "title": "The button calls, the slider does not",
+   "brief": "How Streamlit runs and why a slider never calls the API. Streamlit runs the whole script again, top to bottom, on every click or slider move: a whiteboard wiped and redrawn after every touch. The call sits inside 'if st.button(\"Ask\")', so it runs only on the click that pressed the button (app/app.py line 97). The answer is saved in st.session_state, a notebook beside the whiteboard that is not wiped (line 98). The slider comes after the call (line 105); moving it reruns only the cut-off rule on the saved answer, so ACT or DO NOT ACT changes with no new call and no new cost. Two lanes drawn side by side: a click (call, save, draw) and a slider move (read saved answer, apply cut-off, draw).",
+   "shapes": [
+    "S2 mechanism",
+    "S6 sequence"
+   ],
+   "kits": [
+    "combined"
+   ]
+  },
+  {
+   "id": "f16-cost-per-click",
+   "part": 16,
+   "title": "What one click costs",
+   "brief": "The cost of each click, from the usage block in each answer times the price (log 140, fresh clone). Predicate, Decisions: 174 input tokens, $0.0000174, 403 ms; Jev on the same message: 292 tokens, $0.00001226, 449 ms. Choice on the tray-06 egg photo, Decisions: 226 tokens, $0.0000226, 384 ms. Score, Decisions: 160 tokens, $0.0000160, 186 ms; Jev: 341 tokens, $0.00001432, 407 ms. Prices: Decisions $0.10 per million input tokens (FACTS O18), Jev $0.042 per million (FACTS T3). Derivation shown for one row: 174 x 0.10 / 1,000,000 = $0.0000174. One line: every click costs less than three thousandths of a US cent.",
+   "shapes": [
+    "S1 derivation"
    ],
    "kits": [
     "combined"
