@@ -5,7 +5,7 @@ button and a cut-off slider. Clicking Ask makes one real call. The answer is kep
 in st.session_state, the page's memory between runs, so moving the slider only
 runs the cut-off rule again and never calls the API.
 
-    streamlit run app/steps/step2_predicate.py
+    streamlit run app/steps/app_step2_yes_no_tab.py
 
 Author: Roni Das
 Created: 2026-10-10

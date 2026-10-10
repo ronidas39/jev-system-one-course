@@ -3,7 +3,7 @@
 An agent has five tools. One Choice question asks Jev which tool fits one
 customer request, and Jev gives a probability for every tool.
 
-    python usecases/steps/routing_1_pick_a_tool.py
+    python usecases/steps/project3_step1_pick_a_tool.py
 
 Author: Roni Das
 Created: 2026-10-10

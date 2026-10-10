@@ -3,7 +3,7 @@
 One Noul question about one draft reply that a support agent might send.
 Jev answers with the probability that the draft promises money back.
 
-    python usecases/steps/guardrail_1_one_check.py
+    python usecases/steps/project2_step1_one_check.py
 
 Author: Roni Das
 Created: 2026-10-10

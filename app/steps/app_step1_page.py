@@ -4,7 +4,7 @@ No API call yet. Streamlit runs this whole file again, from the top, every time
 something on the page changes. So when you edit the message and click outside
 the box, the line under it is worked out again with your new text.
 
-    streamlit run app/steps/step1_page.py
+    streamlit run app/steps/app_step1_page.py
 
 Author: Roni Das
 Created: 2026-10-10

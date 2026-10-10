@@ -4,7 +4,7 @@ We start the refund desk with the smallest thing that works. We send the photo
 from one refund claim and ask one choice question: what condition is the egg
 in? The answer comes back with a probability for every choice.
 
-    python steps/desk_1_one_photo.py
+    python steps/desk_step1_one_photo.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -40,7 +40,7 @@ def photo_part(photo: str) -> dict:
 
 photo = "broken-02"  # the photo sent with claim C01
 decision, seconds = ask(client, input=[{"role": "user", "content": [photo_part(photo)]}],
-                        questions=[PHOTO_QUESTION], script="steps/desk_1_one_photo.py")
+                        questions=[PHOTO_QUESTION], script="steps/desk_step1_one_photo.py")
 answer = decision.answers[0]
 show("photo", f"eggs/{photo}.jpg")
 show("photo shows", answer.choice)

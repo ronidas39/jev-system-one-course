@@ -4,7 +4,7 @@ The new tab asks how severe a ticket is, on three ordered levels. The answer has
 probability for each level, and a weighted score between 0 (cosmetic) and 2
 (blocking), so a ticket that sits between two levels shows up as a number in between.
 
-    streamlit run app/steps/step4_score.py
+    streamlit run app/steps/app_step4_score_tab.py
 
 Author: Roni Das
 Created: 2026-10-10

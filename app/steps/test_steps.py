@@ -22,8 +22,8 @@ QUIET = "streamlit.runtime.scriptrunner_utils.script_run_context"
 logging.getLogger(QUIET).setLevel(logging.ERROR)
 
 HERE = Path(__file__).resolve().parent
-FILES = {"step1": "step1_page.py", "step2": "step2_predicate.py", "step3": "step3_choice.py",
-         "step4": "step4_score.py", "step5": "step5_jev.py"}
+FILES = {"step1": "app_step1_page.py", "step2": "app_step2_yes_no_tab.py", "step3": "app_step3_egg_photo_tab.py",
+         "step4": "app_step4_score_tab.py", "step5": "app_step5_also_ask_jev.py"}
 TIMEOUT = 90  # seconds; a real call is well under this
 
 

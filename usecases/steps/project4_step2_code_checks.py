@@ -4,7 +4,7 @@ Comparing phone digits is arithmetic, so pair_state() does it in plain code
 and puts the result into the state for Jev to read. It also adds two Noul
 questions: same name, and same place.
 
-    python usecases/steps/dupcheck_2_code_checks.py
+    python usecases/steps/project4_step2_code_checks.py
 
 Author: Roni Das
 Created: 2026-10-10

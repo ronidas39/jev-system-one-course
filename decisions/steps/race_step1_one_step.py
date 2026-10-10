@@ -5,7 +5,7 @@ the road ahead as a picture, and send that picture with one choice question:
 lane 1, lane 2 or lane 3. Then we print the three probabilities next to what
 is really on the road, so we can check the answer ourselves.
 
-    python steps/race_1_one_step.py
+    python steps/race_step1_one_step.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -35,7 +35,7 @@ picture.save(out / "step0.png")
 content = [{"type": "input_text", "text": LEGEND},
            {"type": "input_image", "image_url": png_url(picture)}]
 decision, seconds = ask(client, input=[{"role": "user", "content": content}],
-                        questions=[QUESTION], script="steps/race_1_one_step.py")
+                        questions=[QUESTION], script="steps/race_step1_one_step.py")
 answer = decision.answers[0]
 
 show("picture saved to", (out / "step0.png").relative_to(HERE))

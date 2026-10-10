@@ -1,11 +1,11 @@
-"""The web app, step 5 of 5: the optional "also ask Jev" box.
+"""The web app, step 3 of 5: add the Choice tab, an egg photo with two cut-offs.
 
-The Predicate tab and the Score tab each get a tick box. When it is ticked, Ask
-also sends the same text and the same question to Jev, TypeSafe's model, and its
-answer is drawn under the Decisions API answer. This file now does everything
-app/app.py does.
+The new tab sends one egg photo with the egg question from decisions/, and draws
+one bar per option. "Not clean" is 1 minus the probability of clean. Below the left
+handle the egg passes, above the right handle it is rejected, and in the band
+between the two handles a person looks at it.
 
-    streamlit run app/steps/step5_jev.py
+    streamlit run app/steps/app_step3_egg_photo_tab.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -37,12 +37,6 @@ def openai_client():
     return OpenAI(max_retries=0, timeout=60.0)
 
 
-@st.cache_resource
-def jev_client():
-    from jevcourse.calls import make_jev_client
-    return make_jev_client()
-
-
 def ask_decisions(input, question: dict) -> dict:
     """One real call. Returns the answer as a dict, plus time, tokens and cost."""
     start = time.perf_counter()
@@ -50,13 +44,6 @@ def ask_decisions(input, question: dict) -> dict:
     ms = (time.perf_counter() - start) * 1000
     return {"answer": d.answers[0].model_dump(), "ms": ms, "tokens": d.usage.input_tokens,
             "usd": cost_usd(d.usage.input_tokens), "model": d.model}
-
-
-def ask_jev(text: str, name: str, question) -> dict:
-    from jevcourse.calls import ask_jev as call
-    res = call(jev_client(), text, {name: question})
-    return {"answer": res.answer[name], "ms": res.seconds * 1000, "tokens": res.input_tokens,
-            "usd": res.usd, "model": res.model}
 
 
 def safe(fn, *args):
@@ -81,22 +68,16 @@ def bars(probs: dict[str, float]) -> None:
         c.write(f"{p:.2f}")
 
 
-tab1, tab2, tab3 = st.tabs(["Predicate: yes or no", "Choice: one of a list", "Score: a level"])
+tab1, tab2 = st.tabs(["Predicate: yes or no", "Choice: one of a list"])
 
 with tab1:
     st.subheader("Predicate: one probability that the statement is true")
     text = st.text_area("Message", "I have asked three times now. Can I please just talk to a "
                         "real person?", key="p_text")
     instr = st.text_input("Question", "Is the customer asking for a human agent?", key="p_q")
-    also_jev = st.checkbox("Also ask Jev (its Noul question)", key="p_jev")
     if st.button("Ask", key="p_go"):
         st.session_state["p"] = safe(ask_decisions, text,
                                      {"type": "predicate", "name": "answer", "instructions": instr})
-        if also_jev:
-            from typesafe_sdk import Noul
-            st.session_state["pj"] = safe(ask_jev, text, "answer", Noul(instructions=instr))
-        else:
-            st.session_state.pop("pj", None)
     cut = st.slider("Act when the probability is at least", 0.0, 1.0, 0.80, 0.05, key="p_cut")
     r = st.session_state.get("p")
     if r:
@@ -107,11 +88,6 @@ with tab1:
             bars({"yes": p})
             st.markdown(f"**{'ACT' if p >= cut else 'DO NOT ACT'}**: {p:.2f} against the cut-off {cut:.2f}")
         footer(r)
-    rj = st.session_state.get("pj")
-    if rj:
-        st.markdown("**Jev, same message and question**")
-        bars({"yes": rj["answer"]["noul"]})
-        footer(rj)
 
 with tab2:
     st.subheader("Choice: an egg photo, one bar per option, two cut-offs")
@@ -151,36 +127,3 @@ with tab2:
             st.markdown(f"**{verdict}**: not clean {not_clean:.2f}. Pass below {low:.2f}, "
                         f"reject above {high:.2f}, a person checks the band in between.")
         footer(r)
-
-with tab3:
-    st.subheader("Score: ordered levels, and a weighted score between them")
-    text = st.text_area("Ticket", "The export button crashes the settings page in Safari. It works "
-                        "in Chrome, but a few of our customers only use Safari.", key="s_text")
-    levels = [("cosmetic", "Cosmetic; no impact to functionality"),
-              ("workaround", "Broken or degraded feature, but workaround exists"),
-              ("blocking", "Blocking issue; no workaround exists")]
-    also_jev = st.checkbox("Also ask Jev (its Score question)", key="s_jev")
-    if st.button("Ask", key="s_go"):
-        st.session_state["s"] = safe(ask_decisions, text, {
-            "type": "score", "name": "severity", "instructions": "How severe is the reported issue?",
-            "levels": [{"label": a, "description": b} for a, b in levels]})
-        if also_jev:
-            from typesafe_sdk import Score
-            st.session_state["sj"] = safe(ask_jev, text, "severity", Score(
-                instructions="How severe is the reported issue?", criteria=[b for _, b in levels]))
-        else:
-            st.session_state.pop("sj", None)
-    r = st.session_state.get("s")
-    if r:
-        if r["answer"]["type"] == "refusal":
-            st.warning("The API refused this question. Send it to a person.")
-        else:
-            bars({x["label"]: x["probability"] for x in r["answer"]["probabilities"]})
-            st.markdown(f"**Score {r['answer']['score']:.2f}** on a scale from 0 (cosmetic) to "
-                        f"2 (blocking). Confidence {r['answer']['confidence']:.2f}.")
-        footer(r)
-    rj = st.session_state.get("sj")
-    if rj:
-        st.markdown("**Jev, same ticket and levels**")
-        st.markdown(f"Score {rj['answer']['score']:.2f}, confidence {rj['answer']['confidence']:.2f}")
-        footer(rj)

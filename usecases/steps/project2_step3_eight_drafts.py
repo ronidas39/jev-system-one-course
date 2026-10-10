@@ -3,7 +3,7 @@
 Adds the eight drafts I wrote by hand, each labelled "should block" or not,
 and a loop that checks them all and counts how often Jev agrees with me.
 
-    python usecases/steps/guardrail_3_eight_drafts.py
+    python usecases/steps/project2_step3_eight_drafts.py
 
 Author: Roni Das
 Created: 2026-10-10

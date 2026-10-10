@@ -12,7 +12,7 @@ The model never refuses a refund on its own. Every "no" stays with a person.
 Now we run all eight claims, print one line per claim, and add up the time,
 the tokens and the cost. This is the same desk as 11_returns_desk.py.
 
-    python steps/desk_4_full_desk.py
+    python steps/desk_step4_all_claims.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -99,7 +99,7 @@ for claim in claims:
                             input=[{"role": "user", "content": [message_part(claim["message"]),
                                                                 photo_part(claim["photo"])]}],
                             questions=[CLAIM_QUESTION, PHOTO_QUESTION],
-                            script="steps/desk_4_full_desk.py", note=claim["id"])
+                            script="steps/desk_step4_all_claims.py", note=claim["id"])
     tokens += decision.usage.input_tokens
     answers = {a.name: a for a in decision.answers}
     action, agree = decide(answers)

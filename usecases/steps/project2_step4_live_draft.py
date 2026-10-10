@@ -4,7 +4,7 @@ Adds one call to OpenAI's gpt-6-luna for a fresh support reply, then runs the
 same three checks on that live draft. This step behaves like
 usecases/02_answer_guardrail.py.
 
-    python usecases/steps/guardrail_4_live_draft.py
+    python usecases/steps/project2_step4_live_draft.py
 
 Author: Roni Das
 Created: 2026-10-10

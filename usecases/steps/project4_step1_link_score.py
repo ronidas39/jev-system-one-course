@@ -4,7 +4,7 @@ One Score question about one pair of records: 0 means two different
 companies, 1 means a person should check, 2 means the same company. Plain
 code turns the score into a decision.
 
-    python usecases/steps/dupcheck_1_link_score.py
+    python usecases/steps/project4_step1_link_score.py
 
 Author: Roni Das
 Created: 2026-10-10

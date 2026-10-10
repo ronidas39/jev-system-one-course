@@ -4,7 +4,7 @@ Adds a second pair, a parent company and its subsidiary in another country,
 and a loop over both pairs. This step behaves like
 usecases/04_duplicate_check.py.
 
-    python usecases/steps/dupcheck_3_two_pairs.py
+    python usecases/steps/project4_step3_two_pairs.py
 
 Author: Roni Das
 Created: 2026-10-10

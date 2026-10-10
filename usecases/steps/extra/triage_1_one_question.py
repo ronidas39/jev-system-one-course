@@ -1,9 +1,9 @@
-"""Triage, step 1 of 4: ask Jev one question about one ticket.
+"""Triage, extra step (not on camera): ask Jev one question about one ticket.
 
 One Choice question: which team should handle this ticket? Jev picks one of
 the five teams and gives a probability for every team.
 
-    python usecases/steps/triage_1_one_question.py
+    python usecases/steps/extra/triage_1_one_question.py
 
 Author: Roni Das
 Created: 2026-10-10

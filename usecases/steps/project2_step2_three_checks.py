@@ -4,7 +4,7 @@ Adds our written policy to the state, two more Noul questions (does the draft
 leak another customer's details, does it answer the question), and a small
 check() function that blocks the draft when any rule looks broken.
 
-    python usecases/steps/guardrail_2_three_checks.py
+    python usecases/steps/project2_step2_three_checks.py
 
 Author: Roni Das
 Created: 2026-10-10

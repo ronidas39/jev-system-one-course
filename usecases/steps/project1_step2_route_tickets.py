@@ -1,12 +1,12 @@
-"""Triage, step 4 of 4: plain code decides what to do with the ticket.
+"""Project 1, step 2 of 2: plain code decides what to do with the ticket.
 
 Adds the routing rule. If Jev is sure enough about the team, the ticket goes
 there automatically; if not, a person looks at it. It also marks urgent
 tickets and attaches the refund policy. You can pass your own ticket text.
 This step behaves like usecases/01_ticket_triage.py.
 
-    python usecases/steps/triage_4_routing.py
-    python usecases/steps/triage_4_routing.py "My parcel never came and I want my money back"
+    python usecases/steps/project1_step2_route_tickets.py
+    python usecases/steps/project1_step2_route_tickets.py "My parcel never came and I want my money back"
 
 Author: Roni Das
 Created: 2026-10-10

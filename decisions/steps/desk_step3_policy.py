@@ -11,7 +11,7 @@ Now our code decides what happens to a claim, using the two answers:
 The model never refuses a refund on its own. Every "no" stays with a person.
 We try three claims from returns_claims.json, one for each kind of outcome.
 
-    python steps/desk_3_policy.py
+    python steps/desk_step3_policy.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -93,7 +93,7 @@ for claim in [c for c in claims if c["id"] in ("C01", "C05", "C07")]:
                             input=[{"role": "user", "content": [message_part(claim["message"]),
                                                                 photo_part(claim["photo"])]}],
                             questions=[CLAIM_QUESTION, PHOTO_QUESTION],
-                            script="steps/desk_3_policy.py", note=claim["id"])
+                            script="steps/desk_step3_policy.py", note=claim["id"])
     answers = {a.name: a for a in decision.answers}
     action, agree = decide(answers)
     print()

@@ -12,7 +12,7 @@ results/race/mine/picture-seed7.jsonl, writes a replay page you can open in a
 browser, and prints the median time per call and the cost. It is the same
 player as `python race/play.py --player picture`, so race/compare.py reads it.
 
-    python steps/race_3_picture_player.py
+    python steps/race_step3_picture.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -45,7 +45,7 @@ def lane_odds(step: int) -> tuple[dict[str, float] | None, int, float]:
     content = [{"type": "input_text", "text": LEGEND},
                {"type": "input_image", "image_url": png_url(draw(road, step))}]
     decision, seconds = ask(client, input=[{"role": "user", "content": content}],
-                            questions=[QUESTION], script="steps/race_3_picture_player.py")
+                            questions=[QUESTION], script="steps/race_step3_picture.py")
     answer = decision.answers[0]
     if answer.type == "refusal":
         return None, decision.usage.input_tokens, seconds

@@ -12,7 +12,7 @@ drive as a short MP4 clip, then at each step cut out the one frame the car is
 seeing right now and send that frame as an image. Everything else is the same
 as step 3. It is the same player as `python race/play.py --player clip1`.
 
-    python steps/race_4_video_frames.py
+    python steps/race_step4_video_frames.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -52,7 +52,7 @@ def lane_odds(step: int) -> tuple[dict[str, float] | None, int, float]:
                 "drive, oldest first. The road moves toward the car."},
                {"type": "input_image", "image_url": image_data_url(frame)}]
     decision, seconds = ask(client, input=[{"role": "user", "content": content}],
-                            questions=[QUESTION], script="steps/race_4_video_frames.py")
+                            questions=[QUESTION], script="steps/race_step4_video_frames.py")
     answer = decision.answers[0]
     if answer.type == "refusal":
         return None, decision.usage.input_tokens, seconds

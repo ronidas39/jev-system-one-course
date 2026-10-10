@@ -4,7 +4,7 @@ A real claim is a message plus a photo. Now we send both in the same call and
 ask two separate questions: what the MESSAGE says is wrong, and what the PHOTO
 shows. Two questions, because they are two different things to check.
 
-    python steps/desk_2_add_message.py
+    python steps/desk_step2_add_message.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -59,7 +59,7 @@ decision, seconds = ask(client,
                         input=[{"role": "user", "content": [message_part(claim["message"]),
                                                             photo_part(claim["photo"])]}],
                         questions=[CLAIM_QUESTION, PHOTO_QUESTION],
-                        script="steps/desk_2_add_message.py")
+                        script="steps/desk_step2_add_message.py")
 answers = {a.name: a for a in decision.answers}
 show("claim", f"{claim['id']}: {claim['message']}")
 show("message says", f"{answers['claim'].choice} (confidence {answers['claim'].confidence:.2f})")

@@ -1,10 +1,9 @@
-"""Tool routing, step 3 of 3: act only when Jev is sure enough.
+"""Tool routing, step 2 of 3: fourteen requests, and how often Jev matches me.
 
-Adds the safety rule: safe tools run at confidence 0.60 or more, the money
-tool only at 0.85 or more, and anything below asks the user to clarify.
-This step behaves like usecases/03_tool_routing.py.
+Adds the fourteen requests, each with the tool I would pick by hand, and a
+loop that asks Jev about each one and counts the matches.
 
-    python usecases/steps/routing_3_safety_rule.py
+    python usecases/steps/project3_step2_many_requests.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -21,9 +20,6 @@ TOOLS = {
     "search_help_docs": "Answer a how-to question from the help centre articles",
     "talk_to_human": "Hand over to a person: complaints, legal threats, anything else",
 }
-MONEY_TOOLS = {"issue_refund"}
-SAFE_AT, MONEY_AT = 0.60, 0.85
-
 QUESTIONS = {"tool": Choice(instructions="Which tool should the support agent use for this "
                             "request?", criteria=TOOLS)}
 
@@ -45,29 +41,18 @@ REQUESTS = [
 ]
 
 
-def decide(tool: str, confidence: float) -> str:
-    """The whole safety rule, in plain code."""
-    needed = MONEY_AT if tool in MONEY_TOOLS else SAFE_AT
-    return f"run {tool}" if confidence >= needed else "ask the user to clarify"
-
 
 def main() -> None:
     """Route every request and count how often Jev's pick matches mine."""
-    right = acted = acted_right = 0
+    right = 0
     with make_jev_client() as client:
-        print(f"{'request':<56}{'my pick':<18}{'Jev pick':<18}{'conf':>5}  action")
+        print(f"{'request':<56}{'my pick':<18}{'Jev pick':<18}{'conf':>5}")
         for text, mine in REQUESTS:
             answer = ask_jev(client, text, QUESTIONS).answer["tool"]
-            action = decide(answer["choice"], answer["confidence"])
             right += answer["choice"] == mine
-            if action.startswith("run"):
-                acted += 1
-                acted_right += answer["choice"] == mine
             print(f"{text[:54]:<56}{mine:<18}{answer['choice']:<18}"
-                  f"{answer['confidence']:>5.2f}  {action}")
+                  f"{answer['confidence']:>5.2f}")
     print(f"\nJev's pick matched mine on {right} of {len(REQUESTS)} requests.")
-    print(f"The agent acted on {acted}; {acted_right} of those were the tool I would pick.")
-    print(f"It asked the user to clarify on {len(REQUESTS) - acted}.")
 
 
 if __name__ == "__main__":
