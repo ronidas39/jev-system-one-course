@@ -970,6 +970,9 @@
    "brief": "A funnel that narrows: all possible pairs of 730 records, then the pairs that survive cheap blocking, then the duplicates inside them, with every number measured.",
    "shapes": [
     "S11 scale"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -1018,6 +1021,9 @@
    "shapes": [
     "S11 scale",
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
