@@ -9,7 +9,7 @@ Now we ask once per step, and our code decides what the car does:
 
 We drive only 10 steps here to keep it short. The full race is 60 steps.
 
-    python steps/race_step2_sixty_steps.py
+    python steps/race_step2_ten_steps.py
 
 Author: Roni Das
 Created: 2026-10-10
@@ -40,7 +40,7 @@ def lane_odds(step: int) -> tuple[dict[str, float] | None, int, float]:
     content = [{"type": "input_text", "text": LEGEND},
                {"type": "input_image", "image_url": png_url(draw(road, step))}]
     decision, seconds = ask(client, input=[{"role": "user", "content": content}],
-                            questions=[QUESTION], script="steps/race_step2_sixty_steps.py")
+                            questions=[QUESTION], script="steps/race_step2_ten_steps.py")
     answer = decision.answers[0]
     if answer.type == "refusal":
         return None, decision.usage.input_tokens, seconds
