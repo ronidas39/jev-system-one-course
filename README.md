@@ -1,9 +1,10 @@
-# Build AI that answers with probabilities: TypeSafe Jev and the OpenAI Decisions API
+# Decision AI Models: Complete Tutorial on TypeSafe Jev and the OpenAI Decisions API
 
 The full course. Learn both from zero, then build real projects with them. For engineers.
-Jev and the Decisions API are AI models that answer with numbers, not with text.
+Jev is TypeSafe's model, and the Decisions API is an API from OpenAI that runs on GPT-6 Luna.
+Both answer with numbers, not with text.
 
-This is the code for a freeCodeCamp course by Roni Das. I teach at systemdesign.academy. My
+This is the code for a course by Roni Das, made for the freeCodeCamp community. I teach at systemdesign.academy. My
 YouTube channel is Total Technology Zonne.
 
 Everything in the course is here:

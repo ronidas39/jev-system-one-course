@@ -70,7 +70,7 @@
     "S23 checklist"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -96,7 +96,7 @@
     "S11 scale"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -156,6 +156,9 @@
    "brief": "Every number in the course is marked as one of two kinds: the company's own claim from a page you can open, or the presenter's own measurement. One real example answer, 0.99, a probability instead of a sentence.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -175,6 +178,9 @@
    "brief": "One sentence cut into small pieces called tokens, with input tokens going in and output tokens coming out, each priced per million.",
    "shapes": [
     "S2 mechanism"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -184,6 +190,9 @@
    "brief": "The model writes token one, reads everything again, writes token two, and so on in a loop, so a longer answer takes more steps in order.",
    "shapes": [
     "S6 sequence"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -193,6 +202,9 @@
    "brief": "Compare a chat model that answers directly with a reasoning model that writes hidden thinking tokens first: better on hard problems, but slower and more expensive.",
    "shapes": [
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -211,6 +223,9 @@
    "brief": "Four separate problems side by side: wrong answer shape, slow, costs more than the decision is worth, and no honest signal of doubt.",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -229,6 +244,9 @@
    "brief": "Without a doubt signal a person checks all 100 answers. With an honest doubt signal a person checks only the few flagged ones. The same 100 answers, before and after.",
    "shapes": [
     "S13 before_after"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -251,7 +269,7 @@
     "S9 threshold"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -270,6 +288,9 @@
    "brief": "A short quote from the founder's launch post: models have been superhuman at chat for years, so where is all the automation?",
    "shapes": [
     "S23 checklist"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -279,6 +300,9 @@
    "brief": "Six dated events in September and October 2026, in order on a line: two blog posts, the SDK release, the launch, the waitlist ending, the weak-spots page review.",
    "shapes": [
     "S6 sequence"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -288,6 +312,9 @@
    "brief": "The real page of an 1865 economics book with the sentence that cheaper use of coal leads to more coal used, not less.",
    "shapes": [
     "R real_page"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -297,6 +324,9 @@
    "brief": "A loop: engines get more efficient, each job costs less coal, so people find many more jobs for engines, so total coal use goes up. TypeSafe expects the same loop for cheap AI decisions.",
    "shapes": [
     "S2 mechanism"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -315,6 +345,9 @@
    "brief": "Working the arithmetic step by step on the example under the big numbers: 8.566 seconds divided by 0.114 seconds is about 75 times, and 0.013880 dollars divided by 0.000081 dollars is about 171 times.",
    "shapes": [
     "S1 derivation"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -334,6 +367,9 @@
    "shapes": [
     "S4 distribution",
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -361,6 +397,9 @@
    "brief": "The real FAQ answer on the launch post that names the book and the economist the product names come from.",
    "shapes": [
     "R real_page"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -370,6 +409,9 @@
    "brief": "Two ways a person thinks, compared side by side with everyday examples: 2 + 2 and a friend's face come instantly; 17 times 24 and a tax form need slow steps. Then the same split for software: a fixed question answered in one go, against a model that writes its reasoning word by word.",
    "shapes": [
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -380,6 +422,9 @@
    "shapes": [
     "S1 derivation",
     "S22 myth"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -398,6 +443,9 @@
    "brief": "How one call works: the program sends the material to judge and a set of typed questions, the model returns one typed answer per question with probabilities, and the program acts on them.",
    "shapes": [
     "S2 mechanism"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -408,6 +456,9 @@
    "shapes": [
     "S6 sequence",
     "S10 comparison"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -449,7 +500,7 @@
     "S4 distribution"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -478,6 +529,9 @@
    "shapes": [
     "S2 mechanism",
     "S5 topology"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -487,6 +541,9 @@
    "brief": "Measured cost of sorting support tickets with Jev, from a real run of 300 tickets: 2.5 cents per thousand tickets, scaled up to about 25 US dollars for one million tickets.",
    "shapes": [
     "S11 scale"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -505,6 +562,9 @@
    "brief": "The test procedure in order: warm-up calls first, then the models take turns on each item, the order rotates every round, three rounds, then median and slowest-ten-percent are computed.",
    "shapes": [
     "S6 sequence"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -762,7 +822,7 @@
     "S23 checklist"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -826,6 +886,9 @@
    "shapes": [
     "R real_page",
     "S14 code"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -917,6 +980,9 @@
    "shapes": [
     "S9 threshold",
     "S4 distribution"
+   ],
+   "kits": [
+    "jev"
    ]
   },
   {
@@ -1051,7 +1117,7 @@
     "S11 scale"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1137,7 +1203,7 @@
     "S4 distribution"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1187,7 +1253,7 @@
     "S13 before_after"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1238,7 +1304,7 @@
     "S2 mechanism"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1325,7 +1391,7 @@
     "S2 mechanism"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1400,7 +1466,7 @@
     "S5 topology"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
@@ -1451,7 +1517,7 @@
     "S6 sequence"
    ],
    "kits": [
-    "combined"
+    "retired"
    ]
   },
   {
