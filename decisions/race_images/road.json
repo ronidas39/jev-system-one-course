@@ -1,0 +1,526 @@
+{
+ "seed": 7,
+ "frames_per_step": 4,
+ "steps": [
+  {
+   "step": 0,
+   "picture": "step_00.png",
+   "frame": 0,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m, barrier at 40 m, barrier at 60 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 1,
+   "picture": "step_01.png",
+   "frame": 4,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, barrier at 40 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 2,
+   "picture": "step_02.png",
+   "frame": 8,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, barrier at 60 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 3,
+   "picture": "step_03.png",
+   "frame": 12,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 4,
+   "picture": "step_04.png",
+   "frame": 16,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m. Lane 2: clear. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 5,
+   "picture": "step_05.png",
+   "frame": 20,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 60 m. Lane 2: clear. Lane 3: barrier at 40 m, cone at 60 m."
+  },
+  {
+   "step": 6,
+   "picture": "step_06.png",
+   "frame": 24,
+   "blocked_20m": [
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m, cone at 60 m. Lane 2: clear. Lane 3: barrier at 20 m, cone at 40 m, cone at 60 m."
+  },
+  {
+   "step": 7,
+   "picture": "step_07.png",
+   "frame": 28,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, cone at 40 m. Lane 2: clear. Lane 3: cone at 20 m, cone at 40 m."
+  },
+  {
+   "step": 8,
+   "picture": "step_08.png",
+   "frame": 32,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: clear. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 9,
+   "picture": "step_09.png",
+   "frame": 36,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: clear. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 10,
+   "picture": "step_10.png",
+   "frame": 40,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: clear. Lane 3: barrier at 40 m."
+  },
+  {
+   "step": 11,
+   "picture": "step_11.png",
+   "frame": 44,
+   "blocked_20m": [
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 60 m. Lane 2: clear. Lane 3: barrier at 20 m."
+  },
+  {
+   "step": 12,
+   "picture": "step_12.png",
+   "frame": 48,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 13,
+   "picture": "step_13.png",
+   "frame": 52,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m, cone at 60 m. Lane 2: clear. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 14,
+   "picture": "step_14.png",
+   "frame": 56,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m. Lane 2: cone at 60 m. Lane 3: barrier at 40 m."
+  },
+  {
+   "step": 15,
+   "picture": "step_15.png",
+   "frame": 60,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: cone at 40 m, cone at 60 m. Lane 3: barrier at 20 m."
+  },
+  {
+   "step": 16,
+   "picture": "step_16.png",
+   "frame": 64,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 60 m. Lane 2: cone at 20 m, cone at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 17,
+   "picture": "step_17.png",
+   "frame": 68,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: cone at 20 m. Lane 3: clear."
+  },
+  {
+   "step": 18,
+   "picture": "step_18.png",
+   "frame": 72,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m. Lane 2: cone at 60 m. Lane 3: clear."
+  },
+  {
+   "step": 19,
+   "picture": "step_19.png",
+   "frame": 76,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 60 m. Lane 2: cone at 40 m, barrier at 60 m. Lane 3: clear."
+  },
+  {
+   "step": 20,
+   "picture": "step_20.png",
+   "frame": 80,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m. Lane 2: cone at 20 m, barrier at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 21,
+   "picture": "step_21.png",
+   "frame": 84,
+   "blocked_20m": [
+    1,
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: barrier at 20 m, cone at 60 m. Lane 3: clear."
+  },
+  {
+   "step": 22,
+   "picture": "step_22.png",
+   "frame": 88,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 23,
+   "picture": "step_23.png",
+   "frame": 92,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 20 m. Lane 3: cone at 60 m."
+  },
+  {
+   "step": 24,
+   "picture": "step_24.png",
+   "frame": 96,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 60 m. Lane 3: cone at 40 m."
+  },
+  {
+   "step": 25,
+   "picture": "step_25.png",
+   "frame": 100,
+   "blocked_20m": [
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 40 m, barrier at 60 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 26,
+   "picture": "step_26.png",
+   "frame": 104,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 20 m, barrier at 40 m, barrier at 60 m. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 27,
+   "picture": "step_27.png",
+   "frame": 108,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: barrier at 20 m, barrier at 40 m, cone at 60 m. Lane 3: barrier at 40 m, cone at 60 m."
+  },
+  {
+   "step": 28,
+   "picture": "step_28.png",
+   "frame": 112,
+   "blocked_20m": [
+    2,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 60 m. Lane 2: barrier at 20 m, cone at 40 m, cone at 60 m. Lane 3: barrier at 20 m, cone at 40 m."
+  },
+  {
+   "step": 29,
+   "picture": "step_29.png",
+   "frame": 116,
+   "blocked_20m": [
+    2,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m. Lane 2: cone at 20 m, cone at 40 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 30,
+   "picture": "step_30.png",
+   "frame": 120,
+   "blocked_20m": [
+    1,
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: cone at 20 m. Lane 3: clear."
+  },
+  {
+   "step": 31,
+   "picture": "step_31.png",
+   "frame": 124,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 32,
+   "picture": "step_32.png",
+   "frame": 128,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 60 m. Lane 2: clear. Lane 3: cone at 60 m."
+  },
+  {
+   "step": 33,
+   "picture": "step_33.png",
+   "frame": 132,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m, cone at 60 m. Lane 2: barrier at 60 m. Lane 3: cone at 40 m."
+  },
+  {
+   "step": 34,
+   "picture": "step_34.png",
+   "frame": 136,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m, cone at 40 m. Lane 2: barrier at 40 m, barrier at 60 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 35,
+   "picture": "step_35.png",
+   "frame": 140,
+   "blocked_20m": [
+    1,
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: barrier at 20 m, barrier at 40 m, cone at 60 m. Lane 3: cone at 60 m."
+  },
+  {
+   "step": 36,
+   "picture": "step_36.png",
+   "frame": 144,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: barrier at 20 m, cone at 40 m, barrier at 60 m. Lane 3: cone at 40 m."
+  },
+  {
+   "step": 37,
+   "picture": "step_37.png",
+   "frame": 148,
+   "blocked_20m": [
+    2,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: cone at 20 m, barrier at 40 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 38,
+   "picture": "step_38.png",
+   "frame": 152,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: barrier at 20 m. Lane 3: clear."
+  },
+  {
+   "step": 39,
+   "picture": "step_39.png",
+   "frame": 156,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 60 m. Lane 2: clear. Lane 3: clear."
+  },
+  {
+   "step": 40,
+   "picture": "step_40.png",
+   "frame": 160,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: clear. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 41,
+   "picture": "step_41.png",
+   "frame": 164,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, barrier at 60 m. Lane 2: clear. Lane 3: barrier at 40 m."
+  },
+  {
+   "step": 42,
+   "picture": "step_42.png",
+   "frame": 168,
+   "blocked_20m": [
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: cone at 60 m. Lane 3: barrier at 20 m."
+  },
+  {
+   "step": 43,
+   "picture": "step_43.png",
+   "frame": 172,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, cone at 60 m. Lane 2: cone at 40 m. Lane 3: cone at 60 m."
+  },
+  {
+   "step": 44,
+   "picture": "step_44.png",
+   "frame": 176,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m. Lane 2: cone at 20 m, barrier at 60 m. Lane 3: cone at 40 m."
+  },
+  {
+   "step": 45,
+   "picture": "step_45.png",
+   "frame": 180,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: barrier at 40 m, barrier at 60 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 46,
+   "picture": "step_46.png",
+   "frame": 184,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: barrier at 20 m, barrier at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 47,
+   "picture": "step_47.png",
+   "frame": 188,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 60 m. Lane 2: barrier at 20 m, barrier at 60 m. Lane 3: clear."
+  },
+  {
+   "step": 48,
+   "picture": "step_48.png",
+   "frame": 192,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 40 m, barrier at 60 m. Lane 2: barrier at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 49,
+   "picture": "step_49.png",
+   "frame": 196,
+   "blocked_20m": [
+    1,
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m, barrier at 40 m. Lane 2: barrier at 20 m. Lane 3: barrier at 60 m."
+  },
+  {
+   "step": 50,
+   "picture": "step_50.png",
+   "frame": 200,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, barrier at 60 m. Lane 2: clear. Lane 3: barrier at 40 m, barrier at 60 m."
+  },
+  {
+   "step": 51,
+   "picture": "step_51.png",
+   "frame": 204,
+   "blocked_20m": [
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m, cone at 60 m. Lane 2: clear. Lane 3: barrier at 20 m, barrier at 40 m."
+  },
+  {
+   "step": 52,
+   "picture": "step_52.png",
+   "frame": 208,
+   "blocked_20m": [
+    1,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m, cone at 40 m. Lane 2: barrier at 60 m. Lane 3: barrier at 20 m, cone at 60 m."
+  },
+  {
+   "step": 53,
+   "picture": "step_53.png",
+   "frame": 212,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: cone at 20 m. Lane 2: barrier at 40 m. Lane 3: cone at 40 m."
+  },
+  {
+   "step": 54,
+   "picture": "step_54.png",
+   "frame": 216,
+   "blocked_20m": [
+    2,
+    3
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: clear. Lane 2: barrier at 20 m, cone at 60 m. Lane 3: cone at 20 m."
+  },
+  {
+   "step": 55,
+   "picture": "step_55.png",
+   "frame": 220,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 60 m. Lane 2: cone at 40 m. Lane 3: clear."
+  },
+  {
+   "step": 56,
+   "picture": "step_56.png",
+   "frame": 224,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: cone at 20 m. Lane 3: clear."
+  },
+  {
+   "step": 57,
+   "picture": "step_57.png",
+   "frame": 228,
+   "blocked_20m": [
+    1
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 20 m. Lane 2: cone at 60 m. Lane 3: clear."
+  },
+  {
+   "step": 58,
+   "picture": "step_58.png",
+   "frame": 232,
+   "blocked_20m": [],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 60 m. Lane 2: cone at 40 m. Lane 3: cone at 60 m."
+  },
+  {
+   "step": 59,
+   "picture": "step_59.png",
+   "frame": 236,
+   "blocked_20m": [
+    2
+   ],
+   "text": "Road ahead of our car, next 60 metres. Lane 1: barrier at 40 m. Lane 2: cone at 20 m. Lane 3: cone at 40 m."
+  }
+ ]
+}

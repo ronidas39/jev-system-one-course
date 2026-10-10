@@ -1,102 +1,115 @@
 """Lane race, step 4: the video-frame player. Same race, but the road comes from a video.
 
-Now we ask once per step, and our code decides what the car does:
+The Decisions API reads text and images, not video. A video is a stack of
+pictures called frames. The race video (race_images/clip.mp4) was cut into its
+frames once, and they are saved in race_images/frames. At each step we send the
+frame the car sees right now, or the last 3 frames, so the model can see the
+road move. The rule is the same as step 3.
 
-  - the top lane's probability is 0.80 or more -> drive into that lane
-    (if that lane has a barrier or cone at 20 m, that is a crash)
-  - below 0.80, or a refusal                   -> slow down and stay in our lane
-    (if our lane has something 20 m ahead, we count a "close call")
-
-The Decisions API reads text and images, not video. So we first write the
-drive as a short MP4 clip, then at each step cut out the one frame the car is
-seeing right now and send that frame as an image. Everything else is the same
-as step 3. It is the same player as `python race/play.py --player clip1`.
-
-    python steps/race_step4_video_frames.py
+Run it from the decisions folder:
+    python steps/race_step4_video_frames.py        # 1 frame per step
+    python steps/race_step4_video_frames.py 3      # the last 3 frames per step
 
 Author: Roni Das
-Created: 2026-10-10
 """
 
+import base64
 import json
+import os
 import statistics
 import sys
-from pathlib import Path
+import time
 
-HERE = Path(__file__).resolve().parents[1]  # the decisions/ folder
-sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(HERE / "race"))
+from openai import OpenAI
 
-from common import MODEL, ask, check_key_present, cost_usd, image_data_url, make_client  # noqa: E402
-from play import LEGEND, QUESTION, bars, write_replay  # noqa: E402
-from road import SUB, blocked_at_20m, frames_from_clip, make_clip, make_road  # noqa: E402
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
 
-STEPS = 60
-CUTOFF = 0.80
-"""Drive into a lane only when the model gives it at least this probability."""
+FRAMES = int(sys.argv[1]) if len(sys.argv) > 1 else 1   # frames sent per step
+CUTOFF = 0.80   # drive only when the top lane has at least this probability
+LEGEND = ("Top-down view of a three-lane road. Our car is just below the picture, driving up. "
+          "Orange striped boxes are barriers. Orange triangles are cones. The distance from our "
+          f"car is written on the left. These are {FRAMES} frame(s) from a video of the drive, "
+          "oldest first. The road moves toward the car.")
+QUESTION = {
+    "type": "choice",
+    "name": "lane",
+    "instructions": "This shows the road ahead of our car, with distances. Which lane should the "
+                    "car drive in? Choose a lane with no barrier or cone at 20 metres, and if you "
+                    "can, none at 40 metres either.",
+    "choices": [
+        {"value": "lane_1", "description": "Lane 1, on the left."},
+        {"value": "lane_2", "description": "Lane 2, in the middle."},
+        {"value": "lane_3", "description": "Lane 3, on the right."},
+    ],
+}
 
-check_key_present()
-client = make_client()
-road = make_road(seed=7, steps=STEPS)
-out = HERE / "results" / "race" / "mine"
-clip = out / f"clip-seed7-{STEPS}steps.mp4"
-if not clip.exists():
-    make_clip(road, STEPS + 1, clip)
-    print(f"made the clip {clip.relative_to(HERE)} ({(STEPS + 1) * SUB} frames)")
+# ---------------------------------------------------------------------------
+# Step 1: load the road, and open the file we save every step to
+# ---------------------------------------------------------------------------
+road = json.load(open("race_images/road.json"))
+client = OpenAI()
+player = f"clip{FRAMES}"
+os.makedirs("results/race/mine", exist_ok=True)
+saved = open(f"results/race/mine/{player}-seed7.jsonl", "w")
+saved.write(json.dumps({"player": player, "seed": 7, "steps": 60, "cutoff": CUTOFF}) + "\n")
 
+# ---------------------------------------------------------------------------
+# Step 2: drive all 60 steps, sending video frames as images
+# ---------------------------------------------------------------------------
+car = 2   # the car starts in the middle lane
+rows = []
+print(f"{player}: {FRAMES} frame(s) per step, cut-off {CUTOFF:.2f}")
+for step in road["steps"]:
+    # The frame the car sees now, and the ones just before it, oldest first.
+    numbers = sorted({max(0, step["frame"] - k) for k in range(FRAMES)})
+    content = [{"type": "input_text", "text": LEGEND}]
+    for n in numbers:
+        frame = base64.b64encode(open(f"race_images/frames/frame_{n:05d}.jpg", "rb").read()).decode()
+        content.append({"type": "input_image", "image_url": "data:image/jpeg;base64," + frame})
+    if step["step"] == 10:
+        print("   step 10 sends", [f"frame_{n:05d}.jpg" for n in numbers])
 
-def lane_odds(step: int) -> tuple[dict[str, float] | None, int, float]:
-    """Ask about the video frame for one step. Returns (lane probabilities or None, tokens, seconds)."""
-    frame = frames_from_clip(clip, [step * SUB], out / "frames-seed7")[0]
-    content = [{"type": "input_text", "text": LEGEND + " These are 1 frame(s) from a video of the "
-                "drive, oldest first. The road moves toward the car."},
-               {"type": "input_image", "image_url": image_data_url(frame)}]
-    decision, seconds = ask(client, input=[{"role": "user", "content": content}],
-                            questions=[QUESTION], script="steps/race_step4_video_frames.py")
+    start = time.perf_counter()
+    decision = client.decisions.create(model="gpt-6-luna", questions=[QUESTION],
+                                       input=[{"role": "user", "content": content}])
+    seconds = time.perf_counter() - start
     answer = decision.answers[0]
-    if answer.type == "refusal":
-        return None, decision.usage.input_tokens, seconds
-    return {str(p.value): p.probability for p in answer.probabilities}, decision.usage.input_tokens, seconds
+    if answer.type == "refusal":   # no answer counts as "not sure"
+        probs = {"lane_1": 0.0, "lane_2": 0.0, "lane_3": 0.0}
+    else:
+        probs = {p.value: p.probability for p in answer.probabilities}
+    top = max(probs, key=probs.get)
 
+    # Our rule: drive only at the cut-off or above, otherwise slow down.
+    if probs[top] >= CUTOFF:
+        car = int(top[-1])
+        action = "CRASH" if car in step["blocked_20m"] else f"drive lane {car}"
+    elif car in step["blocked_20m"]:
+        action = "slow down, close call"
+    else:
+        action = "slow down"
 
-def choose(probs: dict[str, float] | None, car: int, blocked: set[int]) -> tuple[str, int]:
-    """Our rule: drive only above the cut-off, otherwise slow down. Returns (action, new lane)."""
-    top = max(probs, key=probs.get) if probs else None
-    if probs and probs[top] >= CUTOFF:
-        lane = int(top[-1])
-        return ("CRASH" if lane in blocked else f"drive lane {lane}"), lane
-    if car in blocked:
-        return "slow down, close call", car
-    return "slow down", car
+    tokens = decision.usage.input_tokens
+    row = {"step": step["step"], "probs": probs, "action": action, "car_lane": car,
+           "blocked_20m": step["blocked_20m"], "tokens": tokens, "seconds": seconds,
+           "usd": tokens * 0.10 / 1_000_000}   # $0.10 per 1M input tokens
+    rows.append(row)
+    saved.write(json.dumps(row) + "\n")
+saved.close()
 
-
-meta = {"meta": True, "player": "clip1", "seed": 7, "steps": STEPS, "cutoff": CUTOFF, "model": MODEL}
-steps_file = out / "clip1-seed7.jsonl"
-steps_file.write_text(json.dumps(meta) + "\n")  # every step is added as it happens
-
-car, rows = 2, []
-print(f"clip1, seed 7, {STEPS} steps, cut-off {CUTOFF:.2f}")
-print(f"{'step':>4}  {'lane 1':<15}  {'lane 2':<15}  {'lane 3':<15}  {'action':<16} {'ms':>5}")
-for step in range(STEPS):
-    probs, used, seconds = lane_odds(step)
-    blocked = blocked_at_20m(road, step)
-    action, car = choose(probs, car, blocked)
-    rows.append({"step": step, "probs": probs, "action": action, "car_lane": car,
-                 "blocked_20m": sorted(blocked), "tokens": used, "seconds": round(seconds, 4),
-                 "usd": cost_usd(used)})
-    with steps_file.open("a") as fh:
-        fh.write(json.dumps(rows[-1]) + "\n")
-    print(f"{step:>4}  {bars(probs)}  {action:<16} {seconds * 1000:>5.0f}", flush=True)
-
-write_replay(road, rows, meta, out / "clip1-seed7.html")
+# ---------------------------------------------------------------------------
+# Step 3: count what happened, and what it cost
+# ---------------------------------------------------------------------------
 actions = [r["action"] for r in rows]
 crashes = actions.count("CRASH")
 slow = sum(a.startswith("slow down") for a in actions)
+close = actions.count("slow down, close call")
 tokens = sum(r["tokens"] for r in rows)
 ms = statistics.median(r["seconds"] for r in rows) * 1000
-print(f"\nclip1: {crashes} crashes, {slow} slow-downs ({actions.count('slow down, close call')} "
-      f"close calls), {STEPS - crashes - slow} clean moves in {STEPS} steps")
-print(f"median {ms:.0f} ms per call, {tokens} input tokens, ${cost_usd(tokens):.6f} "
-      f"(${cost_usd(tokens) / STEPS * 1000:.4f} per 1,000 steps)")
-print(f"saved: {steps_file.relative_to(HERE)}")
-print(f"replay: {(out / 'clip1-seed7.html').relative_to(HERE)}")
+print(f"\n{player}: {crashes} crashes, {slow} slow-downs ({close} close calls), "
+      f"{len(rows) - crashes - slow} clean moves in {len(rows)} steps")
+print(f"median {ms:.0f} ms per call, {tokens} input tokens, ${tokens * 0.10 / 1_000_000:.6f}")
+print(f"saved: results/race/mine/{player}-seed7.jsonl")
