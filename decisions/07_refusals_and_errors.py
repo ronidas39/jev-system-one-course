@@ -1,53 +1,55 @@
-"""Decisions 7: refusals and errors, and code that handles both.
+"""Decisions 7: a refusal, two errors, and code that handles both.
 
-Part 1, a refusal. One request with three questions about one support message.
-Two are fair questions. The third asks about the customer's health, which a
-support tool has no business guessing. The API may refuse that one question.
-The other answers still come back. Our code sends a refusal to a person,
-never to a default answer.
+Part 1, a refusal. Three questions about one support message. Two are fair.
+The third asks which illness the customer has, which a support tool has no
+business guessing, so the model may refuse that one question. The other
+answers still come back. Then we ask it again with an "other" option.
 
-Then the same health question again, in its own request, but with a fair
-way out: an "other" option. Watch whether it is still refused.
-
-Part 2, errors. A broken request fails as a whole, with an HTTP error code.
+Part 2, errors. A broken request fails as a whole, with an HTTP error.
 We cause two on purpose and print what they look like.
 
+Run it from the decisions folder:
+    python 07_refusals_and_errors.py
+
 Author: Roni Das
-Created: 2026-10-09
 """
 
-import textwrap
+import os
 
 import openai
+from openai import OpenAI
 
-from common import ask, check_key_present, cost_usd, make_client, show
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
 
-check_key_present()
-client = make_client()
+client = OpenAI()
 
+# ---------------------------------------------------------------------------
+# Step 1: one message, two fair questions and one unfair one
+# ---------------------------------------------------------------------------
 MESSAGE = ("I was in hospital all of last week, so I missed the return window for my "
            "order. Can I still send it back and get my money?")
 
-QUESTIONS = [
-    {"type": "choice", "name": "team", "instructions": "Which team should handle this?",
-     "choices": [
-         {"value": "returns", "description": "Exchanges, returns, wrong or damaged items"},
-         {"value": "shipping", "description": "Delivery status, delays, lost packages"},
-         {"value": "billing", "description": "Charges, invoices, payment problems"},
-     ]},
-    {"type": "predicate", "name": "refund_requested",
-     "instructions": "Does the customer ask for their money back?"},
-    {"type": "choice", "name": "illness",
-     "instructions": "Which illness does the customer have?",
-     "choices": [
-         {"value": "heart", "description": "A heart condition"},
-         {"value": "cancer", "description": "Cancer"},
-         {"value": "infection", "description": "An infection"},
-     ]},
-]
+TEAM = {"type": "choice", "name": "team", "instructions": "Which team should handle this?",
+        "choices": [
+            {"value": "returns", "description": "Exchanges, returns, wrong or damaged items"},
+            {"value": "shipping", "description": "Delivery status, delays, lost packages"},
+            {"value": "billing", "description": "Charges, invoices, payment problems"},
+        ]}
+REFUND = {"type": "predicate", "name": "refund_requested",
+          "instructions": "Does the customer ask for their money back?"}
+ILLNESS = {"type": "choice", "name": "illness",
+           "instructions": "Which illness does the customer have?",
+           "choices": [
+               {"value": "heart", "description": "A heart condition"},
+               {"value": "cancer", "description": "Cancer"},
+               {"value": "infection", "description": "An infection"},
+           ]}
 
 
-def route(answer: object) -> str:
+def route(answer):
     """What our code does with one answer. A refusal always goes to a person."""
     if answer.type == "refusal":
         return "REFUSED -> send to a person"
@@ -56,38 +58,38 @@ def route(answer: object) -> str:
     return f"{answer.choice} (confidence {answer.confidence:.2f})"
 
 
+# ---------------------------------------------------------------------------
+# Step 2: ask all three together, and route each answer
+# ---------------------------------------------------------------------------
 print("Part 1 · a refusal")
-decision, seconds = ask(client, input=MESSAGE, questions=QUESTIONS,
-                        script="07_refusals_and_errors.py", note="refusal demo")
+decision = client.decisions.create(model="gpt-6-luna", input=MESSAGE,
+                                   questions=[TEAM, REFUND, ILLNESS])
 for answer in decision.answers:
-    show(answer.name, route(answer))
-show("input tokens", decision.usage.input_tokens)
-show("cost (US$)", f"{cost_usd(decision.usage.input_tokens):.8f}")
+    print(f"{answer.name:<17} {route(answer)}")
 
+# ---------------------------------------------------------------------------
+# Step 3: the same health question, now with an "other" option
+# ---------------------------------------------------------------------------
 print()
 print("The same health question, now with an 'other' option")
-with_other = dict(QUESTIONS[2])
-with_other["choices"] = [*QUESTIONS[2]["choices"],
-                         {"value": "other", "description": "Something else, or not stated"}]
-again, _ = ask(client, input=MESSAGE, questions=[with_other],
-               script="07_refusals_and_errors.py", note="refusal demo, with other")
-show("illness", route(again.answers[0]))
+ILLNESS["choices"].append({"value": "other", "description": "Something else, or not stated"})
+again = client.decisions.create(model="gpt-6-luna", input=MESSAGE, questions=[ILLNESS])
+print(f"{'illness':<17} {route(again.answers[0])}")
 
+# ---------------------------------------------------------------------------
+# Step 4: two broken requests, which fail as a whole
+# ---------------------------------------------------------------------------
 print()
 print("Part 2 · errors")
-bad_requests = {
-    "a choice with only one option": [{
-        "type": "choice", "name": "team", "instructions": "Which team?",
-        "choices": [{"value": "returns"}]}],
-    "an unknown question type": [{
-        "type": "yes_no", "name": "x", "instructions": "Is this a refund?"}],
-}
-for label, questions in bad_requests.items():
+ONE_OPTION = {"type": "choice", "name": "team", "instructions": "Which team?",
+              "choices": [{"value": "returns"}]}
+UNKNOWN_TYPE = {"type": "yes_no", "name": "x", "instructions": "Is this a refund?"}
+
+for label, question in [("a choice with only one option", ONE_OPTION),
+                        ("an unknown question type", UNKNOWN_TYPE)]:
     try:
-        client.decisions.create(model="gpt-6-luna", input=MESSAGE, questions=questions)
-        show(label, "no error (unexpected)")
+        client.decisions.create(model="gpt-6-luna", input=MESSAGE, questions=[question])
+        print(label, "-> no error")
     except openai.APIStatusError as error:
-        show(label, f"HTTP {error.status_code}: {type(error).__name__}")
-        message = (error.body or {}).get("message", "") if isinstance(error.body, dict) else ""
-        for line in textwrap.wrap(message, 70):
-            print(f"{'':<29}{line}")
+        print(f"{label} -> HTTP {error.status_code}: {type(error).__name__}")
+        print("   ", error.body["message"])

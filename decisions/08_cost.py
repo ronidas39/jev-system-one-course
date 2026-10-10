@@ -1,49 +1,85 @@
-"""Decisions 8: what a call costs, read from the usage the API sends back.
+"""Decisions 8: what 20 tickets cost, read from the usage the API sends back.
 
-We send 20 real tickets from data/tickets.jsonl, one call each, with the same
-three questions the course uses everywhere (team, urgency, frustration).
-Every response carries usage.input_tokens. Cost = input tokens x the price.
-There is no output charge on this endpoint.
+We send 20 course tickets from data/tickets.jsonl, one call each, with our
+three usual questions (team, urgency, frustration). Every answer carries
+usage.input_tokens. Cost = input tokens x the price. Output is free.
+
+Run it from the decisions folder:
+    python 08_cost.py
 
 Author: Roni Das
-Created: 2026-10-09
 """
 
 import json
+import os
 
-from jevcourse.tasks import FRUSTRATION_LEVELS, TEAMS, URGENCY_LEVELS
+from openai import OpenAI
 
-from common import (PRICE_READ_ON, REPO_ROOT, USD_PER_MILLION_INPUT_TOKENS, ask,
-                    check_key_present, cost_usd, make_client)
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
 
-check_key_present()
-client = make_client()
+client = OpenAI()
 
+PRICE = 0.10  # US dollars per million input tokens, from OpenAI's guide, read 2026-10-09
+
+# ---------------------------------------------------------------------------
+# Step 1: our three usual questions
+# ---------------------------------------------------------------------------
 QUESTIONS = [
     {"type": "choice", "name": "team",
      "instructions": "Which team should handle this support ticket?",
-     "choices": [{"value": k, "description": v} for k, v in TEAMS.items()]},
+     "choices": [
+         {"value": "billing", "description": "Charges, refunds, invoices, prices on a bill, "
+                                             "subscriptions, billing details"},
+         {"value": "technical", "description": "Bugs, errors, crashes, outages, slow pages, "
+                                               "API or integration problems"},
+         {"value": "shipping", "description": "Delivery, tracking, couriers, damaged or lost "
+                                              "parcels, delivery addresses"},
+         {"value": "account", "description": "Login, passwords, security, profile, users and "
+                                             "permissions, data deletion"},
+         {"value": "sales", "description": "Buying, plans, quotes, discounts, demos, trials "
+                                           "for new or bigger purchases"},
+     ]},
     {"type": "score", "name": "urgency",
      "instructions": "How soon does this ticket need a response?",
-     "levels": [{"label": text} for text in URGENCY_LEVELS]},
+     "levels": [
+         {"label": "Can wait: no harm if answered in a few days"},
+         {"label": "Soon: should be handled within a day or two"},
+         {"label": "Today: work, money or security is blocked right now"},
+     ]},
     {"type": "score", "name": "frustration",
      "instructions": "How frustrated does the customer appear?",
-     "levels": [{"label": text} for text in FRUSTRATION_LEVELS]},
+     "levels": [
+         {"label": "Calm, just stating facts"},
+         {"label": "Frustrated but civil"},
+         {"label": "Very angry, insulting, or threatening to leave or complain"},
+     ]},
 ]
 
-tickets = [json.loads(line) for line in (REPO_ROOT / "data/tickets.jsonl").read_text().splitlines()]
-tokens = []
-print(f"{'ticket':<7} {'characters':>10} {'input tokens':>12} {'cost (US$)':>12}")
-for ticket in tickets[:20]:
-    decision, _ = ask(client, input=ticket["text"], questions=QUESTIONS, script="08_cost.py")
-    used = decision.usage.input_tokens
-    tokens.append(used)
-    print(f"{ticket['id']:<7} {len(ticket['text']):>10} {used:>12} {cost_usd(used):>12.8f}")
+# ---------------------------------------------------------------------------
+# Step 2: send the first 20 tickets, and read the input tokens of each
+# ---------------------------------------------------------------------------
+tickets = [json.loads(line) for line in open("../data/tickets.jsonl")][:20]
 
-total = sum(tokens)
+total = 0
+print(f"{'ticket':<7} {'characters':>10} {'input tokens':>12} {'cost (US$)':>12}")
+for ticket in tickets:
+    decision = client.decisions.create(model="gpt-6-luna", input=ticket["text"],
+                                       questions=QUESTIONS)
+    used = decision.usage.input_tokens
+    total += used
+    print(f"{ticket['id']:<7} {len(ticket['text']):>10} {used:>12} "
+          f"{used * PRICE / 1_000_000:>12.8f}")
+
+# ---------------------------------------------------------------------------
+# Step 3: add it up, and scale to a thousand and a million tickets
+# ---------------------------------------------------------------------------
+cost = total * PRICE / 1_000_000
 print()
-print(f"price: ${USD_PER_MILLION_INPUT_TOKENS} per million input tokens (read {PRICE_READ_ON})")
-print(f"20 tickets: {total} input tokens, ${cost_usd(total):.6f}")
-print(f"average tokens per ticket: {total / len(tokens):.1f}")
-print(f"so 1,000 tickets cost about ${cost_usd(total) / 20 * 1000:.4f}, "
-      f"and one million about ${cost_usd(total) / 20 * 1_000_000:.2f}")
+print(f"price: ${PRICE} per million input tokens")
+print(f"20 tickets: {total} input tokens, ${cost:.6f}")
+print(f"average tokens per ticket: {total / 20:.1f}")
+print(f"so 1,000 tickets cost about ${cost / 20 * 1000:.4f}, "
+      f"and one million about ${cost / 20 * 1_000_000:.2f}")

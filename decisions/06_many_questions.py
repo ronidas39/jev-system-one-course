@@ -1,28 +1,35 @@
-"""Decisions 6: many questions in one call, against one question per call.
+"""Decisions 6: eight questions in one call, against one question per call.
 
-Same ticket and the same eight questions as handson/05_many_questions.py.
-We send them once together, then once each, and compare the time on this
-machine and the input tokens (the cost). Then we check the answers match.
+Same ticket and the same eight questions as we gave Jev. We send them once
+together, then once each, and compare the answers, the input tokens (the
+cost) and the time on this machine.
+
+Run it from the decisions folder:
+    python 06_many_questions.py
 
 Author: Roni Das
-Created: 2026-10-09
 """
 
-from common import ask, check_key_present, cost_usd, make_client
+import os
+import time
 
-check_key_present()
-client = make_client()
+from openai import OpenAI
 
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
+
+client = OpenAI()
+
+# ---------------------------------------------------------------------------
+# Step 1: one ticket and eight questions of all three types
+# ---------------------------------------------------------------------------
 TICKET = (
     "Hi, I placed an order (#98423) last Thursday and was charged twice. I also can't "
     "log in after the site update, and adding Apple Pay would be really helpful. "
     "This is getting frustrating."
 )
-
-
-def predicate(name: str, text: str) -> dict:
-    return {"type": "predicate", "name": name, "instructions": text}
-
 
 QUESTIONS = [
     {"type": "choice", "name": "category",
@@ -41,12 +48,16 @@ QUESTIONS = [
          {"label": "workaround", "description": "Broken or degraded feature; workaround exists"},
          {"label": "blocking", "description": "Blocking issue; no workaround exists"},
      ]},
-    predicate("has_reproducible_steps",
-              "Does the user describe specific steps to reproduce the issue?"),
-    predicate("refund_requested", "Does the customer request a refund?"),
-    predicate("mentions_duplicate_charge", "Does the customer say they were charged twice?"),
-    predicate("cannot_log_in", "Does the customer say they cannot log in?"),
-    predicate("asks_for_feature", "Does the customer ask for a new feature?"),
+    {"type": "predicate", "name": "has_reproducible_steps",
+     "instructions": "Does the user describe specific steps to reproduce the issue?"},
+    {"type": "predicate", "name": "refund_requested",
+     "instructions": "Does the customer request a refund?"},
+    {"type": "predicate", "name": "mentions_duplicate_charge",
+     "instructions": "Does the customer say they were charged twice?"},
+    {"type": "predicate", "name": "cannot_log_in",
+     "instructions": "Does the customer say they cannot log in?"},
+    {"type": "predicate", "name": "asks_for_feature",
+     "instructions": "Does the customer ask for a new feature?"},
     {"type": "score", "name": "frustration",
      "instructions": "How frustrated does the customer appear?",
      "levels": [
@@ -57,39 +68,49 @@ QUESTIONS = [
 ]
 
 
-def short(answer: object) -> str:
-    """One short text for any answer type."""
-    kind = answer.type
-    if kind == "predicate":
+def short(answer):
+    """One short piece of text for any type of answer."""
+    if answer.type == "predicate":
         return f"{answer.probability:.2f}"
-    if kind == "choice":
+    if answer.type == "choice":
         return f"{answer.choice} (conf {answer.confidence:.2f})"
-    if kind == "score":
+    if answer.type == "score":
         return f"{answer.score:.2f} (conf {answer.confidence:.2f})"
     return "REFUSED"
 
 
-together, together_s = ask(client, input=TICKET, questions=QUESTIONS,
-                           script="06_many_questions.py", note="8 questions, 1 call")
+# ---------------------------------------------------------------------------
+# Step 2: all eight questions in one call
+# ---------------------------------------------------------------------------
+start = time.time()
+together = client.decisions.create(model="gpt-6-luna", input=TICKET, questions=QUESTIONS)
+together_seconds = time.time() - start
+together_tokens = together.usage.input_tokens
+
+# ---------------------------------------------------------------------------
+# Step 3: the same eight questions, one call each, one after another
+# ---------------------------------------------------------------------------
 separate = {}
-separate_s = 0.0
+separate_seconds = 0
 separate_tokens = 0
 for question in QUESTIONS:
-    one, seconds = ask(client, input=TICKET, questions=[question],
-                       script="06_many_questions.py", note=f"1 question: {question['name']}")
-    separate[question["name"]] = one.answers[0]
-    separate_s += seconds
+    start = time.time()
+    one = client.decisions.create(model="gpt-6-luna", input=TICKET, questions=[question])
+    separate_seconds += time.time() - start
     separate_tokens += one.usage.input_tokens
+    separate[question["name"]] = one.answers[0]
 
+# ---------------------------------------------------------------------------
+# Step 4: compare the answers, the tokens and the time
+# ---------------------------------------------------------------------------
 print(f"{'question':<26} {'one call (8 together)':<26} {'8 separate calls':<26}")
 for answer in together.answers:
     print(f"{answer.name:<26} {short(answer):<26} {short(separate[answer.name]):<26}")
 
-tokens = together.usage.input_tokens
 print()
-print(f"one call:  {together_s:6.3f} s, {tokens:5d} input tokens, ${cost_usd(tokens):.8f}")
-print(f"8 calls:   {separate_s:6.3f} s, {separate_tokens:5d} input tokens, "
-      f"${cost_usd(separate_tokens):.8f}")
-print(f"8 calls cost {separate_tokens / tokens:.1f}x the tokens and took "
-      f"{separate_s / together_s:.1f}x the time (one after another, from this machine).")
-print(f"model: {together.model}")
+print(f"one call: {together_seconds:6.3f} s, {together_tokens:5d} input tokens, "
+      f"${together_tokens * 0.10 / 1_000_000:.8f}")
+print(f"8 calls:  {separate_seconds:6.3f} s, {separate_tokens:5d} input tokens, "
+      f"${separate_tokens * 0.10 / 1_000_000:.8f}")
+print(f"8 calls cost {separate_tokens / together_tokens:.1f}x the tokens and took "
+      f"{separate_seconds / together_seconds:.1f}x the time.")

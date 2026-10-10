@@ -1,18 +1,29 @@
-"""Decisions 5: rate on ordered levels (score).
+"""Decisions 5: rate something on ordered levels (a score).
 
-Levels are numbered from 0. The score is the probability-weighted average of
-the level numbers, so it can land between two levels. Same four bug reports
-as handson/04_score.py.
+The levels are numbered from 0. The score is the average of the level
+numbers, weighted by their probabilities, so it can land between two levels.
+Same four bug reports as we gave Jev.
+
+Run it from the decisions folder:
+    python 05_score.py
 
 Author: Roni Das
-Created: 2026-10-09
 """
 
-from common import ask, check_key_present, make_client
+import os
 
-check_key_present()
-client = make_client()
+from openai import OpenAI
 
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
+
+client = OpenAI()
+
+# ---------------------------------------------------------------------------
+# Step 1: the question, with three levels in order, and four bug reports
+# ---------------------------------------------------------------------------
 SEVERITY = {
     "type": "score",
     "name": "severity",
@@ -33,11 +44,12 @@ REPORTS = [
     "Nobody on our team can log in since this morning. We get a 500 error on every attempt.",
 ]
 
-print(f"{'report':<60} {'score':>6} {'conf':>5}  probabilities")
+# ---------------------------------------------------------------------------
+# Step 2: score each report, and print the score and every level's probability
+# ---------------------------------------------------------------------------
+print(f"{'report':<45} {'score':>6} {'conf':>5}  probabilities")
 for report in REPORTS:
-    decision, seconds = ask(client, input=report, questions=[SEVERITY], script="05_score.py")
+    decision = client.decisions.create(model="gpt-6-luna", input=report, questions=[SEVERITY])
     answer = decision.answers[0]
-    short = report[:57] + "..." if len(report) > 60 else report
     levels = "  ".join(f"{p.label} {p.probability:.2f}" for p in answer.probabilities)
-    print(f"{short:<60} {answer.score:>6.2f} {answer.confidence:>5.2f}  {levels}")
-print(f"model: {decision.model}")
+    print(f"{report[:42] + '...':<45} {answer.score:>6.2f} {answer.confidence:>5.2f}  {levels}")

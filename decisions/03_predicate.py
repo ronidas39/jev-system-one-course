@@ -1,18 +1,28 @@
-"""Decisions 3: a yes-or-no question (predicate) on six messages.
+"""Decisions 3: a yes or no question (a predicate) on six messages.
 
-A predicate gives one number: the probability, from 0 to 1, that the
-statement is true. These are the same six messages as handson/02_noul.py,
-so you can put the two answers side by side.
+A predicate gives one number: the probability, from 0 to 1, that the answer
+is yes. These are the same six messages we gave Jev, so you can compare.
+
+Run it from the decisions folder:
+    python 03_predicate.py
 
 Author: Roni Das
-Created: 2026-10-09
 """
 
-from common import ask, check_key_present, make_client
+import os
 
-check_key_present()
-client = make_client()
+from openai import OpenAI
 
+# Read the API key from the .env file in the course folder.
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
+
+client = OpenAI()
+
+# ---------------------------------------------------------------------------
+# Step 1: the question and the six messages
+# ---------------------------------------------------------------------------
 QUESTION = {
     "type": "predicate",
     "name": "is_human_escalation",
@@ -28,9 +38,12 @@ MESSAGES = [
     "I have asked three times now. Can I please just talk to a real person?",
 ]
 
+# ---------------------------------------------------------------------------
+# Step 2: ask about each message, and print the probability of yes
+# ---------------------------------------------------------------------------
 print(f"{'message':<74} {'probability':>11}")
 for message in MESSAGES:
-    decision, seconds = ask(client, input=message, questions=[QUESTION], script="03_predicate.py")
+    decision = client.decisions.create(model="gpt-6-luna", input=message, questions=[QUESTION])
     answer = decision.answers[0]
     print(f"{message:<74} {answer.probability:>11.2f}")
-print(f"model: {decision.model}")
+print("model:", decision.model)
