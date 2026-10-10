@@ -1,4 +1,4 @@
-"""Lane race, step 2: drive 10 steps, with the 0.80 cut-off.
+"""Lane race, extra: drive 10 steps, with the 0.80 cut-off.
 
 Now we ask once per step, and our code decides what the car does:
 
@@ -8,7 +8,7 @@ Now we ask once per step, and our code decides what the car does:
     (if our lane has something at 20 m, we count a "close call")
 
 Run it from the decisions folder:
-    python steps/race_step2_ten_steps.py
+    python steps/extra/race_ten_steps.py
 
 Author: Roni Das
 """

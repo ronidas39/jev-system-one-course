@@ -1,11 +1,11 @@
-"""Lane race, step 5: the road as text. Same race, no picture at all.
+"""Lane race, extra: the road as text. Same race, no picture at all.
 
 road.json also holds each step of the road written out in words, for example
 "Lane 1: cone at 20 m. Lane 2: clear. Lane 3: clear." We send only that text
 to the Decisions API, with the same question and the same 0.80 rule.
 
 Run it from the decisions folder:
-    python steps/race_step5_text.py
+    python steps/extra/race_text.py
 
 Author: Roni Das
 """

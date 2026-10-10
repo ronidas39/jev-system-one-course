@@ -43,9 +43,9 @@ python 10_ask_again.py            # the same photo three times: does the answer 
 python 10_speed_test.py           # ten photos: Decisions API against a JSON answer
 python steps/desk_step1_one_photo.py    # refund desk, step 1: one photo, one question
 python steps/desk_step2_add_message.py  # step 2: the customer's message and a second question
-python steps/desk_step3_policy.py       # step 3: the shop's policy, in plain code
+python steps/desk_step3_policy.py       # step 3: the shop's rule, in plain code
 python steps/desk_step4_all_claims.py   # step 4: all eight claims
-python steps/desk_step5_photo_alone.py  # step 5: ask about the photo on its own
+python steps/extra/desk_step5_photo_alone.py  # extra: ask about the photo in its own call
 python 11_returns_desk.py         # the whole refund desk in one file, with options
 ```
 

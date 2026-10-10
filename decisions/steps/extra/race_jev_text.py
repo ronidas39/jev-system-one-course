@@ -1,10 +1,10 @@
-"""Lane race, step 6: Jev reads the road as text. Same race, same 0.80 rule.
+"""Lane race, extra: Jev reads the road as text. Same race, same 0.80 rule.
 
-Jev reads text only, so it plays the text version of the game from step 5:
+Jev reads text only, so it plays the text version of the game (race_text.py):
 the same words from road.json, the same three lanes, the same rule.
 
 Run it from the decisions folder:
-    python steps/race_step6_jev_text.py
+    python steps/extra/race_jev_text.py
 
 Author: Roni Das
 """

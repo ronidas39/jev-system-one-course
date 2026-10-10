@@ -1,8 +1,8 @@
 """Refund desk, step 1: one photo and one question.
 
 We start the refund desk with the smallest thing that works. We send the photo
-from one refund claim and ask one choice question: what condition is the egg
-in? The answer comes back with a probability for every choice.
+from one refund claim and ask one question: what condition is the egg in?
+The answer comes back with a chance for every option.
 
 Run it from the decisions folder:
     python steps/desk_step1_one_photo.py
@@ -54,9 +54,9 @@ decision = client.decisions.create(
 # Step 3: print the answer
 # ---------------------------------------------------------------------------
 answer = decision.answers[0]
-odds = {p.value: round(p.probability, 2) for p in answer.probabilities}
-tokens = decision.usage.input_tokens
-print(f"photo           eggs/{photo}.jpg")
-print(f"photo shows     {answer.choice}")
-print(f"probabilities   {odds}")
-print(f"input tokens    {tokens}  (cost ${tokens * 0.10 / 1_000_000:.6f})")
+chances = {p.value: round(p.probability, 2) for p in answer.probabilities}
+cost = decision.usage.input_tokens * 0.10 / 1_000_000
+print(f"photo              eggs/{photo}.jpg")
+print(f"the photo shows    {answer.choice}")
+print(f"chance of each     {chances}")
+print(f"cost               ${cost:.6f}")

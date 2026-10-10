@@ -25,9 +25,9 @@ client = OpenAI()
 # ---------------------------------------------------------------------------
 # Step 1: two questions, one about the message and one about the photo
 # ---------------------------------------------------------------------------
-CLAIM_QUESTION = {
+MESSAGE_QUESTION = {
     "type": "choice",
-    "name": "claim",
+    "name": "message",
     "instructions": "Read only the customer's message. What do they say is wrong?",
     "choices": [
         {"value": "broken", "description": "An egg is cracked, smashed or broken open."},
@@ -51,27 +51,26 @@ PHOTO_QUESTION = {
 # ---------------------------------------------------------------------------
 # Step 2: send the message and the photo of claim C01 in one call
 # ---------------------------------------------------------------------------
-message = "Two of my eggs arrived smashed. The yolk is all over the box."
-photo = "broken-02"
-photo_bytes = open(f"eggs/{photo}.jpg", "rb").read()
+claim = {"id": "C01", "message": "Two of my eggs arrived smashed. The yolk is all over the box.",
+         "photo": "broken-02"}
+photo_bytes = open(f"eggs/{claim['photo']}.jpg", "rb").read()
 url = "data:image/jpeg;base64," + base64.b64encode(photo_bytes).decode()
-
 decision = client.decisions.create(
     model="gpt-6-luna",
     input=[{"role": "user", "content": [
-        {"type": "input_text", "text": f"Customer message: {message}"},
+        {"type": "input_text", "text": f"Customer message: {claim['message']}"},
         {"type": "input_image", "image_url": url},
     ]}],
-    questions=[CLAIM_QUESTION, PHOTO_QUESTION],
+    questions=[MESSAGE_QUESTION, PHOTO_QUESTION],
 )
+answers = {a.name: a for a in decision.answers}
+message_answer, photo_answer = answers["message"], answers["photo"]
 
 # ---------------------------------------------------------------------------
 # Step 3: print both answers
 # ---------------------------------------------------------------------------
-answers = {a.name: a for a in decision.answers}
-claim, shown = answers["claim"], answers["photo"]
-tokens = decision.usage.input_tokens
-print(f"claim           C01: {message}")
-print(f"message says    {claim.choice} (confidence {claim.confidence:.2f})")
-print(f"photo shows     {shown.choice} (confidence {shown.confidence:.2f})")
-print(f"input tokens    {tokens}  (cost ${tokens * 0.10 / 1_000_000:.6f})")
+cost = decision.usage.input_tokens * 0.10 / 1_000_000
+print(f"claim              {claim['id']}: {claim['message']}")
+print(f"the message says   {message_answer.choice} (how sure: {message_answer.confidence:.2f})")
+print(f"the photo shows    {photo_answer.choice} (how sure: {photo_answer.confidence:.2f})")
+print(f"cost               ${cost:.6f}")

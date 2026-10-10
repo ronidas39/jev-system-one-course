@@ -26,12 +26,12 @@ for line in open("../.env"):
 # Step 1: load the road and the picture for the first step
 # ---------------------------------------------------------------------------
 road = json.load(open("race_images/road.json"))
-step = road["steps"][0]
-picture = base64.b64encode(open("race_images/" + step["picture"], "rb").read()).decode()
+first = road["steps"][0]
+picture = base64.b64encode(open("race_images/" + first["picture"], "rb").read()).decode()
 
-print("picture:", "race_images/" + step["picture"])
-print("what is really there:", step["text"])
-print("lanes blocked at 20 m:", step["blocked_20m"])
+print("picture:", "race_images/" + first["picture"])
+print("what is really there:", first["text"])
+print("lanes blocked at 20 m:", first["blocked_20m"])
 
 # ---------------------------------------------------------------------------
 # Step 2: the question, and a legend that says what the shapes mean
@@ -66,9 +66,9 @@ decision = client.decisions.create(
 )
 answer = decision.answers[0]
 
-print("\nmodel's lane:", answer.choice)
+print("\nthe model chose:", answer.choice)
 for p in answer.probabilities:
     print(f"   {p.value}: {p.probability:.2f}")
 
 tokens = decision.usage.input_tokens
-print(f"input tokens: {tokens}, cost ${tokens * 0.10 / 1_000_000:.6f}")  # $0.10 per 1M input tokens
+print(f"cost: ${tokens * 0.10 / 1_000_000:.6f}")   # $0.10 per 1 million input tokens

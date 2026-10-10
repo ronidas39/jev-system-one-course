@@ -1,15 +1,9 @@
-"""Refund desk, step 3: the shop's policy, and the "send to a person" path.
+"""Refund desk, step 3: the shop's rule, and the "a person checks" path.
 
-Now our own code decides what happens to a claim, using the two answers:
-
-  - a question was refused                      -> a person checks it
-  - the message does not claim broken or dirty  -> a person checks it
-  - the message is not clear (confidence < 0.90) -> a person checks it
-  - the photo shows that same problem with probability 0.90 or more
-                                                -> refund automatically
-  - anything else                               -> a person checks it
-
-The model never refuses a refund on its own. Every "no" stays with a person.
+Now our own code decides what happens to a claim, using the two answers.
+We refund now only when the message clearly says broken or dirty AND the photo
+shows that same problem with a chance of 0.90 or more. Everything else goes to
+a person. The model never says no to a refund on its own.
 We try three claims from returns_claims.json, one for each kind of outcome.
 
 Run it from the decisions folder:
@@ -30,11 +24,10 @@ for line in open("../.env"):
         os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
 
 client = OpenAI()
-AUTO_REFUND_AT = 0.90
 
-CLAIM_QUESTION = {
+MESSAGE_QUESTION = {
     "type": "choice",
-    "name": "claim",
+    "name": "message",
     "instructions": "Read only the customer's message. What do they say is wrong?",
     "choices": [
         {"value": "broken", "description": "An egg is cracked, smashed or broken open."},
@@ -57,47 +50,51 @@ PHOTO_QUESTION = {
 
 
 # ---------------------------------------------------------------------------
-# Step 1: the shop's policy, in plain code
+# Step 1: the shop's rule, in plain code
 # ---------------------------------------------------------------------------
-def decide(claim, shown):
-    """Returns the action and P(photo agrees with the message)."""
-    if claim.type == "refusal" or shown.type == "refusal":
-        return "person (a question was refused)", None
-    if claim.choice not in ("broken", "dirty"):
-        return "person (not a damage claim)", None
-    if claim.confidence < AUTO_REFUND_AT:
-        return "person (message is not clear)", None
-    agree = next(p.probability for p in shown.probabilities if p.value == claim.choice)
-    if agree >= AUTO_REFUND_AT:
-        return "REFUND automatically", agree
-    return "person (photo does not clearly agree)", agree
+SURE_ENOUGH = 0.90
+
+
+def decide(message_answer, photo_answer):
+    """What we do with one claim, and how much the photo agrees (0 to 1)."""
+    if message_answer.type == "refusal" or photo_answer.type == "refusal":
+        return "a person checks (no answer)", None
+    problem = message_answer.choice
+    if problem not in ("broken", "dirty"):
+        return "a person checks (not about damage)", None
+    if message_answer.confidence < SURE_ENOUGH:
+        return "a person checks (message not clear)", None
+    photo_agrees = next(p.probability for p in photo_answer.probabilities if p.value == problem)
+    if photo_agrees >= SURE_ENOUGH:
+        return "refund now", photo_agrees
+    return "a person checks (photo does not match)", photo_agrees
 
 
 # ---------------------------------------------------------------------------
-# Step 2: ask about three claims, then let the policy decide
+# Step 2: ask about three claims, then let the rule decide
 # ---------------------------------------------------------------------------
 claims = json.load(open("returns_claims.json"))["claims"]
-for c in claims:
-    if c["id"] not in ("C01", "C05", "C07"):
+for claim in claims:
+    if claim["id"] not in ("C01", "C05", "C07"):
         continue
-    photo_bytes = open(f"eggs/{c['photo']}.jpg", "rb").read()
+    photo_bytes = open(f"eggs/{claim['photo']}.jpg", "rb").read()
     url = "data:image/jpeg;base64," + base64.b64encode(photo_bytes).decode()
     decision = client.decisions.create(
         model="gpt-6-luna",
         input=[{"role": "user", "content": [
-            {"type": "input_text", "text": f"Customer message: {c['message']}"},
+            {"type": "input_text", "text": f"Customer message: {claim['message']}"},
             {"type": "input_image", "image_url": url},
         ]}],
-        questions=[CLAIM_QUESTION, PHOTO_QUESTION],
+        questions=[MESSAGE_QUESTION, PHOTO_QUESTION],
     )
     answers = {a.name: a for a in decision.answers}
-    claim, shown = answers["claim"], answers["photo"]
-    action, agree = decide(claim, shown)
-    agree_text = "-" if agree is None else f"{agree:.2f}"
+    message_answer, photo_answer = answers["message"], answers["photo"]
+    action, photo_agrees = decide(message_answer, photo_answer)
+    agrees_text = "-" if photo_agrees is None else f"{photo_agrees:.2f}"
 
     print()
-    print(f"claim             {c['id']}: {c['message']}")
-    print(f"message says      {claim.choice} (confidence {claim.confidence:.2f})")
-    print(f"photo shows       {shown.choice} (confidence {shown.confidence:.2f})")
-    print(f"P(photo agrees)   {agree_text}")
-    print(f"action            {action}")
+    print(f"claim              {claim['id']}: {claim['message']}")
+    print(f"the message says   {message_answer.choice}")
+    print(f"the photo shows    {photo_answer.choice}")
+    print(f"photo agrees       {agrees_text}")
+    print(f"what we do         {action}")
