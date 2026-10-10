@@ -1,19 +1,12 @@
-"""Refund desk, step 3: the shop's policy, and the "send to a person" path.
+"""Refund desk, step 5: ask about the photo on its own.
 
-Now our own code decides what happens to a claim, using the two answers:
-
-  - a question was refused                      -> a person checks it
-  - the message does not claim broken or dirty  -> a person checks it
-  - the message is not clear (confidence < 0.90) -> a person checks it
-  - the photo shows that same problem with probability 0.90 or more
-                                                -> refund automatically
-  - anything else                               -> a person checks it
-
-The model never refuses a refund on its own. Every "no" stays with a person.
-We try three claims from returns_claims.json, one for each kind of outcome.
+In steps 2 to 4 the photo question also saw the customer's message. A message
+that says "cracked" might pull the photo answer toward "broken". So now each
+claim gets two calls: one reads only the message, the other sees only the
+photo. The policy is the same as before.
 
 Run it from the decisions folder:
-    python steps/desk_step3_policy.py
+    python steps/desk_step5_photo_alone.py
 
 Author: Roni Das
 """
@@ -21,6 +14,7 @@ Author: Roni Das
 import base64
 import json
 import os
+import time
 
 from openai import OpenAI
 
@@ -74,30 +68,40 @@ def decide(claim, shown):
 
 
 # ---------------------------------------------------------------------------
-# Step 2: ask about three claims, then let the policy decide
+# Step 2: two calls per claim, so the photo question never sees the message
 # ---------------------------------------------------------------------------
 claims = json.load(open("returns_claims.json"))["claims"]
+start = time.perf_counter()
+tokens = 0
+refunded = 0
+print(f"{'id':<4} {'photo file':<10} {'message says':<12} {'photo shows':<12} {'P(agree)':>8}  action")
 for c in claims:
-    if c["id"] not in ("C01", "C05", "C07"):
-        continue
+    first = client.decisions.create(
+        model="gpt-6-luna",
+        input=f"Customer message: {c['message']}",
+        questions=[CLAIM_QUESTION],
+    )
     photo_bytes = open(f"eggs/{c['photo']}.jpg", "rb").read()
     url = "data:image/jpeg;base64," + base64.b64encode(photo_bytes).decode()
-    decision = client.decisions.create(
+    second = client.decisions.create(
         model="gpt-6-luna",
-        input=[{"role": "user", "content": [
-            {"type": "input_text", "text": f"Customer message: {c['message']}"},
-            {"type": "input_image", "image_url": url},
-        ]}],
-        questions=[CLAIM_QUESTION, PHOTO_QUESTION],
+        input=[{"role": "user", "content": [{"type": "input_image", "image_url": url}]}],
+        questions=[PHOTO_QUESTION],
     )
-    answers = {a.name: a for a in decision.answers}
-    claim, shown = answers["claim"], answers["photo"]
+    tokens += first.usage.input_tokens + second.usage.input_tokens
+    claim, shown = first.answers[0], second.answers[0]
     action, agree = decide(claim, shown)
+    if action.startswith("REFUND"):
+        refunded += 1
     agree_text = "-" if agree is None else f"{agree:.2f}"
+    print(f"{c['id']:<4} {c['photo']:<10} {claim.choice:<12} {shown.choice:<12} {agree_text:>8}  {action}")
 
-    print()
-    print(f"claim             {c['id']}: {c['message']}")
-    print(f"message says      {claim.choice} (confidence {claim.confidence:.2f})")
-    print(f"photo shows       {shown.choice} (confidence {shown.confidence:.2f})")
-    print(f"P(photo agrees)   {agree_text}")
-    print(f"action            {action}")
+# ---------------------------------------------------------------------------
+# Step 3: add up the time, the tokens and the cost
+# ---------------------------------------------------------------------------
+seconds = time.perf_counter() - start
+cost = tokens * 0.10 / 1_000_000
+print()
+print(f"two calls per claim. {len(claims)} claims in {seconds:.1f} s: {refunded} refunded "
+      f"automatically, {len(claims) - refunded} sent to a person")
+print(f"input tokens {tokens}, cost ${cost:.6f} (about ${cost / len(claims) * 1000:.4f} per 1,000 claims)")

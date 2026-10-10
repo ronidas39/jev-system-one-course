@@ -38,11 +38,15 @@ python 06_many_questions.py       # eight questions in one call, against eight c
 python 07_refusals_and_errors.py  # a real refusal, and two real errors
 python 08_cost.py                 # cost from usage, on 20 course tickets
 python 09_one_photo.py            # a photo as base64, three questions about one egg
-python 10_egg_grading.py plan     # the egg lab: count the cost first
-python 10_egg_grading.py classify # 33 photos, one call each
-python 10_egg_grading.py sweep    # two cut-offs, and the "not sure" band for a person
-python 11_returns_desk.py         # a refund desk: message plus photo, a written policy
-python 11_returns_desk.py --separate
+python 10_egg_grading.py          # 33 photos; choose two cut-offs on half, check them on the other half
+python 10_ask_again.py            # the same photo three times: does the answer move?
+python 10_speed_test.py           # ten photos: Decisions API against a JSON answer
+python steps/desk_step1_one_photo.py    # refund desk, step 1: one photo, one question
+python steps/desk_step2_add_message.py  # step 2: the customer's message and a second question
+python steps/desk_step3_policy.py       # step 3: the shop's policy, in plain code
+python steps/desk_step4_all_claims.py   # step 4: all eight claims
+python steps/desk_step5_photo_alone.py  # step 5: ask about the photo on its own
+python 11_returns_desk.py         # the whole refund desk in one file, with options
 ```
 
 For `01_first_call.sh`, load `.env` into the terminal first: `set -a; source ../.env; set +a`.
@@ -54,18 +58,18 @@ Wikimedia Commons. `eggs/CREDITS.md` names every source and author.
 
 `eggs/labels.csv` says if each egg is clean, dirty or cracked. **These are the course author's
 labels, made by eye. They are drafts, not an expert's grades.** The lab uses them to show how to
-pick cut-offs. The cut-offs are picked and checked on the same 33 photos. That is a demo, not a
-proof. For real use, pick cut-offs on one set of labelled photos and check them on another.
+pick cut-offs. `10_egg_grading.py` picks the cut-offs on every other photo and checks them on
+the rest, the photos it did not use to pick them. With 33 photos and draft labels, that is a
+demo, not a proof.
 
-`results/reference/` is the run recorded for the course (9 October 2026). Your own runs go to
-`results/mine/`. You can compare the two.
+`results/reference/` holds the raw answers of an earlier run (9 October 2026), kept for reference.
 
 ## Two things the docs disagree on
 
 - **Image links.** The guide says images must be inline base64 data URLs. The API reference says
   public HTTP(S) URLs work too. So this course always sends base64. Both pages accept that.
 - **Speed.** OpenAI says the Decisions API is "about 10x faster than the Responses API". That is
-  OpenAI's claim. Script 10 `compare` times both on 10 egg photos from my laptop. It is a small
+  OpenAI's claim. `10_speed_test.py` times both on 10 egg photos from my laptop. It is a small
   test, not a proof of OpenAI's number.
 
 ## The lane race (Part 14): pictures, video clips, and text

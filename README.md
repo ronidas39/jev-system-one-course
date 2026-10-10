@@ -130,9 +130,9 @@ python usecases/04_duplicate_check.py
 cd decisions
 python 00_check_setup.py
 python 02_first_call_sdk.py
-python 10_egg_grading.py classify
-python 10_egg_grading.py sweep
-python 11_returns_desk.py
+python 10_egg_grading.py
+python steps/desk_step4_all_claims.py
+python steps/desk_step5_photo_alone.py
 python race/play.py --player text
 python race/compare.py --run reference
 cd ..

@@ -4,25 +4,30 @@ We start the refund desk with the smallest thing that works. We send the photo
 from one refund claim and ask one choice question: what condition is the egg
 in? The answer comes back with a probability for every choice.
 
+Run it from the decisions folder:
     python steps/desk_step1_one_photo.py
 
 Author: Roni Das
-Created: 2026-10-10
 """
 
-import sys
-from pathlib import Path
+import base64
+import os
 
-HERE = Path(__file__).resolve().parents[1]  # the decisions/ folder
-sys.path.insert(0, str(HERE))
+from openai import OpenAI
 
-from common import ask, check_key_present, cost_usd, image_data_url, make_client, odds, show  # noqa: E402
+# Read the API key from the .env file in the course folder (one folder up).
+for line in open("../.env"):
+    if line.startswith("OPENAI_API_KEY="):
+        os.environ["OPENAI_API_KEY"] = line.split("=", 1)[1].strip()
 
-check_key_present()
-client = make_client()
+client = OpenAI()
 
+# ---------------------------------------------------------------------------
+# Step 1: the question about the photo
+# ---------------------------------------------------------------------------
 PHOTO_QUESTION = {
-    "type": "choice", "name": "photo",
+    "type": "choice",
+    "name": "photo",
     "instructions": "Look only at the photo. What condition is the egg in?",
     "choices": [
         {"value": "clean", "description": "Whole egg, clean shell."},
@@ -32,19 +37,26 @@ PHOTO_QUESTION = {
     ],
 }
 
+# ---------------------------------------------------------------------------
+# Step 2: send the photo from claim C01
+# ---------------------------------------------------------------------------
+photo = "broken-02"
+photo_bytes = open(f"eggs/{photo}.jpg", "rb").read()
+url = "data:image/jpeg;base64," + base64.b64encode(photo_bytes).decode()
 
-def photo_part(photo: str) -> dict:
-    """One egg photo, as an image part of the input."""
-    return {"type": "input_image", "image_url": image_data_url(HERE / "eggs" / f"{photo}.jpg")}
+decision = client.decisions.create(
+    model="gpt-6-luna",
+    input=[{"role": "user", "content": [{"type": "input_image", "image_url": url}]}],
+    questions=[PHOTO_QUESTION],
+)
 
-
-photo = "broken-02"  # the photo sent with claim C01
-decision, seconds = ask(client, input=[{"role": "user", "content": [photo_part(photo)]}],
-                        questions=[PHOTO_QUESTION], script="steps/desk_step1_one_photo.py")
+# ---------------------------------------------------------------------------
+# Step 3: print the answer
+# ---------------------------------------------------------------------------
 answer = decision.answers[0]
-show("photo", f"eggs/{photo}.jpg")
-show("photo shows", answer.choice)
-show("confidence", f"{answer.confidence:.2f}")
-show("probabilities", {k: round(v, 2) for k, v in odds(answer).items()})
-show("input tokens / cost", f"{decision.usage.input_tokens} / ${cost_usd(decision.usage.input_tokens):.6f}")
-show("time (s)", f"{seconds:.2f}")
+odds = {p.value: round(p.probability, 2) for p in answer.probabilities}
+tokens = decision.usage.input_tokens
+print(f"photo           eggs/{photo}.jpg")
+print(f"photo shows     {answer.choice}")
+print(f"probabilities   {odds}")
+print(f"input tokens    {tokens}  (cost ${tokens * 0.10 / 1_000_000:.6f})")
