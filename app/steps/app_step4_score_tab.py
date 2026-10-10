@@ -106,7 +106,7 @@ with tab2:
             {"type": "input_text", "text": "One egg from a grading line."},
             {"type": "input_image", "image_url": photo_as_text}]}], EGG_QUESTION)
         st.session_state["egg_name"] = photo_name
-    low, high = st.slider("Not clean = 1 - P(clean). Pass below the left handle, reject above the right:",
+    low, high = st.slider("Chance the egg is NOT clean. Sell below the left handle, throw away above the right one:",
                           0.0, 1.0, (0.30, 0.70), 0.05, key="c_cut")
     result = st.session_state.get("egg")
     if result:
@@ -115,13 +115,13 @@ with tab2:
         show_bars(probabilities)
         not_clean = 1.0 - probabilities["clean"]
         if not_clean < low:
-            verdict = "PASS"
+            verdict = "SELL"
         elif not_clean > high:
-            verdict = "REJECT"
+            verdict = "THROW AWAY"
         else:
-            verdict = "SEND TO A PERSON"
-        st.markdown(f"**{verdict}**: not clean {not_clean:.2f}. Pass below {low:.2f}, "
-                    f"reject above {high:.2f}, a person checks the band in between.")
+            verdict = "A PERSON CHECKS"
+        st.markdown(f"**{verdict}**: chance it is not clean {not_clean:.2f}. Sell below {low:.2f}, "
+                    f"throw away above {high:.2f}, a person checks anything in between.")
         show_time_and_cost(result)
 
 # ---------------------------------------------------------------------------
