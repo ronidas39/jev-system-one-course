@@ -1,4 +1,4 @@
-"""The web app, step 3 of 5: add the Choice tab, an egg photo with two cut-offs.
+"""The web app, step 3 of 4: add the Choice tab, an egg photo with two cut-offs.
 
 The new tab sends one egg photo with an egg question, and draws one bar per
 option. "Not clean" is 1 minus the probability of clean. Below the left handle
@@ -35,26 +35,27 @@ def openai_client():
     return OpenAI(max_retries=0, timeout=60.0)       # made once, reused on every rerun
 
 
-def ask_decisions(input, question):
+def ask(message, question):
     start = time.perf_counter()
-    d = openai_client().decisions.create(model="gpt-6-luna", input=input, questions=[question])
-    ms = (time.perf_counter() - start) * 1000
-    tokens = d.usage.input_tokens
-    return {"answer": d.answers[0].model_dump(), "ms": ms, "tokens": tokens,
-            "usd": tokens * 0.10 / 1_000_000, "model": d.model}
+    decision = openai_client().decisions.create(model="gpt-6-luna", input=message,
+                                                questions=[question])
+    milliseconds = (time.perf_counter() - start) * 1000
+    tokens = decision.usage.input_tokens
+    return {"answer": decision.answers[0].model_dump(), "milliseconds": milliseconds,
+            "tokens": tokens, "cost": tokens * 0.10 / 1_000_000, "model": decision.model}
 
 
-def footer(r):
-    st.caption(f"{r['model']} · {r['ms']:.0f} ms · {r['tokens']} input tokens · "
-               f"${r['usd']:.8f} (from the usage in this answer)")
+def show_time_and_cost(result):
+    st.caption(f"{result['model']} · {result['milliseconds']:.0f} ms · {result['tokens']} input "
+               f"tokens · ${result['cost']:.8f} (from the usage in this answer)")
 
 
-def bars(probs):
-    for label, p in probs.items():
-        a, b, c = st.columns([2, 6, 1])
-        a.write(label)
-        b.progress(min(p, 1.0))
-        c.write(f"{p:.2f}")
+def show_bars(probabilities):
+    for label, probability in probabilities.items():
+        name_column, bar_column, number_column = st.columns([2, 6, 1])
+        name_column.write(label)
+        bar_column.progress(min(probability, 1.0))
+        number_column.write(f"{probability:.2f}")
 
 
 tab1, tab2 = st.tabs(["Predicate: yes or no", "Choice: one of a list"])
@@ -64,19 +65,20 @@ tab1, tab2 = st.tabs(["Predicate: yes or no", "Choice: one of a list"])
 # ---------------------------------------------------------------------------
 with tab1:
     st.subheader("Predicate: one probability that the statement is true")
-    text = st.text_area("Message", "I have asked three times now. Can I please just talk to a "
-                        "real person?", key="p_text")
-    instr = st.text_input("Question", "Is the customer asking for a human agent?", key="p_q")
+    message = st.text_area("Message", "I have asked three times now. Can I please just talk to a "
+                           "real person?", key="p_text")
+    question = st.text_input("Question", "Is the customer asking for a human agent?", key="p_q")
     if st.button("Ask", key="p_go"):
-        st.session_state["p"] = ask_decisions(text, {"type": "predicate", "name": "answer",
-                                                     "instructions": instr})
-    cut = st.slider("Act when the probability is at least", 0.0, 1.0, 0.80, 0.05, key="p_cut")
-    r = st.session_state.get("p")
-    if r:
-        p = r["answer"]["probability"]
-        bars({"yes": p})
-        st.markdown(f"**{'ACT' if p >= cut else 'DO NOT ACT'}**: {p:.2f} against the cut-off {cut:.2f}")
-        footer(r)
+        st.session_state["yes_no"] = ask(message, {"type": "predicate", "name": "answer",
+                                                   "instructions": question})
+    cutoff = st.slider("Act when the probability is at least", 0.0, 1.0, 0.80, 0.05, key="p_cut")
+    result = st.session_state.get("yes_no")
+    if result:
+        yes = result["answer"]["probability"]
+        show_bars({"yes": yes})
+        verdict = "ACT" if yes >= cutoff else "DO NOT ACT"
+        st.markdown(f"**{verdict}**: {yes:.2f} against the cut-off {cutoff:.2f}")
+        show_time_and_cost(result)
 
 # ---------------------------------------------------------------------------
 # Step 3: the egg photo tab, with two cut-offs
@@ -94,30 +96,31 @@ EGG_QUESTION = {
 
 with tab2:
     st.subheader("Choice: an egg photo, one bar per option, two cut-offs")
-    names = sorted(p.stem for p in Path("decisions/eggs").glob("*.jpg"))
-    pick = st.selectbox("Egg photo (CC0 and public domain, see decisions/eggs/CREDITS.md)", names,
-                        index=names.index("tray-06"), key="c_pick")
-    upload = st.file_uploader("Or upload your own JPEG or PNG (it is sent to OpenAI when you click Ask)",
-                              type=["jpg", "jpeg", "png"], key="c_up")
-    photo = upload.getvalue() if upload else open(f"decisions/eggs/{pick}.jpg", "rb").read()
-    kind = "png" if upload and upload.name.lower().endswith(".png") else "jpeg"
-    url = f"data:image/{kind};base64," + base64.b64encode(photo).decode("ascii")
+    photo_names = sorted(path.stem for path in Path("decisions/eggs").glob("*.jpg"))
+    photo_name = st.selectbox("Egg photo (CC0 and public domain, see decisions/eggs/CREDITS.md)",
+                              photo_names, index=photo_names.index("tray-06"), key="c_pick")
+    photo = open(f"decisions/eggs/{photo_name}.jpg", "rb").read()
     st.image(photo, width=220)
+    photo_as_text = "data:image/jpeg;base64," + base64.b64encode(photo).decode("ascii")
     if st.button("Ask", key="c_go"):
-        st.session_state["c"] = ask_decisions([{"role": "user", "content": [
+        st.session_state["egg"] = ask([{"role": "user", "content": [
             {"type": "input_text", "text": "One egg from a grading line."},
-            {"type": "input_image", "image_url": url}]}], EGG_QUESTION)
-        st.session_state["c_src"] = upload.name if upload else pick
+            {"type": "input_image", "image_url": photo_as_text}]}], EGG_QUESTION)
+        st.session_state["egg_name"] = photo_name
     low, high = st.slider("Not clean = 1 - P(clean). Pass below the left handle, reject above the right:",
                           0.0, 1.0, (0.30, 0.70), 0.05, key="c_cut")
-    r = st.session_state.get("c")
-    if r:
-        st.caption(f"Answer for: {st.session_state['c_src']}")
-        probs = {x["value"]: x["probability"] for x in r["answer"]["probabilities"]}
-        bars(probs)
-        not_clean = 1.0 - probs["clean"]
-        verdict = ("PASS" if not_clean < low else "REJECT" if not_clean > high
-                   else "SEND TO A PERSON")
+    result = st.session_state.get("egg")
+    if result:
+        st.caption(f"Answer for: {st.session_state['egg_name']}")
+        probabilities = {x["value"]: x["probability"] for x in result["answer"]["probabilities"]}
+        show_bars(probabilities)
+        not_clean = 1.0 - probabilities["clean"]
+        if not_clean < low:
+            verdict = "PASS"
+        elif not_clean > high:
+            verdict = "REJECT"
+        else:
+            verdict = "SEND TO A PERSON"
         st.markdown(f"**{verdict}**: not clean {not_clean:.2f}. Pass below {low:.2f}, "
                     f"reject above {high:.2f}, a person checks the band in between.")
-        footer(r)
+        show_time_and_cost(result)

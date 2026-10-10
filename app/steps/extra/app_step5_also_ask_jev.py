@@ -1,4 +1,4 @@
-"""The web app, step 5 of 5: the optional "also ask Jev" box.
+"""The web app, extra step: the optional "also ask Jev" box.
 
 The yes or no tab and the score tab each get a tick box. When it is ticked, Ask
 also sends the same text and the same question to Jev, TypeSafe's model, and its
@@ -6,7 +6,7 @@ answer is drawn under the Decisions API answer. This file now does everything
 app/app.py does.
 
 Run it from the course folder:
-    streamlit run app/steps/app_step5_also_ask_jev.py
+    streamlit run app/steps/extra/app_step5_also_ask_jev.py
 
 Author: Roni Das
 """

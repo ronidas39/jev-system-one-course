@@ -2,10 +2,10 @@
 
 AppTest runs a Streamlit file without a browser. This script loads one step,
 clicks one thing on it (the same click you would make on camera), and prints the
-text of every element on the page in order. Steps 2 to 5 make one or two real
-calls, each costing a few thousandths of a cent.
+text of every element on the page in order. Steps 2 to 4 make one real
+call, costing a few thousandths of a cent.
 
-    python app/steps/test_steps.py step1    (or step2 ... step5, or all)
+    python app/steps/test_steps.py step1    (or step2 ... step4, or all)
 
 Author: Roni Das
 Created: 2026-10-10
@@ -23,7 +23,7 @@ logging.getLogger(QUIET).setLevel(logging.ERROR)
 
 HERE = Path(__file__).resolve().parent
 FILES = {"step1": "app_step1_page.py", "step2": "app_step2_yes_no_tab.py", "step3": "app_step3_egg_photo_tab.py",
-         "step4": "app_step4_score_tab.py", "step5": "app_step5_also_ask_jev.py"}
+         "step4": "app_step4_score_tab.py"}
 TIMEOUT = 90  # seconds; a real call is well under this
 
 
@@ -70,13 +70,9 @@ def run_step(step: str) -> int:
     elif step == "step3":
         at.button(key="c_go").click()
         action = "clicked Ask on the Choice tab (photo tray-06)"
-    elif step == "step4":
+    else:
         at.button(key="s_go").click()
         action = "clicked Ask on the Score tab"
-    else:
-        at.checkbox(key="p_jev").check()
-        at.button(key="p_go").click()
-        action = "ticked 'Also ask Jev' and clicked Ask on the Predicate tab"
     at.run()
     print(f"== {FILES[step]}: {action}")
     for line in page_text(at):

@@ -132,7 +132,7 @@ python 00_check_setup.py
 python 02_first_call_sdk.py
 python 10_egg_grading.py
 python steps/desk_step4_all_claims.py
-python steps/desk_step5_photo_alone.py
+python steps/extra/desk_step5_photo_alone.py
 python race/play.py --player text
 python race/compare.py --run reference
 cd ..

@@ -1,4 +1,4 @@
-"""The web app, step 1 of 5: a page with a title and one text box.
+"""The web app, step 1 of 4: a page with a title and one text box.
 
 No API call yet. Streamlit runs this whole file again, from the top, every time
 something on the page changes. So when you edit the message and click outside

@@ -83,45 +83,49 @@ print(f"\nStep 2: the same 3 questions for both: {', '.join(JEV_QUESTIONS)}")
 # ---------------------------------------------------------------------------
 jev = TypeSafeClient(model="jev-1.13.0")
 openai_client = OpenAI()
-results = {"jev-1.13.0": [], "decisions gpt-6-luna": []}   # one row per ticket
+results = {"Jev": [], "Decisions API": []}   # one row per ticket
 
 for ticket in tickets:
     start = time.perf_counter()
-    answer = jev.system_one(state=ticket["text"], questions=JEV_QUESTIONS)
+    jev_reply = jev.system_one(state=ticket["text"], questions=JEV_QUESTIONS)
     seconds = time.perf_counter() - start
-    a = answer.answers
-    results["jev-1.13.0"].append({
-        "team": a["team"].choice, "urgency": round(a["urgency"].score),
-        "frustration": round(a["frustration"].score),
-        "seconds": seconds, "tokens": answer.usage.input_tokens,
-        "usd": answer.usage.input_tokens * 0.042 / 1_000_000})
+    answers = jev_reply.answers
+    results["Jev"].append({
+        "team": answers["team"].choice,
+        "urgency": round(answers["urgency"].score),
+        "frustration": round(answers["frustration"].score),
+        "seconds": seconds,
+        "tokens": jev_reply.usage.input_tokens,
+        "cost": jev_reply.usage.input_tokens * 0.042 / 1_000_000})
 
     start = time.perf_counter()
-    decision = openai_client.decisions.create(model="gpt-6-luna", input=ticket["text"],
-                                              questions=DECISIONS_QUESTIONS)
+    decisions_reply = openai_client.decisions.create(model="gpt-6-luna", input=ticket["text"],
+                                                     questions=DECISIONS_QUESTIONS)
     seconds = time.perf_counter() - start
-    d = {x.name: x for x in decision.answers}
-    results["decisions gpt-6-luna"].append({
-        "team": d["team"].choice, "urgency": round(d["urgency"].score),
-        "frustration": round(d["frustration"].score),
-        "seconds": seconds, "tokens": decision.usage.input_tokens,
-        "usd": decision.usage.input_tokens * 0.10 / 1_000_000})
+    answers = {answer.name: answer for answer in decisions_reply.answers}
+    results["Decisions API"].append({
+        "team": answers["team"].choice,
+        "urgency": round(answers["urgency"].score),
+        "frustration": round(answers["frustration"].score),
+        "seconds": seconds,
+        "tokens": decisions_reply.usage.input_tokens,
+        "cost": decisions_reply.usage.input_tokens * 0.10 / 1_000_000})
 
-print(f"\nStep 3: sent {len(tickets)} tickets to each API, {2 * len(tickets)} calls")
+print(f"\nStep 3: sent {len(tickets)} tickets to each one, {2 * len(tickets)} calls in all")
 
 # ---------------------------------------------------------------------------
-# Step 4: count right answers, time and cost for each API
+# Step 4: count the right answers, the time and the cost
 # ---------------------------------------------------------------------------
-print(f"\nStep 4: results on {len(tickets)} tickets")
-print(f"   {'':<22} {'team':>6} {'urgency':>8} {'frustration':>12} {'time per call':>14}   cost")
-for api, rows in results.items():
-    right = {q: sum(row[q] == t[q] for row, t in zip(rows, tickets))
-             for q in ("team", "urgency", "frustration")}
-    seconds = sum(row["seconds"] for row in rows) / len(rows)
-    usd = sum(row["usd"] for row in rows)
-    print(f"   {api:<22} {right['team']:>3}/{len(rows)} {right['urgency']:>5}/{len(rows)} "
-          f"{right['frustration']:>9}/{len(rows)} {seconds:>12.2f} s   ${usd:.6f}")
-
-per_ticket = {api: sum(r["tokens"] for r in rows) / len(rows) for api, rows in results.items()}
-print("\n   input tokens per ticket: "
-      + ", ".join(f"{api} {tokens:.0f}" for api, tokens in per_ticket.items()))
+print(f"\nStep 4: right answers out of {len(tickets)}, seconds per call, and cost")
+print(f"   {'':<14} {'team':>5} {'urgency':>8} {'frustration':>12} {'seconds':>8}   {'cost':<10} "
+      f"tokens per ticket")
+for name, rows in results.items():
+    team_right = sum(row["team"] == ticket["team"] for row, ticket in zip(rows, tickets))
+    urgency_right = sum(row["urgency"] == ticket["urgency"] for row, ticket in zip(rows, tickets))
+    frustration_right = sum(row["frustration"] == ticket["frustration"]
+                            for row, ticket in zip(rows, tickets))
+    seconds_per_call = sum(row["seconds"] for row in rows) / len(rows)
+    total_cost = sum(row["cost"] for row in rows)
+    tokens_per_ticket = sum(row["tokens"] for row in rows) / len(rows)
+    print(f"   {name:<14} {team_right:>5} {urgency_right:>8} {frustration_right:>12} "
+          f"{seconds_per_call:>8.2f}   ${total_cost:<9.6f} {tokens_per_ticket:.0f}")
