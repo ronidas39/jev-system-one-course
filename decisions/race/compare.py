@@ -1,7 +1,7 @@
 """Put every player of one race run side by side: crashes, slow-downs, speed, cost.
 
     python race/compare.py                    # your runs, in results/race/mine
-    python race/compare.py --run reference    # the runs recorded for the course
+    python race/compare.py --run reference    # a run you saved with play.py --run reference
 
 Author: Roni Das
 Created: 2026-10-09

@@ -3,6 +3,7 @@
 # Author: Roni Das. Created: 2026-10-04.
 set -e
 cd "$(dirname "$0")/.."
+python capstone/step1_block.py
 python compare/run_compare.py --task tickets --protocol accuracy
 python compare/run_compare.py --task pairs   --protocol accuracy
 python compare/run_compare.py --task tickets --protocol latency  --sample 40 --rounds 3
