@@ -1,6 +1,6 @@
 # Decision AI Models: TypeSafe Jev and the OpenAI Decisions API
 
-The source code for a freeCodeCamp course by Roni Das. The slides are in `slides/deck.pdf`.
+Code for the Decision AI Models course, by Roni Das. The slides are in `slides/deck.pdf`.
 
 ## What you need
 
