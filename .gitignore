@@ -16,3 +16,5 @@ decisions/results/
 capstone/out/
 compare/results/
 compare_decisions/results/
+# pictures written by handson/14_jev_reads_images.py
+handson/out_*_box.jpg
